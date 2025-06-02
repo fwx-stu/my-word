@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>单词配对消消乐</title>
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    #game {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .bubble {
+      margin: 10px;
+      padding: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+      transform-style: preserve-3d;
+      transform: perspective(600px) rotateX(10deg) rotateY(10deg);
+    }
+
+    .bubble:hover {
+      transform: scale(1.1) perspective(600px) rotateX(10deg) rotateY(10deg);
+    }
+
+    .english {
+      background-color: #003366;
+    }
+
+    .chinese {
+      background-color: #66a3ff;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    #restart {
+      margin: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>英语单词配对消消乐</h1>
+<div id="game"></div>
+<button id="restart">重新开始</button>
+
+<script>
+  const wordPairs = [
+    { en: "have one’s eye(s) on", zh: "想要得到某物" },
+    { en: "Attribute", zh: "归因于" },
+    { en: "Assess", zh: "评估" },
+    { en: "Cognitive", zh: "认知的" },
+    { en: "On the fly", zh: "进行中" },
+    { en: "Validate", zh: "验证" },
+    { en: "Leadership", zh: "领导力" },
+    { en: "Relinquish", zh: "放弃" },
+    { en: "Humility", zh: "谦逊" },
+    { en: "Ego", zh: "自我" },
+    { en: "Beware", zh: "当心" },
+    { en: "Collaboration", zh: "合作" },
+    { en: "Genius", zh: "天才" },
+    { en: "Like hell", zh: "拼命地" },
+    { en: "Fundamental", zh: "基本的" },
+    { en: "Commit", zh: "承诺" }
+  ];
+
+  let firstSelected = null;
+  let secondSelected = null;
+
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  function createGame() {
+    const gameContainer = document.getElementById("game");
+    gameContainer.innerHTML = "";
+
+    const bubbles = [];
+    wordPairs.forEach(pair => {
+      bubbles.push({ text: pair.en, type: "en", match: pair.zh });
+      bubbles.push({ text: pair.zh, type: "zh", match: pair.en });
+    });
+
+    shuffle(bubbles);
+
+    bubbles.forEach(item => {
+      const div = document.createElement("div");
+      div.className = `bubble ${item.type === "en" ? "english" : "chinese"}`;
+      div.textContent = item.text;
+      div.dataset.match = item.match;
+      div.dataset.type = item.type;
+      gameContainer.appendChild(div);
+
+      div.addEventListener("click", () => {
+        if (div.classList.contains("hidden")) return;
+
+        if (!firstSelected) {
+          firstSelected = div;
+          div.style.border = "3px solid #ffcc00";
+        } else if (!secondSelected && div !== firstSelected) {
+          secondSelected = div;
+          div.style.border = "3px solid #ffcc00";
+
+          // Check match
+          if (firstSelected.dataset.match === secondSelected.textContent &&
+              secondSelected.dataset.match === firstSelected.textContent) {
+            setTimeout(() => {
+              firstSelected.classList.add("hidden");
+              secondSelected.classList.add("hidden");
+              resetSelection();
+            }, 500);
+          } else {
+            setTimeout(() => {
+              firstSelected.style.border = "";
+              secondSelected.style.border = "";
+              resetSelection();
+            }, 500);
+          }
+        }
+      });
+    });
+  }
+
+  function resetSelection() {
+    firstSelected = null;
+    secondSelected = null;
+  }
+
+  document.getElementById("restart").addEventListener("click", createGame);
+
+  // 初始化游戏
+  createGame();
+</script>
+
+</body>
+</html>
