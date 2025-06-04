@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>学习内容列表</title>
+  <title>词汇学习入口</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,17 +12,21 @@
     h1 {
       color: #333;
     }
+    h2 {
+      color: #555;
+      margin-top: 30px;
+    }
     ul {
       list-style-type: none;
       padding: 0;
     }
     li {
-      margin: 8px 0;
+      margin: 6px 0;
     }
     a {
       text-decoration: none;
       color: #007BFF;
-      font-size: 18px;
+      font-size: 16px;
     }
     a:hover {
       text-decoration: underline;
@@ -30,16 +34,66 @@
   </style>
 </head>
 <body>
-  <h1>学习内容列表</h1>
+
+  <h1>词汇学习入口</h1>
+
+  <h2>📘 高频单词 Day1 - Day10</h2>
   <ul>
-    <li><a href="单词记忆.html">单词记忆</a></li>
-    <li><a href="Day1.html">Day.1</a></li>
-    <li><a href="Day2.html">Day.2</a></li>
-    <li><a href="Day3.html">Day.3</a></li>
-    <!-- 更多内容请在下面继续添加 -->
-    <li><a href="Day4.html">Day.4</a></li>
-    <li><a href="Day5.html">Day.5</a></li>
-    <!-- ...直到 Day50.html -->
+    <li><a href="high/Day1.html">高频 Day1</a></li>
+    <li><a href="high/Day2.html">高频 Day2</a></li>
+    <li><a href="high/Day3.html">高频 Day3</a></li>
+    <li><a href="high/Day4.html">高频 Day4</a></li>
+    <li><a href="high/Day5.html">高频 Day5</a></li>
+    <li><a href="high/Day6.html">高频 Day6</a></li>
+    <li><a href="high/Day7.html">高频 Day7</a></li>
+    <li><a href="high/Day8.html">高频 Day8</a></li>
+    <li><a href="high/Day9.html">高频 Day9</a></li>
+    <li><a href="high/Day10.html">高频 Day10</a></li>
   </ul>
+
+  <h2>📗 中频单词 Day1 - Day10</h2>
+  <ul>
+    <li><a href="mid/Day1.html">中频 Day1</a></li>
+    <li><a href="mid/Day2.html">中频 Day2</a></li>
+    <li><a href="mid/Day3.html">中频 Day3</a></li>
+    <li><a href="mid/Day4.html">中频 Day4</a></li>
+    <li><a href="mid/Day5.html">中频 Day5</a></li>
+    <li><a href="mid/Day6.html">中频 Day6</a></li>
+    <li><a href="mid/Day7.html">中频 Day7</a></li>
+    <li><a href="mid/Day8.html">中频 Day8</a></li>
+    <li><a href="mid/Day9.html">中频 Day9</a></li>
+    <li><a href="mid/Day10.html">中频 Day10</a></li>
+  </ul>
+
+  <h2>📙 低频单词 Day1 - Day10</h2>
+  <ul>
+    <li><a href="low/Day1.html">低频 Day1</a></li>
+    <li><a href="low/Day2.html">低频 Day2</a></li>
+    <li><a href="low/Day3.html">低频 Day3</a></li>
+    <li><a href="low/Day4.html">低频 Day4</a></li>
+    <li><a href="low/Day5.html">低频 Day5</a></li>
+    <li><a href="low/Day6.html">低频 Day6</a></li>
+    <li><a href="low/Day7.html">低频 Day7</a></li>
+    <li><a href="low/Day8.html">低频 Day8</a></li>
+    <li><a href="low/Day9.html">低频 Day9</a></li>
+    <li><a href="low/Day10.html">低频 Day10</a></li>
+  </ul>
+
+  <h2>📒 补充单词 Day1 - Day50</h2>
+  <ul id="extraList"></ul>
+
+  <script>
+    // 自动生成补充单词 Day1 ~ Day50 链接
+    const extraList = document.getElementById("extraList");
+    for (let i = 1; i <= 50; i++) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = `extra/Day${i}.html`;
+      a.textContent = `补充 Day${i}`;
+      li.appendChild(a);
+      extraList.appendChild(li);
+    }
+  </script>
+
 </body>
 </html>
