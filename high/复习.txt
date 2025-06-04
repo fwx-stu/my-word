@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>单词复习检验（Day1-10 随机抽取）</title>
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin-top: 20px;
+    }
+    #game {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .bubble {
+      margin: 10px;
+      padding: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .bubble:hover {
+      transform: scale(1.1);
+    }
+    .english {
+      background-color: #003366;
+    }
+    .chinese {
+      background-color: #66a3ff;
+    }
+    .hidden {
+      visibility: hidden;
+    }
+    #controls {
+      margin: 20px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>单词复习检验（Day1-10 随机抽取100个）</h1>
+<div id="game"></div>
+
+<div id="controls">
+  <button id="prevPage">上一页</button>
+  <button id="nextPage">下一页</button>
+  <button id="hint">提示（剩余3次）</button>
+  <button id="reshuffle">重新抽取</button>
+</div>
+
+<script>
+  // 模拟 Day1~Day10 的所有词对，你需要替换为真实数据
+  const allWordPairs = [
+    { en: "challenge", zh: "挑战" },
+    { en: "cope", zh: "应付" },
+    { en: "context", zh: "上下文" },
+    { en: "claim", zh: "声称" },
+    { en: "charge", zh: "收费" },
+    { en: "credit", zh: "信用" },
+    { en: "crop", zh: "庄稼" },
+    { en: "curb", zh: "抑制" },
+    { en: "delay", zh: "推迟" },
+    { en: "delight", zh: "高兴" },
+    // ... 请替换为 Day1~10 所有词汇
+  ];
+
+  let selectedPairs = [];
+  const pairsPerPage = 20;
+  let currentPage = 0;
+  let hintCount = 3;
+
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  function pickRandomPairs(count) {
+    const copy = [...allWordPairs];
+    shuffle(copy);
+    return copy.slice(0, count);
+  }
+
+  function createGame() {
+    const gameContainer = document.getElementById("game");
+    gameContainer.innerHTML = "";
+
+    const pagePairs = selectedPairs.slice(currentPage * pairsPerPage, (currentPage + 1) * pairsPerPage);
+    const bubbles = [];
+
+    pagePairs.forEach(pair => {
+      bubbles.push({ text: pair.en, type: "en", match: pair.zh });
+      bubbles.push({ text: pair.zh, type: "zh", match: pair.en });
+    });
+
+    shuffle(bubbles);
+
+    bubbles.forEach(item => {
+      const div = document.createElement("div");
+      div.className = `bubble ${item.type === "en" ? "english" : "chinese"}`;
+      div.textContent = item.text;
+      div.dataset.match = item.match;
+      div.dataset.type = item.type;
+      gameContainer.appendChild(div);
+
+      div.addEventListener("click", () => {
+        if (div.classList.contains("hidden")) return;
+        if (!firstSelected) {
+          firstSelected = div;
+          div.style.border = "3px solid #ffcc00";
+        } else if (!secondSelected && div !== firstSelected) {
+          secondSelected = div;
+          div.style.border = "3px solid #ffcc00";
+
+          if (firstSelected.dataset.match === secondSelected.textContent &&
+              secondSelected.dataset.match === firstSelected.textContent) {
+            setTimeout(() => {
+              firstSelected.classList.add("hidden");
+              secondSelected.classList.add("hidden");
+              resetSelection();
+            }, 500);
+          } else {
+            setTimeout(() => {
+              firstSelected.style.border = "";
+              secondSelected.style.border = "";
+              resetSelection();
+            }, 500);
+          }
+        }
+      });
+    });
+
+    updateNavigation();
+    updateHintButton();
+  }
+
+  function resetSelection() {
+    firstSelected = null;
+    secondSelected = null;
+  }
+
+  function updateNavigation() {
+    document.getElementById("prevPage").disabled = currentPage === 0;
+    document.getElementById("nextPage").disabled = (currentPage + 1) * pairsPerPage >= selectedPairs.length;
+  }
+
+  function updateHintButton() {
+    document.getElementById("hint").textContent = `提示（剩余${hintCount}次）`;
+    document.getElementById("hint").disabled = hintCount === 0;
+  }
+
+  function giveHint() {
+    if (hintCount <= 0) return;
+    const divs = Array.from(document.querySelectorAll('.bubble:not(.hidden)'));
+    for (let i = 0; i < divs.length; i++) {
+      for (let j = i + 1; j < divs.length; j++) {
+        if (
+          divs[i].dataset.match === divs[j].textContent &&
+          divs[j].dataset.match === divs[i].textContent
+        ) {
+          divs[i].style.border = "3px solid #00ff00";
+          divs[j].style.border = "3px solid #00ff00";
+          hintCount--;
+          updateHintButton();
+          return;
+        }
+      }
+    }
+  }
+
+  function reshufflePairs() {
+    selectedPairs = pickRandomPairs(100);
+    currentPage = 0;
+    hintCount = 3;
+    createGame();
+  }
+
+  document.getElementById("prevPage").addEventListener("click", () => {
+    if (currentPage > 0) {
+      currentPage--;
+      createGame();
+    }
+  });
+
+  document.getElementById("nextPage").addEventListener("click", () => {
+    if ((currentPage + 1) * pairsPerPage < selectedPairs.length) {
+      currentPage++;
+      createGame();
+    }
+  });
+
+  document.getElementById("hint").addEventListener("click", giveHint);
+  document.getElementById("reshuffle").addEventListener("click", reshufflePairs);
+
+  let firstSelected = null;
+  let secondSelected = null;
+
+  // 初始化抽取100个词对
+  reshufflePairs();
+</script>
+
+</body>
+</html>

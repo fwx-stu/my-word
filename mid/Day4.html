@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>中频单词配对消消乐 - Day4（分页版）</title>
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    #tips {
+      font-size: 16px;
+      color: #333;
+      margin: 10px auto 20px;
+      max-width: 800px;
+    }
+
+    #game {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .bubble {
+      margin: 10px;
+      padding: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    .bubble:hover {
+      transform: scale(1.1);
+    }
+
+    .english {
+      background-color: #003366;
+    }
+
+    .chinese {
+      background-color: #66a3ff;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    #controls {
+      margin: 20px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #hintCounter {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>中频单词配对消消乐 - Day4</h1>
+<div id="game"></div>
+
+<div id="controls">
+  <button id="prevPage">上一页</button>
+  <button id="nextPage">下一页</button>
+  <button id="hint">提示（剩余3次）</button>
+  <button id="restart">重新开始</button>
+  <div id="hintCounter"></div>
+</div>
+
+<script>
+  const allWordPages = [
+  [{"en":"enrol","zh":"加入，注册"},{"en":"romantic","zh":"爱情的，浪漫的，浪漫的人"},{"en":"corrupt","zh":"使腐化，腐败的"},{"en":"interrupt","zh":"打断"},{"en":"sanction","zh":"制裁"},{"en":"conscience","zh":"良知，良心"},{"en":"scope","zh":"范围，仔细看"},{"en":"scrutiny","zh":"仔细检查"},{"en":"resemble","zh":"像，与……相似"},{"en":"senate","zh":"参议院"},{"en":"senator","zh":"参议员"},{"en":"nonsense","zh":"谬论，胡言乱语"},{"en":"consensus","zh":"共识"},{"en":"sensible","zh":"明智的，意识到的"},{"en":"sentiment","zh":"观点，情绪，伤感"},{"en":"consent","zh":"同意，允许"},{"en":"presently","zh":"目前，现在"},{"en":"subsequent","zh":"随后的"},{"en":"prosecute","zh":"起诉，继续"},{"en":"assert","zh":"断言，坚持表明，维护自己的权力"}],
+  [{"en":"servant","zh":"仆人，职员"},{"en":"resident","zh":"居住的，居住者"},{"en":"session","zh":"一段时间，一场，一节，会议"},{"en":"insight","zh":"深入了解，领悟"},{"en":"assignment","zh":"作业，任务，分配，指派"},{"en":"stability","zh":"稳定"},{"en":"instant","zh":"立即的"},{"en":"obstacle","zh":"障碍"},{"en":"resist","zh":"抵制，抵挡，忍住"},{"en":"resistance","zh":"抵抗，阻力"},{"en":"resistant","zh":"抵制的，抵抗的"},{"en":"assistance","zh":"援助"},{"en":"persist","zh":"坚持，持续存在"},{"en":"substitute","zh":"替换，替代，取代"},{"en":"sociable","zh":"合群的，友好的"},{"en":"sole","zh":"唯一的"},{"en":"solid","zh":"固体的，坚硬的，确凿的，固体"},{"en":"consolidate","zh":"巩固，加固，整合"},{"en":"dissolve","zh":"解散，溶解，消失"},{"en":"absolute","zh":"绝对的，肯定的，明晰的"}],
+  [{"en":"resort","zh":"诉诸，旅游胜地"},{"en":"spacious","zh":"宽敞的"},{"en":"span","zh":"持续时间，跨越"},{"en":"hemisphere","zh":"半球"},{"en":"correspond","zh":"一致，通信"},{"en":"spy","zh":"间谍，从事情报活动"},{"en":"suspicion","zh":"怀疑，猜疑"},{"en":"suspicious","zh":"可疑的"},{"en":"inspect","zh":"检查"},{"en":"specify","zh":"明确说明，详述"},{"en":"stern","zh":"严格的，严厉的，严峻的"},{"en":"constituent","zh":"组成的，构成的"},{"en":"statute","zh":"法规，条例"},{"en":"restraint","zh":"约束力"},{"en":"constrain","zh":"限制，约束"},{"en":"string","zh":"一系列，串，线"},{"en":"instrument","zh":"器具，乐器"},{"en":"construct","zh":"建造，建构，构思的想法"},{"en":"instruct","zh":"教授，命令"},{"en":"instruction","zh":"指示，指令，用法说明"}],
+  [{"en":"summarize","zh":"总结"},{"en":"superior","zh":"更强的，更好的，上司"},{"en":"superiority","zh":"优越，优势"},{"en":"maintenance","zh":"维持，养护"},{"en":"continuous","zh":"连续不断的，持续的"},{"en":"attain","zh":"达到，获得，得到"},{"en":"architect","zh":"建筑师"},{"en":"temper","zh":"心情，使缓和"},{"en":"contemporary","zh":"当代的，同时代的"},{"en":"tempt","zh":"劝诱，引诱"},{"en":"contempt","zh":"蔑视，轻视"},{"en":"contend","zh":"声称，主张，争论，竞争"},{"en":"intensity","zh":"强度"},{"en":"extensive","zh":"广泛的，广阔的"},{"en":"territory","zh":"领地，领土，地区"},{"en":"protest","zh":"抗议，反对"},{"en":"textile","zh":"纺织品"},{"en":"thesis","zh":"论文"},{"en":"tone","zh":"语气，调"},{"en":"distort","zh":"使变形"}],
+  [{"en":"trail","zh":"追踪"},{"en":"portray","zh":"描述，刻画"},{"en":"retreat","zh":"撤退，退却"},{"en":"extract","zh":"提取，拔出，摘录"},{"en":"distract","zh":"分散"},{"en":"abstract","zh":"抽象的，摘要"},{"en":"tragedy","zh":"悲剧"},{"en":"intuition","zh":"直觉"},{"en":"tuition","zh":"学费，讲授"},{"en":"disturb","zh":"打扰，弄乱，骚乱"},{"en":"ultimate","zh":"最终的，最根本的，最原始的"},{"en":"abundant","zh":"丰富的，充足的"},{"en":"suburb","zh":"郊区"},{"en":"utilize","zh":"利用"},{"en":"vaccine","zh":"疫苗"},{"en":"evade","zh":"逃避，使困惑"},{"en":"vague","zh":"含糊的，模糊的"},{"en":"vain","zh":"虚荣的，自负的，徒劳的"},{"en":"evaluate","zh":"评价"},{"en":"variation","zh":"差异，变化"}],
+  [{"en":"intervene","zh":"干涉，介入"},{"en":"convenience","zh":"便利的事物"},{"en":"venture","zh":"冒险事业，冒风险"},{"en":"verify","zh":"核对，证明"},{"en":"controversial","zh":"有争议的"},{"en":"convert","zh":"使转变，转换"},{"en":"advertise","zh":"做广告，宣传"},{"en":"investigate","zh":"研究，调查"},{"en":"conviction","zh":"定罪，坚定的看法"},{"en":"violence","zh":"暴力，狂热"},{"en":"visa","zh":"签证"},{"en":"supervise","zh":"监督，管理"},{"en":"revise","zh":"改变，修订，复习"},{"en":"visible","zh":"明显的，看得见的"},{"en":"invisible","zh":"无形的，看不见的"},{"en":"advisable","zh":"明智的"},{"en":"revive","zh":"恢复，复苏"},{"en":"vivid","zh":"生动的，清晰的，鲜艳的"},{"en":"provoke","zh":"激起，激怒"},{"en":"revolve","zh":"旋转"}],
+  [{"en":"devote","zh":"致力"}]
+];
+
+  let currentPage = 0;
+  let firstSelected = null;
+  let secondSelected = null;
+  let hintCount = 3;
+
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  function createGame() {
+    const gameContainer = document.getElementById("game");
+    const wordPairs = allWordPages[currentPage];
+    gameContainer.innerHTML = "";
+
+    const bubbles = [];
+    wordPairs.forEach(pair => {
+      bubbles.push({ text: pair.en, type: "en", match: pair.zh });
+      bubbles.push({ text: pair.zh, type: "zh", match: pair.en });
+    });
+
+    shuffle(bubbles);
+
+    bubbles.forEach(item => {
+      const div = document.createElement("div");
+      div.className = `bubble ${item.type === "en" ? "english" : "chinese"}`;
+      div.textContent = item.text;
+      div.dataset.match = item.match;
+      div.dataset.type = item.type;
+      gameContainer.appendChild(div);
+
+      div.addEventListener("click", () => {
+        if (div.classList.contains("hidden")) return;
+
+        if (!firstSelected) {
+          firstSelected = div;
+          div.style.border = "3px solid #ffcc00";
+        } else if (!secondSelected && div !== firstSelected) {
+          secondSelected = div;
+          div.style.border = "3px solid #ffcc00";
+
+          if (firstSelected.dataset.match === secondSelected.textContent &&
+              secondSelected.dataset.match === firstSelected.textContent) {
+            setTimeout(() => {
+              firstSelected.classList.add("hidden");
+              secondSelected.classList.add("hidden");
+              resetSelection();
+            }, 500);
+          } else {
+            setTimeout(() => {
+              firstSelected.style.border = "";
+              secondSelected.style.border = "";
+              resetSelection();
+            }, 500);
+          }
+        }
+      });
+    });
+
+    updateNavigation();
+    updateHintButton();
+  }
+
+  function resetSelection() {
+    firstSelected = null;
+    secondSelected = null;
+  }
+
+  function updateNavigation() {
+    document.getElementById("prevPage").disabled = currentPage === 0;
+    document.getElementById("nextPage").disabled = currentPage >= allWordPages.length - 1;
+  }
+
+  function updateHintButton() {
+    document.getElementById("hint").textContent = `提示（剩余${hintCount}次）`;
+    document.getElementById("hint").disabled = hintCount === 0;
+  }
+
+  function giveHint() {
+    if (hintCount <= 0) return;
+    const divs = Array.from(document.querySelectorAll('.bubble:not(.hidden)'));
+    for (let i = 0; i < divs.length; i++) {
+      for (let j = i + 1; j < divs.length; j++) {
+        if (
+          divs[i].dataset.match === divs[j].textContent &&
+          divs[j].dataset.match === divs[i].textContent
+        ) {
+          divs[i].style.border = "3px solid #00ff00";
+          divs[j].style.border = "3px solid #00ff00";
+          hintCount--;
+          updateHintButton();
+          return;
+        }
+      }
+    }
+  }
+
+  document.getElementById("restart").addEventListener("click", () => {
+    hintCount = 3;
+    currentPage = 0;
+    createGame();
+  });
+
+  document.getElementById("prevPage").addEventListener("click", () => {
+    if (currentPage > 0) {
+      currentPage--;
+      createGame();
+    }
+  });
+
+  document.getElementById("nextPage").addEventListener("click", () => {
+    if (currentPage < allWordPages.length - 1) {
+      currentPage++;
+      createGame();
+    }
+  });
+
+  document.getElementById("hint").addEventListener("click", giveHint);
+
+  createGame();
+</script>
+
+</body>
+</html>

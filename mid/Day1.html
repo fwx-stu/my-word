@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>中频单词配对消消乐（分页版）</title>
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    #game {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .bubble {
+      margin: 10px;
+      padding: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    .bubble:hover {
+      transform: scale(1.1);
+    }
+
+    .english {
+      background-color: #003366;
+    }
+
+    .chinese {
+      background-color: #66a3ff;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    .highlight {
+      border: 3px solid #00ff00 !important;
+    }
+
+    #controls {
+      margin: 20px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #hintCounter {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>中频单词配对消消乐 - Day1</h1>
+<div id="game"></div>
+
+<div id="controls">
+  <button id="prevPage">上一页</button>
+  <button id="nextPage">下一页</button>
+  <button id="hint">提示（剩余3次）</button>
+  <button id="restart">重新开始</button>
+  <div id="hintCounter"></div>
+</div>
+
+<script>
+  const allWordPages = [
+    [{"en": "abolish", "zh": "废除"}, {"en": "agenda", "zh": "议事日程"}, {"en": "exact", "zh": "精确的，确切的"},
+     {"en": "activate", "zh": "激活，使起作用"}, {"en": "alcohol", "zh": "酒，酒精饮料"}, {"en": "alien", "zh": "外国人，外来的，陌生的，外国的"},
+     {"en": "ambitious", "zh": "有雄心的，有野心的"}, {"en": "monarch", "zh": "君主"}, {"en": "alarm", "zh": "惊慌，警报器"},
+     {"en": "astronomy", "zh": "天文学"}, {"en": "disaster", "zh": "灾祸，灾难"}, {"en": "auction", "zh": "拍卖"},
+     {"en": "combat", "zh": "防止，减轻，战斗"}, {"en": "combination", "zh": "联合体，联合"}, {"en": "biology", "zh": "生物，生物学"},
+     {"en": "embody", "zh": "体现"}, {"en": "symbol", "zh": "象征，符号，记号"}, {"en": "bonus", "zh": "奖金，红利，额外收获"},
+     {"en": "neighborhood", "zh": "社区，邻居"}, {"en": "border", "zh": "边界，与……接壤"}],
+    [{"en": "calculate", "zh": "计算，推测"}, {"en": "camp", "zh": "营地，营房，营地，露营"}, {"en": "captive", "zh": "牺牲的，被监禁的"},
+     {"en": "conception", "zh": "概念，构想，怀孕"}, {"en": "conceive", "zh": "构想，想象，怀孕"}, {"en": "recipient", "zh": "接受者"},
+     {"en": "canal", "zh": "运河，管道"}, {"en": "occasion", "zh": "场合，时刻，机会，重大活动"}, {"en": "cast", "zh": "投，抛，扔，投掷，铸模"},
+     {"en": "caution", "zh": "警告，提醒"}, {"en": "conceal", "zh": "隐藏，隐瞒"}, {"en": "proceed", "zh": "进行，开始行动"},
+     {"en": "exceed", "zh": "超过，超出，超越"}, {"en": "excess", "zh": "过多的，过度"}, {"en": "predecessor", "zh": "前辈，前任"},
+     {"en": "succession", "zh": "系列，连续，继任"}, {"en": "precede", "zh": "在……之前出现"}, {"en": "excel", "zh": "擅长，突出"},
+     {"en": "census", "zh": "人口普查，人口调查"}, {"en": "charter", "zh": "许可证，包租"}],
+    [{"en": "chemist", "zh": "化学家"}, {"en": "chemistry", "zh": "化学"}, {"en": "chronic", "zh": "长期的，慢性的，长期患病的"},
+     {"en": "exciting", "zh": "令人激动的，使人兴奋的"}, {"en": "clarity", "zh": "清晰，清楚"}, {"en": "classification", "zh": "类别，分类，归类"},
+     {"en": "disclose", "zh": "揭露，透露，使显露"}, {"en": "exclusive", "zh": "排他的，专用的，豪华的，高级的"}, {"en": "coast", "zh": "海滨，海滨"},
+     {"en": "agriculture", "zh": "农业，农学"}, {"en": "colony", "zh": "殖民地，聚居人群"}, {"en": "cosmic", "zh": "宇宙的，极大的"},
+     {"en": "encounter", "zh": "遭遇，遇到"}, {"en": "discourage", "zh": "阻止，使泄气"}, {"en": "accordingly", "zh": "相应地，因此"},
+     {"en": "recover", "zh": "回复，恢复"}, {"en": "incredible", "zh": "极好的，难以置信的"}, {"en": "concrete", "zh": "真实的，混凝土，混凝土覆盖"},
+     {"en": "occupy", "zh": "使用，占用，担任"}, {"en": "accurate", "zh": "精确的，准确的"}],
+    [{"en": "curious", "zh": "有好奇心的，好奇的"}, {"en": "currency", "zh": "货币，传播"}, {"en": "curriculum", "zh": "课程"},
+     {"en": "dense", "zh": "密集的，浓密的，浓重的"}, {"en": "density", "zh": "密度"}, {"en": "dedicate", "zh": "致力于"},
+     {"en": "contradict", "zh": "相抵触，相矛盾，反驳"}, {"en": "dictate", "zh": "命令，口述"}, {"en": "verdict", "zh": "裁决，裁定，意见，结论"},
+     {"en": "mandate", "zh": "命令，授权"}, {"en": "edition", "zh": "版本"}, {"en": "division", "zh": "分开，分歧"},
+     {"en": "document", "zh": "文件，记录"}, {"en": "doctrine", "zh": "教义"}, {"en": "paradox", "zh": "有矛盾特点的情况"},
+     {"en": "drastic", "zh": "剧烈的，严重的"}, {"en": "deduce", "zh": "推断"}]
+  ];
+
+  let currentPage = 0;
+  let firstSelected = null;
+  let secondSelected = null;
+  let hintCount = 3;
+
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  function getCurrentPagePairs() {
+    return allWordPages[currentPage] || [];
+  }
+
+  function createGame() {
+    const gameContainer = document.getElementById("game");
+    gameContainer.innerHTML = "";
+
+    const wordPairs = getCurrentPagePairs();
+    const bubbles = [];
+    wordPairs.forEach(pair => {
+      bubbles.push({ text: pair.en, type: "en", match: pair.zh });
+      bubbles.push({ text: pair.zh, type: "zh", match: pair.en });
+    });
+
+    shuffle(bubbles);
+
+    bubbles.forEach(item => {
+      const div = document.createElement("div");
+      div.className = `bubble ${item.type === "en" ? "english" : "chinese"}`;
+      div.textContent = item.text;
+      div.dataset.match = item.match;
+      div.dataset.type = item.type;
+      gameContainer.appendChild(div);
+
+      div.addEventListener("click", () => {
+        if (div.classList.contains("hidden")) return;
+
+        if (!firstSelected) {
+          firstSelected = div;
+          div.style.border = "3px solid #ffcc00";
+        } else if (!secondSelected && div !== firstSelected) {
+          secondSelected = div;
+          div.style.border = "3px solid #ffcc00";
+
+          if (
+            firstSelected.dataset.match === secondSelected.textContent &&
+            secondSelected.dataset.match === firstSelected.textContent
+          ) {
+            setTimeout(() => {
+              firstSelected.classList.add("hidden");
+              secondSelected.classList.add("hidden");
+              resetSelection();
+            }, 500);
+          } else {
+            setTimeout(() => {
+              firstSelected.style.border = "";
+              secondSelected.style.border = "";
+              resetSelection();
+            }, 500);
+          }
+        }
+      });
+    });
+
+    updateNavigation();
+    updateHintButton();
+  }
+
+  function resetSelection() {
+    firstSelected = null;
+    secondSelected = null;
+  }
+
+  function updateNavigation() {
+    document.getElementById("prevPage").disabled = currentPage === 0;
+    document.getElementById("nextPage").disabled = currentPage >= allWordPages.length - 1;
+  }
+
+  function updateHintButton() {
+    document.getElementById("hint").textContent = `提示（剩余${hintCount}次）`;
+    document.getElementById("hint").disabled = hintCount === 0;
+  }
+
+  function giveHint() {
+    if (hintCount <= 0) return;
+    const divs = Array.from(document.querySelectorAll('.bubble:not(.hidden)'));
+    for (let i = 0; i < divs.length; i++) {
+      for (let j = i + 1; j < divs.length; j++) {
+        if (
+          divs[i].dataset.match === divs[j].textContent &&
+          divs[j].dataset.match === divs[i].textContent
+        ) {
+          divs[i].style.border = "3px solid #00ff00";
+          divs[j].style.border = "3px solid #00ff00";
+          hintCount--;
+          updateHintButton();
+          return;
+        }
+      }
+    }
+  }
+
+  document.getElementById("restart").addEventListener("click", () => {
+    hintCount = 3;
+    currentPage = 0;
+    createGame();
+  });
+
+  document.getElementById("prevPage").addEventListener("click", () => {
+    if (currentPage > 0) {
+      currentPage--;
+      createGame();
+    }
+  });
+
+  document.getElementById("nextPage").addEventListener("click", () => {
+    if (currentPage < allWordPages.length - 1) {
+      currentPage++;
+      createGame();
+    }
+  });
+
+  document.getElementById("hint").addEventListener("click", giveHint);
+
+  // 初始化游戏
+  createGame();
+</script>
+
+</body>
+</html>
