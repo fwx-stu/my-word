@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Day3 高频单词配对消消乐</title>
+  <title>高频单词配对消消乐 - Day3</title>
   <style>
     body {
       background-color: white;
@@ -16,12 +16,19 @@
       margin-top: 20px;
     }
 
+    #tips {
+      font-size: 16px;
+      color: #333;
+      margin: 10px auto 20px;
+      max-width: 800px;
+    }
+
     #game {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       padding: 20px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
     }
 
@@ -34,12 +41,10 @@
       font-weight: bold;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       transition: transform 0.2s;
-      transform-style: preserve-3d;
-      transform: perspective(600px) rotateX(10deg) rotateY(10deg);
     }
 
     .bubble:hover {
-      transform: scale(1.1) perspective(600px) rotateX(10deg) rotateY(10deg);
+      transform: scale(1.1);
     }
 
     .english {
@@ -54,126 +59,154 @@
       visibility: hidden;
     }
 
-    #restart {
+    #controls {
       margin: 20px;
+    }
+
+    button {
+      margin: 5px;
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
+    }
+
+    #hintCounter {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-<h1>Day3 高频单词配对消消乐</h1>
+<h1>高频单词配对消消乐 - Day3</h1>
 <div id="game"></div>
-<button id="restart">重新开始</button>
+
+<div id="controls">
+  <button id="prevPage">上一页</button>
+  <button id="nextPage">下一页</button>
+  <button id="hint">提示（剩余3次）</button>
+  <button id="restart">重新开始</button>
+  <div id="hintCounter"></div>
+</div>
 
 <script>
-  const wordPairs = [
-    { en: "identity", zh: "身份，相同" },
-    { en: "imagine", zh: "想象" },
-    { en: "imagination", zh: "想象力" },
-    { en: "imitate", zh: "模仿" },
-    { en: "intelligent", zh: "有才智的，聪明的" },
-    { en: "intelligence", zh: "智力，情报人员" },
-    { en: "intellectual", zh: "智力的，知识分子" },
-    { en: "internal", zh: "内部的，国内的" },
-    { en: "interior", zh: "内部的，室内的" },
-    { en: "initial", zh: "最初的，首字母" },
-    { en: "transition", zh: "过渡，转变" },
-    { en: "objective", zh: "客观的，目标" },
-    { en: "objection", zh: "异议" },
-    { en: "reject", zh: "拒绝接受，次品" },
-    { en: "journalist", zh: "新闻工作者" },
-    { en: "jury", zh: "陪审团" },
-    { en: "justice", zh: "法律，公平，正义，审判" },
-    { en: "adjust", zh: "调整，适应" },
-    { en: "justify", zh: "证明……正确，做出解释" },
-    { en: "judgement", zh: "判断力，裁决" },
-    { en: "prejudice", zh: "偏见，使怀有偏见" },
-    { en: "laboratory", zh: "实验室" },
-    { en: "collapse", zh: "崩溃，倒塌" },
-    { en: "select", zh: "选择，挑选，优等的" },
-    { en: "selection", zh: "选择，挑选出来的一批人或物" },
-    { en: "neglect", zh: "忽略，忽视" },
-    { en: "collection", zh: "收藏，收集" },
-    { en: "collective", zh: "集体的，总的" },
-    { en: "lecture", zh: "讲座，讲课，训斥" },
-    { en: "liability", zh: "责任，负债" },
-    { en: "religion", zh: "宗教" },
-    { en: "religious", zh: "宗教的" },
-    { en: "legitimate", zh: "合法的，合理的" },
-    { en: "illegal", zh: "非法的" },
-    { en: "legislation", zh: "立法，法律" },
-    { en: "liberal", zh: "自由的，思想开明的" },
-    { en: "license", zh: "许可证，批准" },
-    { en: "limit", zh: "限制，极限" },
-    { en: "limited", zh: "有限的" },
-    { en: "eliminate", zh: "排除，消灭" },
-    { en: "literature", zh: "文学，文献" },
-    { en: "literary", zh: "文学上的，爱好文学的" },
-    { en: "locate", zh: "确定…的位置，安置" },
-    { en: "logical", zh: "合乎逻辑的" },
-    { en: "reluctant", zh: "不情愿的" },
-    { en: "pollution", zh: "污染" },
-    { en: "analyse", zh: "分析" },
-    { en: "analysis", zh: "分析，分析结果" },
-    { en: "permanent", zh: "永久的，固定的" },
-    { en: "maintain", zh: "维护，保持，保存" },
-    { en: "management", zh: "经营，管理" },
-    { en: "majority", zh: "大多数，多数" },
-    { en: "demand", zh: "要求，需要，需求" },
-    { en: "remark", zh: "意见，评论" },
-    { en: "remarkable", zh: "显著的，引人注目的" },
-    { en: "master", zh: "掌握，主要的" },
-    { en: "mechanism", zh: "方法，机制，机械装置" },
-    { en: "mechanical", zh: "机械的，呆板的" },
-    { en: "machinery", zh: "机器，机械" },
-    { en: "medical", zh: "医学的" },
-    { en: "immediate", zh: "立即的，立刻的" },
-    { en: "medicine", zh: "药，医学" },
-    { en: "comment", zh: "评论，批评" },
-    { en: "mental", zh: "心理的，脑力的" },
-    { en: "commercial", zh: "商业的，商业广告" },
-    { en: "emerge", zh: "出现，浮现，显露出来" },
-    { en: "immigrant", zh: "移民" },
-    { en: "military", zh: "军事的，军人" },
-    { en: "diminish", zh: "减少，降低" },
-    { en: "administration", zh: "政府，行政部门" },
-    { en: "admire", zh: "欣佩，欣赏" },
-    { en: "admit", zh: "承认，准许…加入" },
-    { en: "commit", zh: "承诺，保证" },
-    { en: "compromise", zh: "妥协，让步" },
-    { en: "dismiss", zh: "不予考虑，解雇，不予理会" },
-    { en: "permission", zh: "准许，许可" },
-    { en: "committee", zh: "委员会" },
-    { en: "mission", zh: "任务，使命" },
-    { en: "commission", zh: "委员会，委托" },
-    { en: "mode", zh: "方式，方法，工作状态" },
-    { en: "commodity", zh: "商品" },
-    { en: "monitor", zh: "监控，显示器" },
-    { en: "demonstrate", zh: "证明，示范，游行" },
-    { en: "promote", zh: "促进，提升，推广，晋升" },
-    { en: "motor", zh: "马达，发动机" },
-    { en: "remove", zh: "移开，去除" },
-    { en: "amount", zh: "数量，金额" },
-    { en: "prompt", zh: "促使，迅速的" },
-    { en: "immune", zh: "免疫的，有免疫力的" },
-    { en: "mysterious", zh: "神秘的，神秘的人，神秘的行为" },
-    { en: "connection", zh: "联系，连接" },
-    { en: "natural", zh: "自然的，天生的，天赋的" },
-    { en: "renaissance", zh: "文艺复兴" },
-    { en: "nervous", zh: "焦虑的，神经方面的" },
-    { en: "normal", zh: "正常的" },
-    { en: "enormous", zh: "巨大的" },
-    { en: "notice", zh: "注意，通知，通告" },
-    { en: "notion", zh: "观念" },
-    { en: "ignore", zh: "忽视" },
-    { en: "announce", zh: "宣布" }
-  ];
+  const allWordPages = [
+  [
+    { "en": "identity", "zh": "身份，相同" },
+    { "en": "imagine", "zh": "想象" },
+    { "en": "imagination", "zh": "想象力" },
+    { "en": "imitate", "zh": "模仿" },
+    { "en": "intelligent", "zh": "有才智的，聪明的" },
+    { "en": "intelligence", "zh": "智力，情报人员" },
+    { "en": "intellectual", "zh": "智力的，知识分子" },
+    { "en": "internal", "zh": "内部的，国内的" },
+    { "en": "interior", "zh": "内部的，室内的" },
+    { "en": "initial", "zh": "最初的，首字母" },
+    { "en": "transition", "zh": "过渡，转变" },
+    { "en": "objective", "zh": "客观的，目标" },
+    { "en": "objection", "zh": "异议" },
+    { "en": "reject", "zh": "拒绝接受，次品" },
+    { "en": "journalist", "zh": "新闻工作者" },
+    { "en": "jury", "zh": "陪审团" },
+    { "en": "justice", "zh": "法律，公平，正义，审判" },
+    { "en": "adjust", "zh": "调整，适应" },
+    { "en": "justify", "zh": "证明……正确，做出解释" },
+    { "en": "judgement", "zh": "判断力，裁决" }
+  ],
+  [
+    { "en": "prejudice", "zh": "偏见，使怀有偏见" },
+    { "en": "laboratory", "zh": "实验室" },
+    { "en": "collapse", "zh": "崩溃，倒塌" },
+    { "en": "select", "zh": "选择，挑选，优等的" },
+    { "en": "selection", "zh": "选择，挑选出来的一批人或物" },
+    { "en": "neglect", "zh": "忽略，忽视" },
+    { "en": "collection", "zh": "收藏，收集" },
+    { "en": "collective", "zh": "集体的，总的" },
+    { "en": "lecture", "zh": "讲座，讲课，训斥" },
+    { "en": "liability", "zh": "责任，负债" },
+    { "en": "religion", "zh": "宗教" },
+    { "en": "religious", "zh": "宗教的" },
+    { "en": "legitimate", "zh": "合法的，合理的" },
+    { "en": "illegal", "zh": "非法的" },
+    { "en": "legislation", "zh": "立法，法律" },
+    { "en": "liberal", "zh": "自由的，思想开明的" },
+    { "en": "license", "zh": "许可证，批准" },
+    { "en": "limit", "zh": "限制，极限" },
+    { "en": "limited", "zh": "有限的" },
+    { "en": "eliminate", "zh": "排除，消灭" }
+  ],
+  [
+    { "en": "literature", "zh": "文学，文献" },
+    { "en": "literary", "zh": "文学上的，爱好文学的" },
+    { "en": "locate", "zh": "确定…的位置，安置" },
+    { "en": "logical", "zh": "合乎逻辑的" },
+    { "en": "reluctant", "zh": "不情愿的" },
+    { "en": "pollution", "zh": "污染" },
+    { "en": "analyse", "zh": "分析" },
+    { "en": "analysis", "zh": "分析，分析结果" },
+    { "en": "permanent", "zh": "永久的，固定的" },
+    { "en": "maintain", "zh": "维护，保持，保存" },
+    { "en": "management", "zh": "经营，管理" },
+    { "en": "majority", "zh": "大多数，多数" },
+    { "en": "demand", "zh": "要求，需要，需求" },
+    { "en": "remark", "zh": "意见，评论" },
+    { "en": "remarkable", "zh": "显著的，引人注目的" },
+    { "en": "master", "zh": "掌握，主要的" },
+    { "en": "mechanism", "zh": "方法，机制，机械装置" },
+    { "en": "mechanical", "zh": "机械的，呆板的" },
+    { "en": "machinery", "zh": "机器，机械" },
+    { "en": "medical", "zh": "医学的" }
+  ],
+  [
+    { "en": "immediate", "zh": "立即的，立刻的" },
+    { "en": "medicine", "zh": "药，医学" },
+    { "en": "comment", "zh": "评论，批评" },
+    { "en": "mental", "zh": "心理的，脑力的" },
+    { "en": "commercial", "zh": "商业的，商业广告" },
+    { "en": "emerge", "zh": "出现，浮现，显露出来" },
+    { "en": "immigrant", "zh": "移民" },
+    { "en": "military", "zh": "军事的，军人" },
+    { "en": "diminish", "zh": "减少，降低" },
+    { "en": "administration", "zh": "政府，行政部门" },
+    { "en": "admire", "zh": "欣佩，欣赏" },
+    { "en": "admit", "zh": "承认，准许…加入" },
+    { "en": "commit", "zh": "承诺，保证" },
+    { "en": "compromise", "zh": "妥协，让步" },
+    { "en": "dismiss", "zh": "不予考虑，解雇，不予理会" },
+    { "en": "permission", "zh": "准许，许可" },
+    { "en": "committee", "zh": "委员会" },
+    { "en": "mission", "zh": "任务，使命" },
+    { "en": "commission", "zh": "委员会，委托" },
+    { "en": "mode", "zh": "方式，方法，工作状态" }
+  ],
+  [
+    { "en": "commodity", "zh": "商品" },
+    { "en": "monitor", "zh": "监控，显示器" },
+    { "en": "demonstrate", "zh": "证明，示范，游行" },
+    { "en": "promote", "zh": "促进，提升，推广，晋升" },
+    { "en": "motor", "zh": "马达，发动机" },
+    { "en": "remove", "zh": "移开，去除" },
+    { "en": "amount", "zh": "数量，金额" },
+    { "en": "prompt", "zh": "促使，迅速的" },
+    { "en": "immune", "zh": "免疫的，有免疫力的" },
+    { "en": "mysterious", "zh": "神秘的，神秘的人，神秘的行为" },
+    { "en": "connection", "zh": "联系，连接" },
+    { "en": "natural", "zh": "自然的，天生的，天赋的" },
+    { "en": "renaissance", "zh": "文艺复兴" },
+    { "en": "nervous", "zh": "焦虑的，神经方面的" },
+    { "en": "normal", "zh": "正常的" },
+    { "en": "enormous", "zh": "巨大的" },
+    { "en": "notice", "zh": "注意，通知，通告" },
+    { "en": "notion", "zh": "观念" },
+    { "en": "ignore", "zh": "忽视" },
+    { "en": "announce", "zh": "宣布" }
+  ]
+];
 
+
+  let currentPage = 0;
   let firstSelected = null;
   let secondSelected = null;
+  let hintCount = 3;
 
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -184,6 +217,7 @@
 
   function createGame() {
     const gameContainer = document.getElementById("game");
+    const wordPairs = allWordPages[currentPage];
     gameContainer.innerHTML = "";
 
     const bubbles = [];
@@ -212,10 +246,8 @@
           secondSelected = div;
           div.style.border = "3px solid #ffcc00";
 
-          if (
-            firstSelected.dataset.match === secondSelected.textContent &&
-            secondSelected.dataset.match === firstSelected.textContent
-          ) {
+          if (firstSelected.dataset.match === secondSelected.textContent &&
+              secondSelected.dataset.match === firstSelected.textContent) {
             setTimeout(() => {
               firstSelected.classList.add("hidden");
               secondSelected.classList.add("hidden");
@@ -231,6 +263,9 @@
         }
       });
     });
+
+    updateNavigation();
+    updateHintButton();
   }
 
   function resetSelection() {
@@ -238,7 +273,57 @@
     secondSelected = null;
   }
 
-  document.getElementById("restart").addEventListener("click", createGame);
+  function updateNavigation() {
+    document.getElementById("prevPage").disabled = currentPage === 0;
+    document.getElementById("nextPage").disabled = currentPage >= allWordPages.length - 1;
+  }
+
+  function updateHintButton() {
+    document.getElementById("hint").textContent = `提示（剩余${hintCount}次）`;
+    document.getElementById("hint").disabled = hintCount === 0;
+  }
+
+  function giveHint() {
+    if (hintCount <= 0) return;
+    const divs = Array.from(document.querySelectorAll('.bubble:not(.hidden)'));
+    for (let i = 0; i < divs.length; i++) {
+      for (let j = i + 1; j < divs.length; j++) {
+        if (
+          divs[i].dataset.match === divs[j].textContent &&
+          divs[j].dataset.match === divs[i].textContent
+        ) {
+          divs[i].style.border = "3px solid #00ff00";
+          divs[j].style.border = "3px solid #00ff00";
+          hintCount--;
+          updateHintButton();
+          return;
+        }
+      }
+    }
+  }
+
+  document.getElementById("restart").addEventListener("click", () => {
+    hintCount = 3;
+    currentPage = 0;
+    createGame();
+  });
+
+  document.getElementById("prevPage").addEventListener("click", () => {
+    if (currentPage > 0) {
+      currentPage--;
+      createGame();
+    }
+  });
+
+  document.getElementById("nextPage").addEventListener("click", () => {
+    if (currentPage < allWordPages.length - 1) {
+      currentPage++;
+      createGame();
+    }
+  });
+
+  document.getElementById("hint").addEventListener("click", giveHint);
+
   createGame();
 </script>
 

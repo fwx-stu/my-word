@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>高频单词 Day10 配对消消乐</title>
+  <title>高频单词配对消消乐 - Day10</title>
   <style>
     body {
       background-color: white;
@@ -16,12 +16,19 @@
       margin-top: 20px;
     }
 
+    #tips {
+      font-size: 16px;
+      color: #333;
+      margin: 10px auto 20px;
+      max-width: 800px;
+    }
+
     #game {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       padding: 20px;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: auto;
     }
 
@@ -34,12 +41,10 @@
       font-weight: bold;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       transition: transform 0.2s;
-      transform-style: preserve-3d;
-      transform: perspective(600px) rotateX(10deg) rotateY(10deg);
     }
 
     .bubble:hover {
-      transform: scale(1.1) perspective(600px) rotateX(10deg) rotateY(10deg);
+      transform: scale(1.1);
     }
 
     .english {
@@ -54,97 +59,123 @@
       visibility: hidden;
     }
 
-    #restart {
+    #controls {
       margin: 20px;
+    }
+
+    button {
+      margin: 5px;
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
+    }
+
+    #hintCounter {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-<h1>高频单词 Day10 配对消消乐</h1>
+<h1>高频单词配对消消乐 - Day10</h1>
 <div id="game"></div>
-<button id="restart">重新开始</button>
+
+<div id="controls">
+  <button id="prevPage">上一页</button>
+  <button id="nextPage">下一页</button>
+  <button id="hint">提示（剩余3次）</button>
+  <button id="restart">重新开始</button>
+  <div id="hintCounter"></div>
+</div>
 
 <script>
-  const wordPairs = [
-    { en: "secure", zh: "可靠的，安全的，保护" },
-    { en: "seldom", zh: "不常，很少" },
-    { en: "sequence", zh: "顺序，一系列" },
-    { en: "setting", zh: "背景，设置" },
-    { en: "settle", zh: "解决，决定，定居" },
-    { en: "settlement", zh: "居住点，处理，协定" },
-    { en: "sharp", zh: "急剧的，尖的，敏锐的" },
-    { en: "shelter", zh: "避难所，住所" },
-    { en: "shortage", zh: "短缺" },
-    { en: "sign", zh: "迹象，标志，签（名）" },
-    { en: "signal", zh: "信号，表示，示意" },
-    { en: "simple", zh: "简单的，朴素的，平凡的" },
-    { en: "simply", zh: "仅仅，确实" },
-    { en: "situation", zh: "形势，环境" },
-    { en: "skilled", zh: "有技能的，熟练的" },
-    { en: "sort", zh: "种类，分类" },
-    { en: "species", zh: "种，物种" },
-    { en: "spirit", zh: "精神，活力" },
-    { en: "spot", zh: "地点，发现" },
-    { en: "staff", zh: "全体员工，任职于" },
-    { en: "stage", zh: "时期，阶段，舞台" },
-    { en: "statistics", zh: "统计数字，统计学" },
-    { en: "steady", zh: "稳步的，稳定的，使平稳" },
-    { en: "stem", zh: "止住，杆，茎" },
-    { en: "stick", zh: "粘贴，将…刺入，条状物" },
-    { en: "stock", zh: "股票，存货" },
-    { en: "strategy", zh: "战略，策略" },
-    { en: "strength", zh: "优势，体力，意志力" },
-    { en: "strengthen", zh: "加强，增强，巩固" },
-    { en: "strike", zh: "罢工，打击" },
-    { en: "structure", zh: "结构，构造，建筑物" },
-    { en: "substantial", zh: "大量的，结实的，大而坚固的" },
-    { en: "subtle", zh: "微妙的，巧妙的" },
-    { en: "suit", zh: "诉讼，套装" },
-    { en: "sum", zh: "金额，算术" },
-    { en: "supply", zh: "供应，提供" },
-    { en: "supreme", zh: "至高的，最大的" },
-    { en: "surround", zh: "包围，围住" },
-    { en: "survive", zh: "生存，幸存" },
-    { en: "switch", zh: "转变，改变，开关" },
-    { en: "systematic", zh: "系统的，有条理的" },
-    { en: "thin", zh: "薄的，细的" },
-    { en: "threat", zh: "威胁，恐吓" },
-    { en: "threaten", zh: "威胁到，恐吓" },
-    { en: "thus", zh: "因此，从而" },
-    { en: "tobacco", zh: "烟草" },
-    { en: "tough", zh: "强硬的，困难的，艰苦的" },
-    { en: "translate", zh: "翻译，转变" },
-    { en: "translation", zh: "译文，译本，转化" },
-    { en: "trend", zh: "趋势，倾向" },
-    { en: "trial", zh: "审判，试验" },
-    { en: "tunnel", zh: "隧道" },
-    { en: "understanding", zh: "理解，了解，体谅，善解人意的" },
-    { en: "unemployment", zh: "失业，无业" },
-    { en: "unexpected", zh: "想不到的，意外的，突然的" },
-    { en: "unlike", zh: "不同，不像" },
-    { en: "unlikely", zh: "不太可能的" },
-    { en: "vary", zh: "变化，变更" },
-    { en: "vast", zh: "辽阔的，庞大的，大量的，巨大的" },
-    { en: "vehicle", zh: "交通工具，车辆" },
-    { en: "virtual", zh: "虚拟的" },
-    { en: "vision", zh: "想象，幻觉，视力，视野" },
-    { en: "vitamin", zh: "维生素" },
-    { en: "weigh", zh: "权衡，称……的重量，重量是……" },
-    { en: "weight", zh: "体重，重量，重要性" },
-    { en: "wipe", zh: "擦，抹，抹去，涂抹" },
-    { en: "wisdom", zh: "智慧，学问" },
-    { en: "witness", zh: "见证，经历，证人，证人" },
-    { en: "wonder", zh: "惊讶，奇迹" },
-    { en: "worthy", zh: "值得尊敬的，知名人士" },
-    { en: "yield", zh: "产生，提供，屈服" }
-  ];
+  const allWordPages = [
+  [
+    { "en": "secure", "zh": "可靠的，安全的，保护" },
+    { "en": "seldom", "zh": "不常，很少" },
+    { "en": "sequence", "zh": "顺序，一系列" },
+    { "en": "setting", "zh": "背景，设置" },
+    { "en": "settle", "zh": "解决，决定，定居" },
+    { "en": "settlement", "zh": "居住点，处理，协定" },
+    { "en": "sharp", "zh": "急剧的，尖的，敏锐的" },
+    { "en": "shelter", "zh": "避难所，住所" },
+    { "en": "shortage", "zh": "短缺" },
+    { "en": "sign", "zh": "迹象，标志，签（名）" },
+    { "en": "signal", "zh": "信号，表示，示意" },
+    { "en": "simple", "zh": "简单的，朴素的，平凡的" },
+    { "en": "simply", "zh": "仅仅，确实" },
+    { "en": "situation", "zh": "形势，环境" },
+    { "en": "skilled", "zh": "有技能的，熟练的" },
+    { "en": "sort", "zh": "种类，分类" },
+    { "en": "species", "zh": "种，物种" },
+    { "en": "spirit", "zh": "精神，活力" },
+    { "en": "spot", "zh": "地点，发现" },
+    { "en": "staff", "zh": "全体员工，任职于" }
+  ],
+  [
+    { "en": "stage", "zh": "时期，阶段，舞台" },
+    { "en": "statistics", "zh": "统计数字，统计学" },
+    { "en": "steady", "zh": "稳步的，稳定的，使平稳" },
+    { "en": "stem", "zh": "止住，杆，茎" },
+    { "en": "stick", "zh": "粘贴，将…刺入，条状物" },
+    { "en": "stock", "zh": "股票，存货" },
+    { "en": "strategy", "zh": "战略，策略" },
+    { "en": "strength", "zh": "优势，体力，意志力" },
+    { "en": "strengthen", "zh": "加强，增强，巩固" },
+    { "en": "strike", "zh": "罢工，打击" },
+    { "en": "structure", "zh": "结构，构造，建筑物" },
+    { "en": "substantial", "zh": "大量的，结实的，大而坚固的" },
+    { "en": "subtle", "zh": "微妙的，巧妙的" },
+    { "en": "suit", "zh": "诉讼，套装" },
+    { "en": "sum", "zh": "金额，算术" },
+    { "en": "supply", "zh": "供应，提供" },
+    { "en": "supreme", "zh": "至高的，最大的" },
+    { "en": "surround", "zh": "包围，围住" },
+    { "en": "survive", "zh": "生存，幸存" },
+    { "en": "switch", "zh": "转变，改变，开关" }
+  ],
+  [
+    { "en": "systematic", "zh": "系统的，有条理的" },
+    { "en": "thin", "zh": "薄的，细的" },
+    { "en": "threat", "zh": "威胁，恐吓" },
+    { "en": "threaten", "zh": "威胁到，恐吓" },
+    { "en": "thus", "zh": "因此，从而" },
+    { "en": "tobacco", "zh": "烟草" },
+    { "en": "tough", "zh": "强硬的，困难的，艰苦的" },
+    { "en": "translate", "zh": "翻译，转变" },
+    { "en": "translation", "zh": "译文，译本，转化" },
+    { "en": "trend", "zh": "趋势，倾向" },
+    { "en": "trial", "zh": "审判，试验" },
+    { "en": "tunnel", "zh": "隧道" },
+    { "en": "understanding", "zh": "理解，了解，体谅，善解人意的" },
+    { "en": "unemployment", "zh": "失业，无业" },
+    { "en": "unexpected", "zh": "想不到的，意外的，突然的" },
+    { "en": "unlike", "zh": "不同，不像" },
+    { "en": "unlikely", "zh": "不太可能的" },
+    { "en": "vary", "zh": "变化，变更" },
+    { "en": "vast", "zh": "辽阔的，庞大的，大量的，巨大的" },
+    { "en": "vehicle", "zh": "交通工具，车辆" }
+  ],
+  [
+    { "en": "virtual", "zh": "虚拟的" },
+    { "en": "vision", "zh": "想象，幻觉，视力，视野" },
+    { "en": "vitamin", "zh": "维生素" },
+    { "en": "weigh", "zh": "权衡，称……的重量，重量是……" },
+    { "en": "weight", "zh": "体重，重量，重要性" },
+    { "en": "wipe", "zh": "擦，抹，抹去，涂抹" },
+    { "en": "wisdom", "zh": "智慧，学问" },
+    { "en": "witness", "zh": "见证，经历，证人，证人" },
+    { "en": "wonder", "zh": "惊讶，奇迹" },
+    { "en": "worthy", "zh": "值得尊敬的，知名人士" },
+    { "en": "yield", "zh": "产生，提供，屈服" }
+  ]
+];
 
+
+  let currentPage = 0;
   let firstSelected = null;
   let secondSelected = null;
+  let hintCount = 3;
 
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -155,6 +186,7 @@
 
   function createGame() {
     const gameContainer = document.getElementById("game");
+    const wordPairs = allWordPages[currentPage];
     gameContainer.innerHTML = "";
 
     const bubbles = [];
@@ -200,6 +232,9 @@
         }
       });
     });
+
+    updateNavigation();
+    updateHintButton();
   }
 
   function resetSelection() {
@@ -207,7 +242,57 @@
     secondSelected = null;
   }
 
-  document.getElementById("restart").addEventListener("click", createGame);
+  function updateNavigation() {
+    document.getElementById("prevPage").disabled = currentPage === 0;
+    document.getElementById("nextPage").disabled = currentPage >= allWordPages.length - 1;
+  }
+
+  function updateHintButton() {
+    document.getElementById("hint").textContent = `提示（剩余${hintCount}次）`;
+    document.getElementById("hint").disabled = hintCount === 0;
+  }
+
+  function giveHint() {
+    if (hintCount <= 0) return;
+    const divs = Array.from(document.querySelectorAll('.bubble:not(.hidden)'));
+    for (let i = 0; i < divs.length; i++) {
+      for (let j = i + 1; j < divs.length; j++) {
+        if (
+          divs[i].dataset.match === divs[j].textContent &&
+          divs[j].dataset.match === divs[i].textContent
+        ) {
+          divs[i].style.border = "3px solid #00ff00";
+          divs[j].style.border = "3px solid #00ff00";
+          hintCount--;
+          updateHintButton();
+          return;
+        }
+      }
+    }
+  }
+
+  document.getElementById("restart").addEventListener("click", () => {
+    hintCount = 3;
+    currentPage = 0;
+    createGame();
+  });
+
+  document.getElementById("prevPage").addEventListener("click", () => {
+    if (currentPage > 0) {
+      currentPage--;
+      createGame();
+    }
+  });
+
+  document.getElementById("nextPage").addEventListener("click", () => {
+    if (currentPage < allWordPages.length - 1) {
+      currentPage++;
+      createGame();
+    }
+  });
+
+  document.getElementById("hint").addEventListener("click", giveHint);
+
   createGame();
 </script>
 

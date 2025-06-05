@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Day1 高频单词配对消消乐</title>
+  <title>高频单词配对消消乐 - Day1</title>
   <style>
     body {
       background-color: white;
@@ -16,12 +16,19 @@
       margin-top: 20px;
     }
 
+    #tips {
+      font-size: 16px;
+      color: #333;
+      margin: 10px auto 20px;
+      max-width: 800px;
+    }
+
     #game {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       padding: 20px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
     }
 
@@ -34,12 +41,10 @@
       font-weight: bold;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       transition: transform 0.2s;
-      transform-style: preserve-3d;
-      transform: perspective(600px) rotateX(10deg) rotateY(10deg);
     }
 
     .bubble:hover {
-      transform: scale(1.1) perspective(600px) rotateX(10deg) rotateY(10deg);
+      transform: scale(1.1);
     }
 
     .english {
@@ -54,119 +59,147 @@
       visibility: hidden;
     }
 
-    #restart {
+    #controls {
       margin: 20px;
+    }
+
+    button {
+      margin: 5px;
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
+    }
+
+    #hintCounter {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-<h1>Day1 高频单词配对消消乐</h1>
+<h1>高频单词配对消消乐 - Day1</h1>
 <div id="game"></div>
-<button id="restart">重新开始</button>
+
+<div id="controls">
+  <button id="prevPage">上一页</button>
+  <button id="nextPage">下一页</button>
+  <button id="hint">提示（剩余3次）</button>
+  <button id="restart">重新开始</button>
+  <div id="hintCounter"></div>
+</div>
 
 <script>
-  const wordPairs = [
-    { en: "advance", zh: "进步，推进，预先的" },
-    { en: "advanced", zh: "先进的" },
-    { en: "agent", zh: "代理人，因素" },
-    { en: "actual", zh: "实际的" },
-    { en: "react", zh: "反应" },
-    { en: "interact", zh: "交流，互相来往" },
-    { en: "transaction", zh: "业务" },
-    { en: "ambiguous", zh: "模棱两可的" },
-    { en: "parallel", zh: "同时发生的，平行的，与…同时发生" },
-    { en: "alter", zh: "改变" },
-    { en: "alternative", zh: "可供选择的事物，替代的" },
-    { en: "amateur", zh: "外行的" },
-    { en: "ancient", zh: "古代的" },
-    { en: "annual", zh: "一年一度的，年刊" },
-    { en: "anxiety", zh: "焦虑" },
-    { en: "anxious", zh: "焦虑的，令人焦虑的" },
-    { en: "adapt", zh: "适应，使…适合，改造，改写" },
-    { en: "automation", zh: "自动化" },
-    { en: "abandon", zh: "放弃，离开，抛弃" },
-    { en: "debate", zh: "争论" },
-    { en: "battle", zh: "斗争，战斗，斗争" },
-    { en: "bias", zh: "偏见" },
-    { en: "combine", zh: "组合，兼备" },
-    { en: "brief", zh: "短时间的" },
-    { en: "cancer", zh: "癌，毒瘤" },
-    { en: "candidate", zh: "候选人，考生" },
-    { en: "capital", zh: "资本，大写字母" },
-    { en: "carbon", zh: "碳" },
-    { en: "career", zh: "事业，职业" },
-    { en: "carry", zh: "携带，拿（走）" },
-    { en: "forecast", zh: "预测" },
-    { en: "cautious", zh: "小心的" },
-    { en: "perceive", zh: "意识到，将……视为" },
-    { en: "celebrity", zh: "明星" },
-    { en: "celebrate", zh: "颂扬，庆祝" },
-    { en: "accelerate", zh: "加速" },
-    { en: "percentage", zh: "百分比，提成" },
-    { en: "centre", zh: "中心，中心人物" },
-    { en: "central", zh: "主要的，中心的" },
-    { en: "concentrate", zh: "使…集中" },
-    { en: "capacity", zh: "领悟" },
-    { en: "escape", zh: "逃脱" },
-    { en: "participant", zh: "参与者" },
-    { en: "capture", zh: "吸引，占领，捕获" },
-    { en: "capable", zh: "能力强的" },
-    { en: "accept", zh: "接受，忍受，赞成" },
-    { en: "exception", zh: "例外，除外" },
-    { en: "exceptional", zh: "特例的，杰出的" },
-    { en: "certain", zh: "特定的，确信" },
-    { en: "procedure", zh: "程序，手续" },
-    { en: "process", zh: "处理，加工" },
-    { en: "necessary", zh: "必要的，必然的" },
-    { en: "necessity", zh: "需要，必需品" },
-    { en: "recession", zh: "经济衰退，撤回" },
-    { en: "chart", zh: "图表" },
-    { en: "chemical", zh: "化学的，化学品" },
-    { en: "accident", zh: "意外遭遇，事故意外，偶然的事" },
-    { en: "casual", zh: "不经意的，偶然的" },
-    { en: "decide", zh: "决定" },
-    { en: "suicide", zh: "自杀" },
-    { en: "council", zh: "委员会，理事会，地方议会" },
-    { en: "citizen", zh: "公民" },
-    { en: "cite", zh: "举出，引用" },
-    { en: "civil", zh: "平民的，公民的" },
-    { en: "civilization", zh: "文明" },
-    { en: "declare", zh: "宣布，申报" },
-    { en: "classical", zh: "传统的，严格的" },
-    { en: "classify", zh: "分类" },
-    { en: "client", zh: "客户，顾客" },
-    { en: "decline", zh: "减少，下降" },
-    { en: "conclusion", zh: "结论，结果" },
-    { en: "conclude", zh: "断定，得出结论，结束" },
-    { en: "exclude", zh: "不准…进入，不包括，排除…的可能性" },
-    { en: "contrast", zh: "相反的" },
-    { en: "corporation", zh: "大公司" },
-    { en: "account", zh: "账户，解释，账目" },
-    { en: "discovery", zh: "发现，发觉" },
-    { en: "recovery", zh: "复苏，恢复，痊愈" },
-    { en: "decrease", zh: "减少" },
-    { en: "creative", zh: "有创造力的，创造的" },
-    { en: "creature", zh: "生物" },
-    { en: "criminal", zh: "犯罪的，刑事的，罪犯" },
-    { en: "critic", zh: "批评家，批评者" },
-    { en: "criticize", zh: "批评，指责，评论" },
-    { en: "critical", zh: "关键的，批评的，有判断力的" },
-    { en: "criticism", zh: "批评，指责" },
-    { en: "crucial", zh: "至关重要的，决定性的" },
-    { en: "crude", zh: "未加工的，天然的，简陋的，石油" },
-    { en: "cultivate", zh: "培养，耕种，扶持" },
-    { en: "discuss", zh: "讨论" },
-    { en: "cure", zh: "治疗，对策，解决" },
-    { en: "security", zh: "保安措施，保安部门" },
-    { en: "accuracy", zh: "准确性，准确" }
-  ];
+  const allWordPages = [
+  [
+    { "en": "advance", "zh": "进步，推进，预先的" },
+    { "en": "advanced", "zh": "先进的" },
+    { "en": "agent", "zh": "代理人，因素" },
+    { "en": "actual", "zh": "实际的" },
+    { "en": "react", "zh": "反应" },
+    { "en": "interact", "zh": "交流，互相来往" },
+    { "en": "transaction", "zh": "业务" },
+    { "en": "ambiguous", "zh": "模棱两可的" },
+    { "en": "parallel", "zh": "同时发生的，平行的，与…同时发生" },
+    { "en": "alter", "zh": "改变" },
+    { "en": "alternative", "zh": "可供选择的事物，替代的" },
+    { "en": "amateur", "zh": "外行的" },
+    { "en": "ancient", "zh": "古代的" },
+    { "en": "annual", "zh": "一年一度的，年刊" },
+    { "en": "anxiety", "zh": "焦虑" },
+    { "en": "anxious", "zh": "焦虑的，令人焦虑的" },
+    { "en": "adapt", "zh": "适应，使…适合，改造，改写" },
+    { "en": "automation", "zh": "自动化" },
+    { "en": "abandon", "zh": "放弃，离开，抛弃" },
+    { "en": "debate", "zh": "争论" }
+  ],
+  [
+    { "en": "battle", "zh": "斗争，战斗，斗争" },
+    { "en": "bias", "zh": "偏见" },
+    { "en": "combine", "zh": "组合，兼备" },
+    { "en": "brief", "zh": "短时间的" },
+    { "en": "cancer", "zh": "癌，毒瘤" },
+    { "en": "candidate", "zh": "候选人，考生" },
+    { "en": "capital", "zh": "资本，大写字母" },
+    { "en": "carbon", "zh": "碳" },
+    { "en": "career", "zh": "事业，职业" },
+    { "en": "carry", "zh": "携带，拿（走）" },
+    { "en": "forecast", "zh": "预测" },
+    { "en": "cautious", "zh": "小心的" },
+    { "en": "perceive", "zh": "意识到，将……视为" },
+    { "en": "celebrity", "zh": "明星" },
+    { "en": "celebrate", "zh": "颂扬，庆祝" },
+    { "en": "accelerate", "zh": "加速" },
+    { "en": "percentage", "zh": "百分比，提成" },
+    { "en": "centre", "zh": "中心，中心人物" },
+    { "en": "central", "zh": "主要的，中心的" },
+    { "en": "concentrate", "zh": "使…集中" }
+  ],
+  [
+    { "en": "capacity", "zh": "领悟" },
+    { "en": "escape", "zh": "逃脱" },
+    { "en": "participant", "zh": "参与者" },
+    { "en": "capture", "zh": "吸引，占领，捕获" },
+    { "en": "capable", "zh": "能力强的" },
+    { "en": "accept", "zh": "接受，忍受，赞成" },
+    { "en": "exception", "zh": "例外，除外" },
+    { "en": "exceptional", "zh": "特例的，杰出的" },
+    { "en": "certain", "zh": "特定的，确信" },
+    { "en": "procedure", "zh": "程序，手续" },
+    { "en": "process", "zh": "处理，加工" },
+    { "en": "necessary", "zh": "必要的，必然的" },
+    { "en": "necessity", "zh": "需要，必需品" },
+    { "en": "recession", "zh": "经济衰退，撤回" },
+    { "en": "chart", "zh": "图表" },
+    { "en": "chemical", "zh": "化学的，化学品" },
+    { "en": "accident", "zh": "意外遭遇，事故意外，偶然的事" },
+    { "en": "casual", "zh": "不经意的，偶然的" },
+    { "en": "decide", "zh": "决定" },
+    { "en": "suicide", "zh": "自杀" }
+  ],
+  [
+    { "en": "council", "zh": "委员会，理事会，地方议会" },
+    { "en": "citizen", "zh": "公民" },
+    { "en": "cite", "zh": "举出，引用" },
+    { "en": "civil", "zh": "平民的，公民的" },
+    { "en": "civilization", "zh": "文明" },
+    { "en": "declare", "zh": "宣布，申报" },
+    { "en": "classical", "zh": "传统的，严格的" },
+    { "en": "classify", "zh": "分类" },
+    { "en": "client", "zh": "客户，顾客" },
+    { "en": "decline", "zh": "减少，下降" },
+    { "en": "conclusion", "zh": "结论，结果" },
+    { "en": "conclude", "zh": "断定，得出结论，结束" },
+    { "en": "exclude", "zh": "不准…进入，不包括，排除…的可能性" },
+    { "en": "contrast", "zh": "相反的" },
+    { "en": "corporation", "zh": "大公司" },
+    { "en": "account", "zh": "账户，解释，账目" },
+    { "en": "discovery", "zh": "发现，发觉" },
+    { "en": "recovery", "zh": "复苏，恢复，痊愈" },
+    { "en": "decrease", "zh": "减少" },
+    { "en": "creative", "zh": "有创造力的，创造的" }
+  ],
+  [
+    { "en": "creature", "zh": "生物" },
+    { "en": "criminal", "zh": "犯罪的，刑事的，罪犯" },
+    { "en": "critic", "zh": "批评家，批评者" },
+    { "en": "criticize", "zh": "批评，指责，评论" },
+    { "en": "critical", "zh": "关键的，批评的，有判断力的" },
+    { "en": "criticism", "zh": "批评，指责" },
+    { "en": "crucial", "zh": "至关重要的，决定性的" },
+    { "en": "crude", "zh": "未加工的，天然的，简陋的，石油" },
+    { "en": "cultivate", "zh": "培养，耕种，扶持" },
+    { "en": "discuss", "zh": "讨论" },
+    { "en": "cure", "zh": "治疗，对策，解决" },
+    { "en": "security", "zh": "保安措施，保安部门" },
+    { "en": "accuracy", "zh": "准确性，准确" }
+  ]
+];
 
+
+  let currentPage = 0;
   let firstSelected = null;
   let secondSelected = null;
+  let hintCount = 3;
 
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -177,6 +210,7 @@
 
   function createGame() {
     const gameContainer = document.getElementById("game");
+    const wordPairs = allWordPages[currentPage];
     gameContainer.innerHTML = "";
 
     const bubbles = [];
@@ -205,10 +239,8 @@
           secondSelected = div;
           div.style.border = "3px solid #ffcc00";
 
-          if (
-            firstSelected.dataset.match === secondSelected.textContent &&
-            secondSelected.dataset.match === firstSelected.textContent
-          ) {
+          if (firstSelected.dataset.match === secondSelected.textContent &&
+              secondSelected.dataset.match === firstSelected.textContent) {
             setTimeout(() => {
               firstSelected.classList.add("hidden");
               secondSelected.classList.add("hidden");
@@ -224,6 +256,9 @@
         }
       });
     });
+
+    updateNavigation();
+    updateHintButton();
   }
 
   function resetSelection() {
@@ -231,7 +266,57 @@
     secondSelected = null;
   }
 
-  document.getElementById("restart").addEventListener("click", createGame);
+  function updateNavigation() {
+    document.getElementById("prevPage").disabled = currentPage === 0;
+    document.getElementById("nextPage").disabled = currentPage >= allWordPages.length - 1;
+  }
+
+  function updateHintButton() {
+    document.getElementById("hint").textContent = `提示（剩余${hintCount}次）`;
+    document.getElementById("hint").disabled = hintCount === 0;
+  }
+
+  function giveHint() {
+    if (hintCount <= 0) return;
+    const divs = Array.from(document.querySelectorAll('.bubble:not(.hidden)'));
+    for (let i = 0; i < divs.length; i++) {
+      for (let j = i + 1; j < divs.length; j++) {
+        if (
+          divs[i].dataset.match === divs[j].textContent &&
+          divs[j].dataset.match === divs[i].textContent
+        ) {
+          divs[i].style.border = "3px solid #00ff00";
+          divs[j].style.border = "3px solid #00ff00";
+          hintCount--;
+          updateHintButton();
+          return;
+        }
+      }
+    }
+  }
+
+  document.getElementById("restart").addEventListener("click", () => {
+    hintCount = 3;
+    currentPage = 0;
+    createGame();
+  });
+
+  document.getElementById("prevPage").addEventListener("click", () => {
+    if (currentPage > 0) {
+      currentPage--;
+      createGame();
+    }
+  });
+
+  document.getElementById("nextPage").addEventListener("click", () => {
+    if (currentPage < allWordPages.length - 1) {
+      currentPage++;
+      createGame();
+    }
+  });
+
+  document.getElementById("hint").addEventListener("click", giveHint);
+
   createGame();
 </script>
 
