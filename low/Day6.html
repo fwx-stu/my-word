@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>低频单词配对消消乐 - Day6</title>
+  <style>
+    body { background-color: white; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
+    h1 { margin-top: 20px; }
+    #game { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; max-width: 1000px; margin: auto; }
+    .bubble { margin: 10px; padding: 20px; border-radius: 50%; cursor: pointer; color: white; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.2s; }
+    .bubble:hover { transform: scale(1.1); }
+    .english { background-color: #003366; }
+    .chinese { background-color: #66a3ff; }
+    .hidden { visibility: hidden; }
+    #controls { margin: 20px; }
+    button { margin: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    #hintCounter { margin-top: 10px; }
+  </style>
+</head>
+<body>
+<h1>低频单词配对消消乐 - Day6</h1>
+<div id="game"></div>
+<div id="controls">
+  <button id="prevPage">上一页</button>
+  <button id="nextPage">下一页</button>
+  <button id="hint">提示（剩余3次）</button>
+  <button id="restart">重新开始</button>
+  <div id="hintCounter"></div>
+</div>
+<script>
+const allWordPages = [
+  [{"en":"protein","zh":"蛋白质"},{"en":"pyramid","zh":"金字塔结构"},{"en":"queue","zh":"排队"},{"en":"radar","zh":"雷达"},{"en":"radius","zh":"半径范围"},{"en":"rank","zh":"队伍"},{"en":"ratio","zh":"比例"},{"en":"refrain","zh":"克制"},{"en":"refresh","zh":"使恢复精神"},{"en":"refuge","zh":"避难所"},{"en":"reign","zh":"统治时期"},{"en":"remains","zh":"遗迹"},{"en":"repeatedly","zh":"一再"},{"en":"republic","zh":"共和国"},{"en":"residence","zh":"住宅"},{"en":"revolutionary","zh":"革命的"},{"en":"rid","zh":"使摆脱"},{"en":"rigorous","zh":"严格的"},{"en":"rip","zh":"撕裂"},{"en":"roast","zh":"烘烤"}],
+  [{"en":"rumour","zh":"谣言"},{"en":"savage","zh":"凶残的"},{"en":"scatter","zh":"撒播"},{"en":"scorn","zh":"鄙视"},{"en":"scream","zh":"尖叫"},{"en":"seemingly","zh":"看似"},{"en":"semester","zh":"学期"},{"en":"semiconductor","zh":"半导体"},{"en":"shade","zh":"阴凉处"},{"en":"shake","zh":"摇动"},{"en":"shed","zh":"流"},{"en":"sheer","zh":"陡峭的"},{"en":"shield","zh":"保护物"},{"en":"shove","zh":"推挤"},{"en":"simplicity","zh":"简易"},{"en":"sink","zh":"沉没"},{"en":"skilful","zh":"熟练的"},{"en":"slack","zh":"懒散的"},{"en":"slogan","zh":"口号"},{"en":"slot","zh":"插槽"}],
+  [{"en":"slum","zh":"贫民窟"},{"en":"soak","zh":"浸泡"},{"en":"sociology","zh":"社会学"},{"en":"sovereign","zh":"具有独立主权的"},{"en":"sow","zh":"播种"},{"en":"spin","zh":"旋转"},{"en":"splash","zh":"液体哗哗地溅洒"},{"en":"spokesperson","zh":"发言人"},{"en":"spray","zh":"喷雾"},{"en":"spur","zh":"激励"},{"en":"stare","zh":"盯着看"},{"en":"starve","zh":"挨饿"},{"en":"steam","zh":"蒸汽"},{"en":"steep","zh":"陡峭的"},{"en":"steer","zh":"引导"},{"en":"steward","zh":"管家"},{"en":"stiff","zh":"艰难的"},{"en":"stir","zh":"激怒"},{"en":"storey","zh":"层"},{"en":"straw","zh":"吸管"}],
+  [{"en":"stride","zh":"大步走"},{"en":"striking","zh":"惊人的"},{"en":"strip","zh":"拆除"},{"en":"stripe","zh":"条纹"},{"en":"strive","zh":"奋斗"},{"en":"subsidy","zh":"补贴"},{"en":"successive","zh":"接连的"},{"en":"surgeon","zh":"外科医生"},{"en":"surveillance","zh":"监视"},{"en":"tank","zh":"箱"},{"en":"tease","zh":"挑逗"},{"en":"telegraph","zh":"电报"},{"en":"temptation","zh":"引诱"},{"en":"terrific","zh":"极好的"},{"en":"theoretical","zh":"理论的"},{"en":"thick","zh":"厚的"},{"en":"thoughtful","zh":"沉思的"},{"en":"thrift","zh":"节俭"},{"en":"throat","zh":"喉咙"},{"en":"throne","zh":"王位"}],
+  [{"en":"timely","zh":"及时的"},{"en":"tissue","zh":"组织"},{"en":"toll","zh":"严重的不良影响"},{"en":"tomb","zh":"坟墓"},{"en":"torch","zh":"火炬"},{"en":"tow","zh":"拖"},{"en":"tragic","zh":"悲惨的"},{"en":"tram","zh":"有轨电车"},{"en":"transient","zh":"短暂的"},{"en":"tray","zh":"托盘"},{"en":"tribe","zh":"部落"},{"en":"trivial","zh":"不重要的"},{"en":"troop","zh":"部队"},{"en":"tropical","zh":"热带的"},{"en":"trumpet","zh":"喇叭"},{"en":"turbine","zh":"涡轮机"},{"en":"turnover","zh":"营业额"},{"en":"uneasy","zh":"不安的"},{"en":"unfold","zh":"展开"},{"en":"utmost","zh":"极度的"}],
+  [{"en":"vanity","zh":"虚荣"},{"en":"verge","zh":"倾向"},{"en":"versus","zh":"与……相比较"},{"en":"vertical","zh":"垂直的"},{"en":"viable","zh":"可实施的"},{"en":"vicious","zh":"恶毒的"},{"en":"virus","zh":"病毒"},{"en":"weary","zh":"疲倦的"},{"en":"weird","zh":"奇异的"},{"en":"whatsoever","zh":"丝毫"},{"en":"wheat","zh":"小麦"},{"en":"wit","zh":"才思"},{"en":"wonderful","zh":"精彩的"},{"en":"workout","zh":"训练"},{"en":"worm","zh":"曲折行进"},{"en":"worship","zh":"崇拜"},{"en":"wound","zh":"创伤"},{"en":"wrap","zh":"包"}]
+];
+
+let currentPage = 0;
+let firstSelected = null;
+let secondSelected = null;
+let hintCount = 3;
+
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function createGame() {
+  const gameContainer = document.getElementById("game");
+  const wordPairs = allWordPages[currentPage];
+  gameContainer.innerHTML = "";
+
+  const bubbles = [];
+  wordPairs.forEach(pair => {
+    bubbles.push({ text: pair.en, type: "en", match: pair.zh });
+    bubbles.push({ text: pair.zh, type: "zh", match: pair.en });
+  });
+
+  shuffle(bubbles);
+
+  bubbles.forEach(item => {
+    const div = document.createElement("div");
+    div.className = `bubble ${item.type === "en" ? "english" : "chinese"}`;
+    div.textContent = item.text;
+    div.dataset.match = item.match;
+    div.dataset.type = item.type;
+    gameContainer.appendChild(div);
+
+    div.addEventListener("click", () => {
+      if (div.classList.contains("hidden")) return;
+
+      if (!firstSelected) {
+        firstSelected = div;
+        div.style.border = "3px solid #ffcc00";
+      } else if (!secondSelected && div !== firstSelected) {
+        secondSelected = div;
+        div.style.border = "3px solid #ffcc00";
+
+        if (firstSelected.dataset.match === secondSelected.textContent &&
+            secondSelected.dataset.match === firstSelected.textContent) {
+          setTimeout(() => {
+            firstSelected.classList.add("hidden");
+            secondSelected.classList.add("hidden");
+            resetSelection();
+          }, 500);
+        } else {
+          setTimeout(() => {
+            firstSelected.style.border = "";
+            secondSelected.style.border = "";
+            resetSelection();
+          }, 500);
+        }
+      }
+    });
+  });
+
+  updateNavigation();
+  updateHintButton();
+}
+
+function resetSelection() {
+  firstSelected = null;
+  secondSelected = null;
+}
+
+function updateNavigation() {
+  document.getElementById("prevPage").disabled = currentPage === 0;
+  document.getElementById("nextPage").disabled = currentPage >= allWordPages.length - 1;
+}
+
+function updateHintButton() {
+  document.getElementById("hint").textContent = `提示（剩余${hintCount}次）`;
+  document.getElementById("hint").disabled = hintCount === 0;
+}
+
+function giveHint() {
+  if (hintCount <= 0) return;
+  const divs = Array.from(document.querySelectorAll('.bubble:not(.hidden)'));
+  for (let i = 0; i < divs.length; i++) {
+    for (let j = i + 1; j < divs.length; j++) {
+      if (
+        divs[i].dataset.match === divs[j].textContent &&
+        divs[j].dataset.match === divs[i].textContent
+      ) {
+        divs[i].style.border = "3px solid #00ff00";
+        divs[j].style.border = "3px solid #00ff00";
+        hintCount--;
+        updateHintButton();
+        return;
+      }
+    }
+  }
+}
+
+document.getElementById("restart").addEventListener("click", () => {
+  hintCount = 3;
+  currentPage = 0;
+  createGame();
+});
+
+document.getElementById("prevPage").addEventListener("click", () => {
+  if (currentPage > 0) {
+    currentPage--;
+    createGame();
+  }
+});
+
+document.getElementById("nextPage").addEventListener("click", () => {
+  if (currentPage < allWordPages.length - 1) {
+    currentPage++;
+    createGame();
+  }
+});
+
+document.getElementById("hint").addEventListener("click", giveHint);
+
+createGame();
+</script>
+</body>
+</html>

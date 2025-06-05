@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>低频单词配对消消乐 - Day3</title>
+  <style>
+    body { background-color: white; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
+    h1 { margin-top: 20px; }
+    #game { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; max-width: 1000px; margin: auto; }
+    .bubble { margin: 10px; padding: 20px; border-radius: 50%; cursor: pointer; color: white; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.2s; }
+    .bubble:hover { transform: scale(1.1); }
+    .english { background-color: #003366; }
+    .chinese { background-color: #66a3ff; }
+    .hidden { visibility: hidden; }
+    #controls { margin: 20px; }
+    button { margin: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    #hintCounter { margin-top: 10px; }
+  </style>
+</head>
+<body>
+<h1>低频单词配对消消乐 - Day3</h1>
+<div id="game"></div>
+<div id="controls">
+  <button id="prevPage">上一页</button>
+  <button id="nextPage">下一页</button>
+  <button id="hint">提示（剩余3次）</button>
+  <button id="restart">重新开始</button>
+  <div id="hintCounter"></div>
+</div>
+<script>
+const allWordPages = [
+  [{"en":"purify","zh":"净化"},{"en":"quantitative","zh":"量化的"},{"en":"conquer","zh":"克服"},{"en":"query","zh":"质疑"},{"en":"erase","zh":"消除"},{"en":"rational","zh":"理性的"},{"en":"erect","zh":"建造"},{"en":"regime","zh":"政权"},{"en":"arrest","zh":"拘捕"},{"en":"rhetoric","zh":"修辞艺术"},{"en":"rhythm","zh":"节奏"},{"en":"rotate","zh":"旋转"},{"en":"abrupt","zh":"突然的"},{"en":"erupt","zh":"爆发"},{"en":"sacred","zh":"神圣的"},{"en":"scenery","zh":"风景"},{"en":"descendant","zh":"后裔"},{"en":"microscope","zh":"显微镜"},{"en":"prescribe","zh":"开（药、处方）"},{"en":"subscribe","zh":"订阅"}],
+  [{"en":"manuscript","zh":"手稿"},{"en":"prescription","zh":"药方"},{"en":"secondary","zh":"中等的"},{"en":"assembly","zh":"集会"},{"en":"assimilate","zh":"同化"},{"en":"resent","zh":"憎恶"},{"en":"reservation","zh":"保留（意见）"},{"en":"considerate","zh":"体贴的"},{"en":"preside","zh":"主持"},{"en":"obsession","zh":"痴迷"},{"en":"designate","zh":"指定"},{"en":"signature","zh":"签名"},{"en":"silicon","zh":"硅"},{"en":"singular","zh":"显著的"},{"en":"consistent","zh":"始终如一的"},{"en":"skim","zh":"浏览"},{"en":"resolution","zh":"决心"},{"en":"sophisticated","zh":"老练的"},{"en":"spectrum","zh":"范围"},{"en":"conspicuous","zh":"明显的"}],
+  [{"en":"spectator","zh":"观众"},{"en":"specialize","zh":"专门研究"},{"en":"spiritual","zh":"心灵的"},{"en":"inspiration","zh":"灵感"},{"en":"spontaneous","zh":"自发的"},{"en":"correspondent","zh":"通信者"},{"en":"correspondence","zh":"相似"},{"en":"destination","zh":"目的地"},{"en":"stationary","zh":"不动的"},{"en":"superstition","zh":"迷信"},{"en":"distinct","zh":"明显的"},{"en":"destruction","zh":"破坏"},{"en":"destructive","zh":"破坏性的"},{"en":"studio","zh":"工作室"},{"en":"persuasion","zh":"说服"},{"en":"resume","zh":"继续"},{"en":"résumé","zh":"简历"},{"en":"insure","zh":"保险"},{"en":"ensure","zh":"保证"},{"en":"absurd","zh":"荒谬的"}],
+  [{"en":"detach","zh":"拆卸"},{"en":"tangible","zh":"有形的"},{"en":"technician","zh":"技术人员"},{"en":"detector","zh":"探测器"},{"en":"tedious","zh":"单调乏味的"},{"en":"contemplate","zh":"深思"},{"en":"pretend","zh":"假装"},{"en":"tense","zh":"紧张的"},{"en":"tentative","zh":"暂定的"},{"en":"terminate","zh":"终止"},{"en":"therapy","zh":"治疗"},{"en":"synthetic","zh":"合成的"},{"en":"continual","zh":"持续的"},{"en":"toxic","zh":"有毒的"},{"en":"tractor","zh":"拖拉机"},{"en":"distribute","zh":"分发"},{"en":"intricate","zh":"错综复杂的"},{"en":"tune","zh":"调整"},{"en":"turbulent","zh":"动荡的"},{"en":"abound","zh":"大量存在"}],
+  [{"en":"vacant","zh":"空着的"},{"en":"vacuum","zh":"空虚"},{"en":"extravagant","zh":"奢侈的"},{"en":"prevail","zh":"盛行"},{"en":"invalid","zh":"无效的"},{"en":"prevalent","zh":"流行的"},{"en":"revelation","zh":"揭露"},{"en":"velocity","zh":"速度"},{"en":"avenue","zh":"大道"},{"en":"converge","zh":"聚集"},{"en":"invert","zh":"使颠倒"},{"en":"divert","zh":"转移"},{"en":"diversion","zh":"转移"},{"en":"conversely","zh":"相反地"},{"en":"evident","zh":"明显的"},{"en":"violent","zh":"暴力的"},{"en":"virgin","zh":"处女的"},{"en":"subway","zh":"地下通道"},{"en":"voyage","zh":"航行"}],
+  [{"en":"breakdown","zh":"崩溃"},{"en":"bypass","zh":"绕过"},{"en":"commonwealth","zh":"联合体"},{"en":"cyberspace","zh":"网络空间"},{"en":"drawback","zh":"缺点"},{"en":"eyebrow","zh":"眉毛"},{"en":"foremost","zh":"最重要的"},{"en":"forthcoming","zh":"即将发生的"},{"en":"headquarters","zh":"总部"},{"en":"masterpiece","zh":"杰作"},{"en":"meantime","zh":"其间"},{"en":"nearby","zh":"附近的"},{"en":"nightmare","zh":"噩梦"},{"en":"outbreak","zh":"爆发"},{"en":"outdoor","zh":"户外的"},{"en":"outrage","zh":"暴行"},{"en":"outset","zh":"开始"},{"en":"overhead","zh":"在头上方的"},{"en":"roundabout","zh":"迂回的"},{"en":"safeguard","zh":"保护措施"},{"en":"shortcoming","zh":"缺点"},{"en":"shorthand","zh":"速记"}]
+];
+
+let currentPage = 0;
+let firstSelected = null;
+let secondSelected = null;
+let hintCount = 3;
+
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function createGame() {
+  const gameContainer = document.getElementById("game");
+  const wordPairs = allWordPages[currentPage];
+  gameContainer.innerHTML = "";
+
+  const bubbles = [];
+  wordPairs.forEach(pair => {
+    bubbles.push({ text: pair.en, type: "en", match: pair.zh });
+    bubbles.push({ text: pair.zh, type: "zh", match: pair.en });
+  });
+
+  shuffle(bubbles);
+
+  bubbles.forEach(item => {
+    const div = document.createElement("div");
+    div.className = `bubble ${item.type === "en" ? "english" : "chinese"}`;
+    div.textContent = item.text;
+    div.dataset.match = item.match;
+    div.dataset.type = item.type;
+    gameContainer.appendChild(div);
+
+    div.addEventListener("click", () => {
+      if (div.classList.contains("hidden")) return;
+
+      if (!firstSelected) {
+        firstSelected = div;
+        div.style.border = "3px solid #ffcc00";
+      } else if (!secondSelected && div !== firstSelected) {
+        secondSelected = div;
+        div.style.border = "3px solid #ffcc00";
+
+        if (firstSelected.dataset.match === secondSelected.textContent &&
+            secondSelected.dataset.match === firstSelected.textContent) {
+          setTimeout(() => {
+            firstSelected.classList.add("hidden");
+            secondSelected.classList.add("hidden");
+            resetSelection();
+          }, 500);
+        } else {
+          setTimeout(() => {
+            firstSelected.style.border = "";
+            secondSelected.style.border = "";
+            resetSelection();
+          }, 500);
+        }
+      }
+    });
+  });
+
+  updateNavigation();
+  updateHintButton();
+}
+
+function resetSelection() {
+  firstSelected = null;
+  secondSelected = null;
+}
+
+function updateNavigation() {
+  document.getElementById("prevPage").disabled = currentPage === 0;
+  document.getElementById("nextPage").disabled = currentPage >= allWordPages.length - 1;
+}
+
+function updateHintButton() {
+  document.getElementById("hint").textContent = `提示（剩余${hintCount}次）`;
+  document.getElementById("hint").disabled = hintCount === 0;
+}
+
+function giveHint() {
+  if (hintCount <= 0) return;
+  const divs = Array.from(document.querySelectorAll('.bubble:not(.hidden)'));
+  for (let i = 0; i < divs.length; i++) {
+    for (let j = i + 1; j < divs.length; j++) {
+      if (
+        divs[i].dataset.match === divs[j].textContent &&
+        divs[j].dataset.match === divs[i].textContent
+      ) {
+        divs[i].style.border = "3px solid #00ff00";
+        divs[j].style.border = "3px solid #00ff00";
+        hintCount--;
+        updateHintButton();
+        return;
+      }
+    }
+  }
+}
+
+document.getElementById("restart").addEventListener("click", () => {
+  hintCount = 3;
+  currentPage = 0;
+  createGame();
+});
+
+document.getElementById("prevPage").addEventListener("click", () => {
+  if (currentPage > 0) {
+    currentPage--;
+    createGame();
+  }
+});
+
+document.getElementById("nextPage").addEventListener("click", () => {
+  if (currentPage < allWordPages.length - 1) {
+    currentPage++;
+    createGame();
+  }
+});
+
+document.getElementById("hint").addEventListener("click", giveHint);
+
+createGame();
+</script>
+
+</body>
+</html>
+

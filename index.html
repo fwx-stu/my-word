@@ -49,6 +49,7 @@
     <li><a href="high/Day8.html">高频 Day8</a></li>
     <li><a href="high/Day9.html">高频 Day9</a></li>
     <li><a href="high/Day10.html">高频 Day10</a></li>
+    <li><a href="高频复习.html">随机抽查</a></li>
   </ul>
 
   <h2>📗 中频单词 Day1 - Day10</h2>
@@ -59,7 +60,7 @@
     <li><a href="mid/Day4.html">中频 Day4</a></li>
     <li><a href="mid/Day5.html">中频 Day5</a></li>
     <li><a href="mid/Day6.html">中频 Day6</a></li>
-    <li><a href="mid/复习.html">随机抽查</a></li>
+    <li><a href="mid/中频复习.html">随机抽查</a></li>
   </ul>
 
   <h2>📙 低频单词 Day1 - Day10</h2>
@@ -70,27 +71,32 @@
     <li><a href="low/Day4.html">低频 Day4</a></li>
     <li><a href="low/Day5.html">低频 Day5</a></li>
     <li><a href="low/Day6.html">低频 Day6</a></li>
-    <li><a href="low/Day7.html">低频 Day7</a></li>
-    <li><a href="low/Day8.html">低频 Day8</a></li>
-    <li><a href="low/Day9.html">低频 Day9</a></li>
-    <li><a href="low/Day10.html">低频 Day10</a></li>
+    <li><a href="low/低频复习.html">随机抽查</a></li>
   </ul>
 
-  <h2>📒 补充单词 Day1 - Day50</h2>
-  <ul id="extraList"></ul>
+<h2>📒 补充单词 Day1 - Day34</h2> 
+<ul id="extraList"></ul>
 
-  <script>
-    // 自动生成补充单词 Day1 ~ Day50 链接
-    const extraList = document.getElementById("extraList");
-    for (let i = 1; i <= 50; i++) {
-      const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = `extra/Day${i}.html`;
-      a.textContent = `补充 Day${i}`;
-      li.appendChild(a);
-      extraList.appendChild(li);
-    }
-  </script>
+<script>
+  // 自动生成补充单词 Day1 ~ Day34 链接
+  const extraList = document.getElementById("extraList");
+  for (let i = 1; i <= 34; i++) {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = `extra/Day${i}.html`;
+    a.textContent = `补充 Day${i}`;
+    li.appendChild(a);
+    extraList.appendChild(li);
+  }
+
+  // 添加“补充单词复习.html”链接
+  const reviewLi = document.createElement("li");
+  const reviewA = document.createElement("a");
+  reviewA.href = "extra/补充单词复习.html";
+  reviewA.textContent = "📘 补充单词复习";
+  reviewLi.appendChild(reviewA);
+  extraList.appendChild(reviewLi);
+</script>
 
 </body>
 </html>
