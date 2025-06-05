@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "submarine",
+      "zh": "潜水艇；海底生物"
+    },
+    {
+      "en": "submerge",
+      "zh": "淹没；把…浸入；沉浸"
+    },
+    {
+      "en": "subtract",
+      "zh": "减去；扣掉"
+    },
+    {
+      "en": "succeed",
+      "zh": "成功；继承；继任；兴旺"
+    },
+    {
+      "en": "success",
+      "zh": "成功，成就；胜利；大获成功的人或事物"
+    },
+    {
+      "en": "successful",
+      "zh": "成功的；一帆风顺的"
+    },
+    {
+      "en": "successor",
+      "zh": "继承者；后续的事物"
+    },
+    {
+      "en": "such",
+      "zh": "这样的，如此的"
+    },
+    {
+      "en": "suck",
+      "zh": "吮吸"
+    },
+    {
+      "en": "sudden",
+      "zh": "突然发生的事"
+    },
+    {
+      "en": "sue",
+      "zh": "控告；请求"
+    },
+    {
+      "en": "suffice",
+      "zh": "使满足；足够…用；合格"
+    },
+    {
+      "en": "sugar",
+      "zh": "糖；食糖；甜言蜜语"
+    },
+    {
+      "en": "suggest",
+      "zh": "提议，建议；启发；使人想起；显示；暗示"
+    },
+    {
+      "en": "suggestion",
+      "zh": "建议；示意；微量，细微的迹象"
+    },
+    {
+      "en": "suite",
+      "zh": "（一套）家具；套房；组曲；（一批）随员，随从"
+    },
+    {
+      "en": "sulfur",
+      "zh": "硫磺；硫磺色"
+    },
+    {
+      "en": "sulphur",
+      "zh": "硫磺；硫磺色"
+    },
+    {
+      "en": "summarise",
+      "zh": "总结，概述"
+    },
+    {
+      "en": "summary",
+      "zh": "概要，摘要，总结"
+    }
+  ],
+  [
+    {
+      "en": "summer",
+      "zh": "夏季；全盛时期"
+    },
+    {
+      "en": "summit",
+      "zh": "顶点；最高级会议；最高阶层"
+    },
+    {
+      "en": "summon",
+      "zh": "召唤；召集；鼓起；振作"
+    },
+    {
+      "en": "sun",
+      "zh": "太阳"
+    },
+    {
+      "en": "sunday",
+      "zh": "星期日；礼拜日"
+    },
+    {
+      "en": "sunrise",
+      "zh": "日出；黎明"
+    },
+    {
+      "en": "sunset",
+      "zh": "日落，傍晚"
+    },
+    {
+      "en": "sunshine",
+      "zh": "阳光；愉快；晴天；快活"
+    },
+    {
+      "en": "super",
+      "zh": "特级品，特大号；临时雇员"
+    },
+    {
+      "en": "superb",
+      "zh": "极好的；华丽的；宏伟的"
+    },
+    {
+      "en": "supermarket",
+      "zh": "超级市场；自助售货商店"
+    },
+    {
+      "en": "supersonic",
+      "zh": "超音速；超声波"
+    },
+    {
+      "en": "supper",
+      "zh": "晚餐，晚饭；夜宵"
+    },
+    {
+      "en": "sure",
+      "zh": "确信的；可靠的；必定的"
+    },
+    {
+      "en": "surge",
+      "zh": "汹涌；大浪，波涛；汹涌澎湃；巨涌"
+    },
+    {
+      "en": "surprise",
+      "zh": "惊奇，诧异；突然袭击"
+    },
+    {
+      "en": "surrender",
+      "zh": "投降；放弃；交出；屈服"
+    },
+    {
+      "en": "survey",
+      "zh": "调查；测量；审视；纵览"
+    },
+    {
+      "en": "swallow",
+      "zh": "燕子；一次吞咽的量"
+    },
+    {
+      "en": "swamp",
+      "zh": "使陷于沼泽；使沉没；使陷入困境"
+    }
+  ],
+  [
+    {
+      "en": "swan",
+      "zh": "天鹅；天鹅星座"
+    },
+    {
+      "en": "swarm",
+      "zh": "蜂群；一大群"
+    },
+    {
+      "en": "sway",
+      "zh": "影响；摇摆；统治"
+    },
+    {
+      "en": "swear",
+      "zh": "宣誓；诅咒"
+    },
+    {
+      "en": "sweat",
+      "zh": "汗；水珠；焦急；苦差使"
+    },
+    {
+      "en": "sweater",
+      "zh": "毛线衣，运动衫；大量出汗的人，发汗剂"
+    },
+    {
+      "en": "sweet",
+      "zh": "糖果；乐趣；芳香；宝贝"
+    },
+    {
+      "en": "swell",
+      "zh": "肿胀；隆起"
+    },
+    {
+      "en": "swift",
+      "zh": "褐雨燕"
+    },
+    {
+      "en": "swim",
+      "zh": "游泳；漂浮；眩晕"
+    },
+    {
+      "en": "sword",
+      "zh": "刀，剑；武力，战争"
+    },
+    {
+      "en": "symmetry",
+      "zh": "对称（性）；整齐，匀称"
+    },
+    {
+      "en": "sympathise",
+      "zh": "同情，支持"
+    },
+    {
+      "en": "sympathize",
+      "zh": "同情，怜悯；支持"
+    },
+    {
+      "en": "symposium",
+      "zh": "讨论会，座谈会；专题论文集；酒宴，宴会"
+    },
+    {
+      "en": "syndrome",
+      "zh": "综合症状；并发症状；校验子；并发位"
+    },
+    {
+      "en": "synthesis",
+      "zh": "综合， 合成；综合体"
+    },
+    {
+      "en": "system",
+      "zh": "制度，体制；系统；方法"
+    },
+    {
+      "en": "table",
+      "zh": "桌子；表格；平地层"
+    },
+    {
+      "en": "tablet",
+      "zh": "碑；药片；写字板；小块；平板电脑"
+    }
+  ],
+  [
+    {
+      "en": "taboo",
+      "zh": "禁忌；禁止"
+    },
+    {
+      "en": "tag",
+      "zh": "标签；名称；结束语；附属物"
+    },
+    {
+      "en": "tail",
+      "zh": "尾巴；踪迹；辫子；燕尾服"
+    },
+    {
+      "en": "tailor",
+      "zh": "裁缝"
+    },
+    {
+      "en": "take",
+      "zh": "拿；获得"
+    },
+    {
+      "en": "tale",
+      "zh": "故事；传说；叙述；流言蜚语"
+    },
+    {
+      "en": "talent",
+      "zh": "才能；天才；天资"
+    },
+    {
+      "en": "talk",
+      "zh": "谈话；演讲；空谈"
+    },
+    {
+      "en": "tall",
+      "zh": "高的；长的；过分的；夸大的"
+    },
+    {
+      "en": "tame",
+      "zh": "驯服的；平淡的；乏味的；顺从的"
+    },
+    {
+      "en": "tan",
+      "zh": "晒成棕褐色"
+    },
+    {
+      "en": "tangle",
+      "zh": "纠纷；混乱状态"
+    },
+    {
+      "en": "tanker",
+      "zh": "油轮；运油飞机；油槽车；坦克手"
+    },
+    {
+      "en": "tape",
+      "zh": "胶带；磁带；带子；卷尺"
+    },
+    {
+      "en": "target",
+      "zh": "目标；靶子"
+    },
+    {
+      "en": "tariff",
+      "zh": "关税表；收费表"
+    },
+    {
+      "en": "task",
+      "zh": "工作，作业；任务"
+    },
+    {
+      "en": "taste",
+      "zh": "味道；品味；审美"
+    },
+    {
+      "en": "tax",
+      "zh": "税金；重负"
+    },
+    {
+      "en": "taxi",
+      "zh": "出租汽车"
+    }
+  ],
+  [
+    {
+      "en": "tea",
+      "zh": "茶叶；茶树；茶点"
+    },
+    {
+      "en": "teach",
+      "zh": "教；教授；教导"
+    },
+    {
+      "en": "teacher",
+      "zh": "教师；导师"
+    },
+    {
+      "en": "team",
+      "zh": "队；组"
+    },
+    {
+      "en": "tech",
+      "zh": "技术学院或学校"
+    },
+    {
+      "en": "teenager",
+      "zh": "十几岁的青少年；十三岁到十九岁的少年"
+    },
+    {
+      "en": "telephone",
+      "zh": "（美）电话；电话机；电话耳机"
+    },
+    {
+      "en": "television",
+      "zh": "电视，电视机；电视业"
+    },
+    {
+      "en": "tell",
+      "zh": "告诉，说；辨别；吩咐；断定"
+    },
+    {
+      "en": "temperament",
+      "zh": "气质，性情，性格；急躁"
+    },
+    {
+      "en": "temple",
+      "zh": "庙宇；寺院；神殿；太阳穴"
+    },
+    {
+      "en": "tempo",
+      "zh": "速度，发展速度；拍子"
+    },
+    {
+      "en": "temporal",
+      "zh": "世间万物；暂存的事物"
+    },
+    {
+      "en": "ten",
+      "zh": "十个，十"
+    },
+    {
+      "en": "tenant",
+      "zh": "承租人；房客；佃户；居住者"
+    },
+    {
+      "en": "tend",
+      "zh": "照料，照管"
+    },
+    {
+      "en": "tender",
+      "zh": "偿付，清偿；看管人；小船"
+    },
+    {
+      "en": "tennis",
+      "zh": "网球（运动）"
+    },
+    {
+      "en": "tent",
+      "zh": "帐篷；住处；帷幕"
+    },
+    {
+      "en": "term",
+      "zh": "术语；学期；期限；条款；项"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;

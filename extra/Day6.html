@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "circular",
+      "zh": "通知，传单"
+    },
+    {
+      "en": "circulate",
+      "zh": "使循环；使流通；使传播"
+    },
+    {
+      "en": "circus",
+      "zh": "马戏；马戏团"
+    },
+    {
+      "en": "city",
+      "zh": "城市，都市"
+    },
+    {
+      "en": "civilian",
+      "zh": "平民，百姓"
+    },
+    {
+      "en": "civilisation",
+      "zh": "（英）文明（等于civilization）"
+    },
+    {
+      "en": "civilise",
+      "zh": "教化；文明化；使开化"
+    },
+    {
+      "en": "civilize",
+      "zh": "使文明；教化；使开化"
+    },
+    {
+      "en": "clap",
+      "zh": "鼓掌；拍手声"
+    },
+    {
+      "en": "clarify",
+      "zh": "澄清；阐明"
+    },
+    {
+      "en": "clash",
+      "zh": "冲突，不协调；碰撞声，铿锵声"
+    },
+    {
+      "en": "clasp",
+      "zh": "扣子，钩子；握手"
+    },
+    {
+      "en": "class",
+      "zh": "阶级；班级；种类；班；等级"
+    },
+    {
+      "en": "classic",
+      "zh": "名著；经典著作；大艺术家"
+    },
+    {
+      "en": "classmate",
+      "zh": "同班同学"
+    },
+    {
+      "en": "classroom",
+      "zh": "教室"
+    },
+    {
+      "en": "clause",
+      "zh": "条款； 子句"
+    },
+    {
+      "en": "claw",
+      "zh": "爪；螯，钳；爪形器具"
+    },
+    {
+      "en": "clay",
+      "zh": "粘土；泥土；肉体；似黏土的东西"
+    },
+    {
+      "en": "clean",
+      "zh": "打扫"
+    }
+  ],
+  [
+    {
+      "en": "clear",
+      "zh": "清除；空隙"
+    },
+    {
+      "en": "clergy",
+      "zh": "神职人员；牧师；僧侣"
+    },
+    {
+      "en": "clever",
+      "zh": "聪明的；机灵的；熟练的"
+    },
+    {
+      "en": "click",
+      "zh": "单击；滴答声"
+    },
+    {
+      "en": "climate",
+      "zh": "气候；风气；思潮；风土"
+    },
+    {
+      "en": "climax",
+      "zh": "高潮；顶点；层进法；极点"
+    },
+    {
+      "en": "climb",
+      "zh": "爬；攀登"
+    },
+    {
+      "en": "clinic",
+      "zh": "临床；诊所"
+    },
+    {
+      "en": "clip",
+      "zh": "剪；修剪；迅速行动；用别针别在某物上"
+    },
+    {
+      "en": "cloak",
+      "zh": "斗蓬；宽大外衣；托词"
+    },
+    {
+      "en": "clock",
+      "zh": "时钟；计时器"
+    },
+    {
+      "en": "clockwise",
+      "zh": "顺时针方向的"
+    },
+    {
+      "en": "close",
+      "zh": "结束"
+    },
+    {
+      "en": "closet",
+      "zh": "壁橱；议事室，密室；小房间"
+    },
+    {
+      "en": "cloth",
+      "zh": "布；织物；桌布"
+    },
+    {
+      "en": "clothe",
+      "zh": "给…穿衣；覆盖；赋予"
+    },
+    {
+      "en": "clothes",
+      "zh": "衣服"
+    },
+    {
+      "en": "clothing",
+      "zh": "（总称） 服装；帆装"
+    },
+    {
+      "en": "cloud",
+      "zh": "云；阴云；云状物；一大群；黑斑"
+    },
+    {
+      "en": "cloudy",
+      "zh": "多云的；阴天的；愁容满面的"
+    }
+  ],
+  [
+    {
+      "en": "club",
+      "zh": "俱乐部，社团；夜总会；棍棒；（扑克牌中的）梅花"
+    },
+    {
+      "en": "clumsy",
+      "zh": "笨拙的"
+    },
+    {
+      "en": "cluster",
+      "zh": "群；簇；丛；串"
+    },
+    {
+      "en": "clutch",
+      "zh": "离合器；控制；手；紧急关头"
+    },
+    {
+      "en": "coal",
+      "zh": "煤；煤块；木炭"
+    },
+    {
+      "en": "coarse",
+      "zh": "粗糙的；粗俗的；下等的"
+    },
+    {
+      "en": "coat",
+      "zh": "外套"
+    },
+    {
+      "en": "cock",
+      "zh": "公鸡；龙头；雄鸟；头目"
+    },
+    {
+      "en": "code",
+      "zh": "代码，密码；编码；法典"
+    },
+    {
+      "en": "coffee",
+      "zh": "咖啡；咖啡豆；咖啡色"
+    },
+    {
+      "en": "cohesive",
+      "zh": "凝聚的；有结合力的；紧密结合的；有粘着力的"
+    },
+    {
+      "en": "coin",
+      "zh": "硬币，钱币"
+    },
+    {
+      "en": "coincide",
+      "zh": "一致，符合；同时发生"
+    },
+    {
+      "en": "coke",
+      "zh": "可口可乐（等于Coca-Cola）"
+    },
+    {
+      "en": "cold",
+      "zh": "寒冷；感冒"
+    },
+    {
+      "en": "collar",
+      "zh": "衣领；颈圈"
+    },
+    {
+      "en": "collect",
+      "zh": "收集；募捐"
+    },
+    {
+      "en": "college",
+      "zh": "大学；学院；学会"
+    },
+    {
+      "en": "collide",
+      "zh": "碰撞；抵触，冲突"
+    },
+    {
+      "en": "collision",
+      "zh": "碰撞；冲突；（意见，看法）的抵触；（政党等的）倾轧"
+    }
+  ],
+  [
+    {
+      "en": "colonel",
+      "zh": "陆军上校"
+    },
+    {
+      "en": "color",
+      "zh": "颜色；肤色；颜料；脸色"
+    },
+    {
+      "en": "colour",
+      "zh": "颜色；风格；气色，面色；外貌"
+    },
+    {
+      "en": "comb",
+      "zh": "梳子；蜂巢；鸡冠"
+    },
+    {
+      "en": "come",
+      "zh": "来；开始；出现；发生；变成；到达"
+    },
+    {
+      "en": "comedy",
+      "zh": "喜剧；喜剧性；有趣的事情"
+    },
+    {
+      "en": "comet",
+      "zh": "彗星"
+    },
+    {
+      "en": "commemorate",
+      "zh": "庆祝，纪念；成为…的纪念"
+    },
+    {
+      "en": "commence",
+      "zh": "开始；着手；<英>获得学位"
+    },
+    {
+      "en": "commend",
+      "zh": "推荐；称赞；把…委托"
+    },
+    {
+      "en": "common",
+      "zh": "普通；平民；公有地"
+    },
+    {
+      "en": "commonplace",
+      "zh": "老生常谈；司空见惯的事；普通的东西"
+    },
+    {
+      "en": "communicate",
+      "zh": "通讯，传达；相通；交流；感染"
+    },
+    {
+      "en": "communication",
+      "zh": "通讯， 通信；交流；信函"
+    },
+    {
+      "en": "communism",
+      "zh": "共产主义"
+    },
+    {
+      "en": "community",
+      "zh": "社区； 群落；共同体；团体"
+    },
+    {
+      "en": "compact",
+      "zh": "合同，契约；小粉盒"
+    },
+    {
+      "en": "company",
+      "zh": "公司；陪伴，同伴；连队"
+    },
+    {
+      "en": "compare",
+      "zh": "相比，匹敌；比较，区别；比拟（常与to连用）"
+    },
+    {
+      "en": "compartment",
+      "zh": "隔间；区划；卧车上的小客房"
+    }
+  ],
+  [
+    {
+      "en": "compass",
+      "zh": "指南针，罗盘；圆规"
+    },
+    {
+      "en": "compassion",
+      "zh": "同情；怜悯"
+    },
+    {
+      "en": "compatible",
+      "zh": "兼容的；能共处的；可并立的"
+    },
+    {
+      "en": "compete",
+      "zh": "竞争；比赛；对抗"
+    },
+    {
+      "en": "complain",
+      "zh": "投诉；发牢骚；诉说"
+    },
+    {
+      "en": "complement",
+      "zh": "补语；余角；补足物"
+    },
+    {
+      "en": "complete",
+      "zh": "完整的；完全的；彻底的"
+    },
+    {
+      "en": "complicate",
+      "zh": "使复杂化；使恶化；使卷入"
+    },
+    {
+      "en": "composite",
+      "zh": "复合材料；合成物；菊科"
+    },
+    {
+      "en": "compute",
+      "zh": "计算；估计；推断"
+    },
+    {
+      "en": "computer",
+      "zh": "计算机；电脑；电子计算机"
+    },
+    {
+      "en": "comrade",
+      "zh": "同志；伙伴"
+    },
+    {
+      "en": "concede",
+      "zh": "让步"
+    },
+    {
+      "en": "concept",
+      "zh": "观念，概念"
+    },
+    {
+      "en": "concern",
+      "zh": "关系；关心；关心的事；忧虑"
+    },
+    {
+      "en": "concert",
+      "zh": "音乐会；一致；和谐"
+    },
+    {
+      "en": "concurrent",
+      "zh": "共点；同时发生的事件"
+    },
+    {
+      "en": "configuration",
+      "zh": "配置；结构；外形"
+    },
+    {
+      "en": "conflict",
+      "zh": "冲突，矛盾；斗争；争执"
+    },
+    {
+      "en": "congratulate",
+      "zh": "祝贺；恭喜；庆贺"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;

@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "fix",
+      "zh": "困境；方位；贿赂"
+    },
+    {
+      "en": "fixture",
+      "zh": "设备；固定装置；固定于某处不大可能移动之物"
+    },
+    {
+      "en": "flag",
+      "zh": "标志；旗子"
+    },
+    {
+      "en": "flame",
+      "zh": "火焰；热情；光辉"
+    },
+    {
+      "en": "flap",
+      "zh": "拍打，拍打声；神经紧张； 襟翼"
+    },
+    {
+      "en": "flare",
+      "zh": "加剧，恶化；底部展开；闪光，闪耀；耀斑；爆发；照明弹"
+    },
+    {
+      "en": "flat",
+      "zh": "平地；公寓；平面"
+    },
+    {
+      "en": "flatter",
+      "zh": "奉承；谄媚；使高兴"
+    },
+    {
+      "en": "flavor",
+      "zh": "情味，风味；香料；滋味"
+    },
+    {
+      "en": "flavour",
+      "zh": "香味；滋味"
+    },
+    {
+      "en": "flee",
+      "zh": "逃跑，逃走；逃避"
+    },
+    {
+      "en": "fleet",
+      "zh": "舰队；港湾；小河"
+    },
+    {
+      "en": "flesh",
+      "zh": "肉；肉体"
+    },
+    {
+      "en": "flight",
+      "zh": "飞行；班机；逃走"
+    },
+    {
+      "en": "fling",
+      "zh": "掷，抛；嘲弄；急冲"
+    },
+    {
+      "en": "flock",
+      "zh": "群；棉束（等于floc）"
+    },
+    {
+      "en": "flood",
+      "zh": "洪水；泛滥；一大批"
+    },
+    {
+      "en": "floor",
+      "zh": "地板，地面；楼层；基底；议员席"
+    },
+    {
+      "en": "flour",
+      "zh": "面粉；粉状物质"
+    },
+    {
+      "en": "flow",
+      "zh": "流动；流量；涨潮，泛滥"
+    }
+  ],
+  [
+    {
+      "en": "flower",
+      "zh": "花；精华；开花植物"
+    },
+    {
+      "en": "flu",
+      "zh": "流感"
+    },
+    {
+      "en": "fluent",
+      "zh": "流畅的，流利的；液态的；畅流的"
+    },
+    {
+      "en": "flush",
+      "zh": "激动，洋溢；面红；萌芽；旺盛；奔流"
+    },
+    {
+      "en": "fly",
+      "zh": "飞行；苍蝇；两翼昆虫"
+    },
+    {
+      "en": "focus",
+      "zh": "焦点；中心；清晰；焦距"
+    },
+    {
+      "en": "fog",
+      "zh": "雾；烟雾，尘雾；迷惑"
+    },
+    {
+      "en": "fold",
+      "zh": "折痕；信徒；羊栏"
+    },
+    {
+      "en": "folk",
+      "zh": "民族；人们；亲属（复数）"
+    },
+    {
+      "en": "follow",
+      "zh": "跟随；追随"
+    },
+    {
+      "en": "following",
+      "zh": "下列事物；一批追随者"
+    },
+    {
+      "en": "fond",
+      "zh": "喜欢的；温柔的；宠爱的"
+    },
+    {
+      "en": "food",
+      "zh": "食物；养料"
+    },
+    {
+      "en": "fool",
+      "zh": "傻瓜；愚人；受骗者"
+    },
+    {
+      "en": "foolish",
+      "zh": "愚蠢的；傻的"
+    },
+    {
+      "en": "foot",
+      "zh": "脚；英尺；步调；末尾"
+    },
+    {
+      "en": "football",
+      "zh": "足球，橄榄球"
+    },
+    {
+      "en": "footstep",
+      "zh": "脚步；脚步声；足迹"
+    },
+    {
+      "en": "for",
+      "zh": "为，为了；因为；给；对于；至于；适合于"
+    },
+    {
+      "en": "forbid",
+      "zh": "禁止；不准；不允许；严禁"
+    }
+  ],
+  [
+    {
+      "en": "force",
+      "zh": "力量；武力；军队；魄力"
+    },
+    {
+      "en": "fore",
+      "zh": "前部；船头"
+    },
+    {
+      "en": "forehead",
+      "zh": "额，前额"
+    },
+    {
+      "en": "foreign",
+      "zh": "外国的；外交的；异质的；不相关的"
+    },
+    {
+      "en": "foreigner",
+      "zh": "外地人，外国人"
+    },
+    {
+      "en": "forest",
+      "zh": "森林"
+    },
+    {
+      "en": "forever",
+      "zh": "永远；不断地；常常"
+    },
+    {
+      "en": "forget",
+      "zh": "忘记"
+    },
+    {
+      "en": "forgive",
+      "zh": "原谅；免除（债务、义务等）"
+    },
+    {
+      "en": "fork",
+      "zh": "叉；餐叉；耙"
+    },
+    {
+      "en": "form",
+      "zh": "形式，形状；形态，外形；方式；表格"
+    },
+    {
+      "en": "formal",
+      "zh": "正式的社交活动；夜礼服"
+    },
+    {
+      "en": "formidable",
+      "zh": "强大的；可怕的；令人敬畏的；艰难的"
+    },
+    {
+      "en": "fortnight",
+      "zh": "两星期"
+    },
+    {
+      "en": "forty",
+      "zh": "四十"
+    },
+    {
+      "en": "forward",
+      "zh": "前锋"
+    },
+    {
+      "en": "foul",
+      "zh": "犯规；缠绕"
+    },
+    {
+      "en": "found",
+      "zh": "找到（find的过去分词）"
+    },
+    {
+      "en": "fountain",
+      "zh": "喷泉，泉水；源泉"
+    },
+    {
+      "en": "four",
+      "zh": "四；四个"
+    }
+  ],
+  [
+    {
+      "en": "fourteen",
+      "zh": "十四；十四个；第十四"
+    },
+    {
+      "en": "fox",
+      "zh": "狐狸；狡猾的人"
+    },
+    {
+      "en": "fracture",
+      "zh": "破裂，断裂； 骨折"
+    },
+    {
+      "en": "fragrant",
+      "zh": "芳香的；愉快的"
+    },
+    {
+      "en": "franchise",
+      "zh": "特权；公民权；经销权；管辖权"
+    },
+    {
+      "en": "fraud",
+      "zh": "欺骗；骗子；诡计"
+    },
+    {
+      "en": "free",
+      "zh": "免费的；自由的，不受约束的； 游离的"
+    },
+    {
+      "en": "freedom",
+      "zh": "自由，自主；直率"
+    },
+    {
+      "en": "freelance",
+      "zh": "自由作家；自由记者"
+    },
+    {
+      "en": "freeze",
+      "zh": "冻结；凝固"
+    },
+    {
+      "en": "freight",
+      "zh": "货运；运费；船货"
+    },
+    {
+      "en": "fresh",
+      "zh": "开始；新生；泛滥"
+    },
+    {
+      "en": "friction",
+      "zh": "摩擦， 摩擦力"
+    },
+    {
+      "en": "friday",
+      "zh": "星期五"
+    },
+    {
+      "en": "fridge",
+      "zh": "电冰箱"
+    },
+    {
+      "en": "friend",
+      "zh": "朋友；助手；赞助者"
+    },
+    {
+      "en": "friendly",
+      "zh": "友好的；亲切的；支持的；融洽的，和睦的"
+    },
+    {
+      "en": "friendship",
+      "zh": "友谊；友爱；友善"
+    },
+    {
+      "en": "fright",
+      "zh": "惊吓；惊骇"
+    },
+    {
+      "en": "fringe",
+      "zh": "边缘；穗；刘海"
+    }
+  ],
+  [
+    {
+      "en": "frog",
+      "zh": "青蛙； 辙叉；饰扣"
+    },
+    {
+      "en": "from",
+      "zh": "来自，从；由于；今后"
+    },
+    {
+      "en": "front",
+      "zh": "前面；正面；前线"
+    },
+    {
+      "en": "frost",
+      "zh": "霜；冰冻，严寒；冷淡"
+    },
+    {
+      "en": "fruit",
+      "zh": "水果；产物"
+    },
+    {
+      "en": "frustrate",
+      "zh": "挫败；阻挠；使感到灰心"
+    },
+    {
+      "en": "fry",
+      "zh": "鱼苗；油炸食物"
+    },
+    {
+      "en": "fuel",
+      "zh": "燃料；刺激因素"
+    },
+    {
+      "en": "fulfil",
+      "zh": "履行；完成；实践；满足"
+    },
+    {
+      "en": "full",
+      "zh": "全部；完整"
+    },
+    {
+      "en": "fume",
+      "zh": "烟；愤怒，烦恼"
+    },
+    {
+      "en": "fun",
+      "zh": "乐趣；玩笑；有趣的人或事"
+    },
+    {
+      "en": "function",
+      "zh": "功能； 函数；职责；盛大的集会"
+    },
+    {
+      "en": "fund",
+      "zh": "基金；资金；存款"
+    },
+    {
+      "en": "funeral",
+      "zh": "葬礼；麻烦事"
+    },
+    {
+      "en": "funny",
+      "zh": "滑稽人物；笑话，有趣的故事；滑稽连环漫画栏"
+    },
+    {
+      "en": "fur",
+      "zh": "皮，皮子；毛皮；软毛"
+    },
+    {
+      "en": "furious",
+      "zh": "激烈的；狂怒的；热烈兴奋的；喧闹的"
+    },
+    {
+      "en": "furniture",
+      "zh": "家具；设备；储藏物"
+    },
+    {
+      "en": "further",
+      "zh": "更远的；深一层的"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;

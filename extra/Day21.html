@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "numb",
+      "zh": "使麻木；使发愣；使失去感觉"
+    },
+    {
+      "en": "number",
+      "zh": "数；（杂志等的）期；号码；数字；算术"
+    },
+    {
+      "en": "nurse",
+      "zh": "看护，护理；照顾；培养；给…喂奶"
+    },
+    {
+      "en": "nursery",
+      "zh": "苗圃；托儿所；温床"
+    },
+    {
+      "en": "nut",
+      "zh": "螺母，螺帽；坚果；难对付的人，难解的问题"
+    },
+    {
+      "en": "nylon",
+      "zh": "尼龙， 聚酰胺纤维；尼龙袜"
+    },
+    {
+      "en": "oak",
+      "zh": "橡树；橡木色；橡木家具"
+    },
+    {
+      "en": "oar",
+      "zh": "桨；橹；桨手"
+    },
+    {
+      "en": "oath",
+      "zh": "誓言，誓约；诅咒，咒骂"
+    },
+    {
+      "en": "obedience",
+      "zh": "顺从；服从；遵守"
+    },
+    {
+      "en": "object",
+      "zh": "目标；物体；客体；宾语"
+    },
+    {
+      "en": "obsolete",
+      "zh": "废弃的；老式的"
+    },
+    {
+      "en": "obstruct",
+      "zh": "妨碍；阻塞；遮断"
+    },
+    {
+      "en": "obstruction",
+      "zh": "障碍；阻碍；妨碍"
+    },
+    {
+      "en": "occasional",
+      "zh": "偶然的；临时的；特殊场合的"
+    },
+    {
+      "en": "ocean",
+      "zh": "海洋；大量；广阔"
+    },
+    {
+      "en": "october",
+      "zh": "十月"
+    },
+    {
+      "en": "odor",
+      "zh": "气味；名声"
+    },
+    {
+      "en": "odour",
+      "zh": "气味；声誉"
+    },
+    {
+      "en": "of",
+      "zh": "关于；属于；…的；由…组成的"
+    }
+  ],
+  [
+    {
+      "en": "off",
+      "zh": "离开；脱落"
+    },
+    {
+      "en": "offend",
+      "zh": "冒犯；使…不愉快"
+    },
+    {
+      "en": "offensive",
+      "zh": "攻击的；冒犯的；无礼的；讨厌的"
+    },
+    {
+      "en": "office",
+      "zh": "办公室；政府机关；官职；营业处"
+    },
+    {
+      "en": "offset",
+      "zh": "抵消，补偿；平版印刷；支管"
+    },
+    {
+      "en": "often",
+      "zh": "常常，时常"
+    },
+    {
+      "en": "oftentimes",
+      "zh": "时常地"
+    },
+    {
+      "en": "oil",
+      "zh": "油；石油；油画颜料"
+    },
+    {
+      "en": "ok",
+      "zh": "好的；不错的"
+    },
+    {
+      "en": "okay",
+      "zh": "可以；对；很好地"
+    },
+    {
+      "en": "old",
+      "zh": "陈旧的，古老的；年老的"
+    },
+    {
+      "en": "on",
+      "zh": "向前地；作用中，行动中；继续着"
+    },
+    {
+      "en": "once",
+      "zh": "一次；曾经"
+    },
+    {
+      "en": "one",
+      "zh": "一个人；任何人"
+    },
+    {
+      "en": "oneself",
+      "zh": "自己；亲自"
+    },
+    {
+      "en": "onion",
+      "zh": "洋葱；洋葱头"
+    },
+    {
+      "en": "only",
+      "zh": "只，仅仅；不料"
+    },
+    {
+      "en": "onto",
+      "zh": "在…之上；对…了解；映射到…上"
+    },
+    {
+      "en": "opaque",
+      "zh": "不透明的；不传热的；迟钝的"
+    },
+    {
+      "en": "open",
+      "zh": "公开的；敞开的；空旷的；坦率的；营业着的"
+    }
+  ],
+  [
+    {
+      "en": "opera",
+      "zh": "歌剧；歌剧院；歌剧团"
+    },
+    {
+      "en": "opinion",
+      "zh": "意见；主张"
+    },
+    {
+      "en": "oppress",
+      "zh": "压迫，压抑；使……烦恼；使……感到沉重"
+    },
+    {
+      "en": "optical",
+      "zh": "光学的；眼睛的，视觉的"
+    },
+    {
+      "en": "optimum",
+      "zh": "最适宜的"
+    },
+    {
+      "en": "optional",
+      "zh": "可选择的，随意的"
+    },
+    {
+      "en": "or",
+      "zh": "或，或者；还是"
+    },
+    {
+      "en": "oral",
+      "zh": "口试"
+    },
+    {
+      "en": "orange",
+      "zh": "橙色的；橘色的"
+    },
+    {
+      "en": "orchard",
+      "zh": "果园；果树林"
+    },
+    {
+      "en": "order",
+      "zh": "命令；顺序；规则； 定单"
+    },
+    {
+      "en": "ore",
+      "zh": "矿；矿石"
+    },
+    {
+      "en": "organ",
+      "zh": "器官；机构；风琴；管风琴；嗓音"
+    },
+    {
+      "en": "organisation",
+      "zh": "组织；团体"
+    },
+    {
+      "en": "organise",
+      "zh": "组织起来；组织工会"
+    },
+    {
+      "en": "orient",
+      "zh": "使适应；确定方向；使朝东"
+    },
+    {
+      "en": "oriental",
+      "zh": "东方的；东方人的"
+    },
+    {
+      "en": "orientation",
+      "zh": "方向；定向；适应；情况介绍；向东方"
+    },
+    {
+      "en": "orphan",
+      "zh": "孤儿的；无双亲的"
+    },
+    {
+      "en": "orthodox",
+      "zh": "正统的；传统的；惯常的；东正教的"
+    }
+  ],
+  [
+    {
+      "en": "other",
+      "zh": "其他的，另外的"
+    },
+    {
+      "en": "otherwise",
+      "zh": "否则；另外；在其他方面"
+    },
+    {
+      "en": "ought to",
+      "zh": "应该；应当；应该；应该"
+    },
+    {
+      "en": "ounce",
+      "zh": "盎司；少量；雪豹"
+    },
+    {
+      "en": "our",
+      "zh": "我们的"
+    },
+    {
+      "en": "ours",
+      "zh": "我们的"
+    },
+    {
+      "en": "ourselves",
+      "zh": "我们自己；我们亲自"
+    },
+    {
+      "en": "out",
+      "zh": "出现；在外；出局；出声地；不流行地"
+    },
+    {
+      "en": "outfit",
+      "zh": "机构；用具；全套装备"
+    },
+    {
+      "en": "outing",
+      "zh": "远足；短途旅游；体育比赛"
+    },
+    {
+      "en": "outside",
+      "zh": "外面的，外部的；外来的"
+    },
+    {
+      "en": "outskirts",
+      "zh": "市郊，郊区"
+    },
+    {
+      "en": "outstanding",
+      "zh": "杰出的；显著的；未解决的；未偿付的"
+    },
+    {
+      "en": "outward",
+      "zh": "向外的；外面的；公开的；外服的；肉体的"
+    },
+    {
+      "en": "oval",
+      "zh": "椭圆的；卵形的"
+    },
+    {
+      "en": "oven",
+      "zh": "炉，灶；烤炉，烤箱"
+    },
+    {
+      "en": "over",
+      "zh": "结束；越过；从头到尾"
+    },
+    {
+      "en": "overcoat",
+      "zh": "大衣，外套"
+    },
+    {
+      "en": "overflow",
+      "zh": "溢出；泛滥；充溢"
+    },
+    {
+      "en": "overhaul",
+      "zh": "分解检查，大修；追上并超过"
+    }
+  ],
+  [
+    {
+      "en": "overhear",
+      "zh": "无意中听到；偷听"
+    },
+    {
+      "en": "overnight",
+      "zh": "通宵；突然；昨晚"
+    },
+    {
+      "en": "overt",
+      "zh": "明显的；公然的；蓄意的"
+    },
+    {
+      "en": "overtake",
+      "zh": "赶上；压倒；突然来袭"
+    },
+    {
+      "en": "overthrow",
+      "zh": "推翻；倾覆；瓦解"
+    },
+    {
+      "en": "overtime",
+      "zh": "加班时间；延长时间；加时赛"
+    },
+    {
+      "en": "overwhelm",
+      "zh": "淹没；压倒；受打击；覆盖；压垮"
+    },
+    {
+      "en": "owe",
+      "zh": "欠；感激；应给予；应该把……归功于"
+    },
+    {
+      "en": "owing to",
+      "zh": "由于；因为"
+    },
+    {
+      "en": "owl",
+      "zh": "猫头鹰；枭；惯于晚上活动的人"
+    },
+    {
+      "en": "own",
+      "zh": "拥有；承认"
+    },
+    {
+      "en": "owner",
+      "zh": "所有者；物主"
+    },
+    {
+      "en": "ox",
+      "zh": "牛；公牛"
+    },
+    {
+      "en": "oxide",
+      "zh": "氧化物"
+    },
+    {
+      "en": "ozone",
+      "zh": "臭氧；新鲜的空气"
+    },
+    {
+      "en": "pace",
+      "zh": "一步；步速；步伐；速度"
+    },
+    {
+      "en": "pack",
+      "zh": "包装；一群；背包；包裹；一副"
+    },
+    {
+      "en": "package",
+      "zh": "包，包裹；套装软件， 程序包"
+    },
+    {
+      "en": "packet",
+      "zh": "数据包，信息包；小包，小捆"
+    },
+    {
+      "en": "pact",
+      "zh": "协定；公约；条约；契约"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;

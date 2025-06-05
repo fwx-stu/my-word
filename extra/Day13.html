@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "fuse",
+      "zh": "保险丝，熔线；导火线，雷管"
+    },
+    {
+      "en": "fuss",
+      "zh": "大惊小怪，大惊小怪的人；小题大作；忙乱"
+    },
+    {
+      "en": "futile",
+      "zh": "无用的；无效的；没有出息的；琐细的；不重要的"
+    },
+    {
+      "en": "future",
+      "zh": "未来；前途；期货；将来时"
+    },
+    {
+      "en": "gadget",
+      "zh": "小玩意；小器具；小配件；诡计"
+    },
+    {
+      "en": "gain",
+      "zh": "增加；利润；收获"
+    },
+    {
+      "en": "galaxy",
+      "zh": "银河； 星系；银河系；一群显赫的人"
+    },
+    {
+      "en": "gallery",
+      "zh": "画廊；走廊；旁听席；地道"
+    },
+    {
+      "en": "gallon",
+      "zh": "加仑（容量单位）"
+    },
+    {
+      "en": "game",
+      "zh": "游戏；比赛"
+    },
+    {
+      "en": "gang",
+      "zh": "群；一伙；一组"
+    },
+    {
+      "en": "gaol",
+      "zh": "监狱"
+    },
+    {
+      "en": "gap",
+      "zh": "间隙；缺口；差距；分歧"
+    },
+    {
+      "en": "garage",
+      "zh": "车库；汽车修理厂；飞机库"
+    },
+    {
+      "en": "garbage",
+      "zh": "垃圾；废物"
+    },
+    {
+      "en": "garden",
+      "zh": "花园；菜园"
+    },
+    {
+      "en": "garlic",
+      "zh": "大蒜；蒜头"
+    },
+    {
+      "en": "gas",
+      "zh": "气体； 瓦斯；汽油；毒气"
+    },
+    {
+      "en": "gasolene",
+      "zh": "汽油，挥发油"
+    },
+    {
+      "en": "gasp",
+      "zh": "喘气"
+    }
+  ],
+  [
+    {
+      "en": "gate",
+      "zh": "大门；出入口；门道"
+    },
+    {
+      "en": "gather",
+      "zh": "聚集；衣褶；收获量"
+    },
+    {
+      "en": "gauge",
+      "zh": "计量器；标准尺寸；容量规格"
+    },
+    {
+      "en": "gay",
+      "zh": "同性恋者"
+    },
+    {
+      "en": "gender",
+      "zh": "性；性别；性交"
+    },
+    {
+      "en": "gene",
+      "zh": "基因，遗传因子"
+    },
+    {
+      "en": "generalise",
+      "zh": "推广；笼统地讲；概括"
+    },
+    {
+      "en": "generalize",
+      "zh": "形成概念"
+    },
+    {
+      "en": "generator",
+      "zh": "发电机；发生器；生产者"
+    },
+    {
+      "en": "gentle",
+      "zh": "蛆，饵"
+    },
+    {
+      "en": "gentleman",
+      "zh": "先生；绅士；有身份的人"
+    },
+    {
+      "en": "gently",
+      "zh": "轻轻地；温柔地，温和地"
+    },
+    {
+      "en": "germ",
+      "zh": "胚芽，萌芽；细菌"
+    },
+    {
+      "en": "get",
+      "zh": "生殖；幼兽"
+    },
+    {
+      "en": "ghost",
+      "zh": "鬼，幽灵"
+    },
+    {
+      "en": "giant",
+      "zh": "巨人；伟人； 巨大的动物"
+    },
+    {
+      "en": "gift",
+      "zh": "礼物；天赋；赠品"
+    },
+    {
+      "en": "giggle",
+      "zh": "吃吃的笑"
+    },
+    {
+      "en": "girl",
+      "zh": "女孩；姑娘，未婚女子；女职员，女演员；（男人的）女朋友"
+    },
+    {
+      "en": "give",
+      "zh": "弹性；弯曲；伸展性"
+    }
+  ],
+  [
+    {
+      "en": "glacier",
+      "zh": "冰河，冰川"
+    },
+    {
+      "en": "glad",
+      "zh": "高兴的；乐意的；令人高兴的；灿烂美丽的"
+    },
+    {
+      "en": "glamor",
+      "zh": "魅力；魔法；迷人的美"
+    },
+    {
+      "en": "glamour",
+      "zh": "魅力，魔力；迷人的美"
+    },
+    {
+      "en": "glare",
+      "zh": "刺眼；耀眼的光；受公众注目"
+    },
+    {
+      "en": "glass",
+      "zh": "玻璃；玻璃制品；镜子"
+    },
+    {
+      "en": "glide",
+      "zh": "滑翔；滑行；悄悄地走；消逝"
+    },
+    {
+      "en": "glitter",
+      "zh": "闪光；闪烁"
+    },
+    {
+      "en": "global",
+      "zh": "全球的；总体的；球形的"
+    },
+    {
+      "en": "globe",
+      "zh": "地球；地球仪；球体"
+    },
+    {
+      "en": "glorious",
+      "zh": "光荣的；辉煌的；极好的"
+    },
+    {
+      "en": "glory",
+      "zh": "光荣，荣誉；赞颂"
+    },
+    {
+      "en": "glove",
+      "zh": "手套"
+    },
+    {
+      "en": "glow",
+      "zh": "灼热；色彩鲜艳；兴高采烈"
+    },
+    {
+      "en": "glue",
+      "zh": "胶；各种胶合物"
+    },
+    {
+      "en": "go",
+      "zh": "去；进行；尝试"
+    },
+    {
+      "en": "goal",
+      "zh": "目标；球门，得分数；终点"
+    },
+    {
+      "en": "goat",
+      "zh": "山羊；替罪羊（美俚）；色鬼（美俚）"
+    },
+    {
+      "en": "gold",
+      "zh": "金，黄金；金色；金币"
+    },
+    {
+      "en": "golden",
+      "zh": "金色的，黄金般的；珍贵的；金制的"
+    }
+  ],
+  [
+    {
+      "en": "golf",
+      "zh": "高尔夫球；高尔夫球运动"
+    },
+    {
+      "en": "good",
+      "zh": "好处；善行；慷慨的行为"
+    },
+    {
+      "en": "goodbye",
+      "zh": "再见"
+    },
+    {
+      "en": "goodness",
+      "zh": "善良，优秀 ；精华，养分"
+    },
+    {
+      "en": "goods",
+      "zh": "商品；动产；合意的人；真本领"
+    },
+    {
+      "en": "goose",
+      "zh": "鹅；鹅肉；傻瓜；雌鹅"
+    },
+    {
+      "en": "gorgeous",
+      "zh": "华丽的，灿烂的；极好的"
+    },
+    {
+      "en": "gossip",
+      "zh": "小道传闻；随笔；爱说长道短的人"
+    },
+    {
+      "en": "governor",
+      "zh": "主管人员；统治者，管理者； 调节器；地方长官"
+    },
+    {
+      "en": "gown",
+      "zh": "长袍，长外衣；礼服；睡袍；法衣"
+    },
+    {
+      "en": "graceful",
+      "zh": "优雅的；优美的"
+    },
+    {
+      "en": "gracious",
+      "zh": "亲切的；高尚的；和蔼的；雅致的"
+    },
+    {
+      "en": "grade",
+      "zh": "年级；等级；成绩；级别；阶段"
+    },
+    {
+      "en": "graduate",
+      "zh": "研究生；毕业生"
+    },
+    {
+      "en": "gram",
+      "zh": "克；鹰嘴豆（用作饲料）"
+    },
+    {
+      "en": "grammar",
+      "zh": "语法；语法书"
+    },
+    {
+      "en": "gramme",
+      "zh": "克"
+    },
+    {
+      "en": "grandmother",
+      "zh": "祖母；女祖先"
+    },
+    {
+      "en": "grape",
+      "zh": "葡萄；葡萄酒；葡萄树；葡萄色"
+    },
+    {
+      "en": "graph",
+      "zh": "图表；曲线图"
+    }
+  ],
+  [
+    {
+      "en": "graphic",
+      "zh": "形象的；图表的；绘画似的"
+    },
+    {
+      "en": "grass",
+      "zh": "草；草地，草坪"
+    },
+    {
+      "en": "gray",
+      "zh": "灰色；暗淡的光线"
+    },
+    {
+      "en": "graze",
+      "zh": "放牧；轻擦"
+    },
+    {
+      "en": "grease",
+      "zh": "油脂；贿赂"
+    },
+    {
+      "en": "great",
+      "zh": "大师；大人物；伟人们"
+    },
+    {
+      "en": "greedy",
+      "zh": "贪婪的；贪吃的；渴望的"
+    },
+    {
+      "en": "green",
+      "zh": "绿色；青春"
+    },
+    {
+      "en": "greet",
+      "zh": "欢迎，迎接；致敬，致意；映入眼帘"
+    },
+    {
+      "en": "greeting",
+      "zh": "问候，招呼；祝贺"
+    },
+    {
+      "en": "grey",
+      "zh": "灰色"
+    },
+    {
+      "en": "grief",
+      "zh": "悲痛；忧伤；不幸"
+    },
+    {
+      "en": "grieve",
+      "zh": "悲痛，哀悼"
+    },
+    {
+      "en": "grim",
+      "zh": "冷酷的；糟糕的；残忍的"
+    },
+    {
+      "en": "grind",
+      "zh": "磨；苦工作"
+    },
+    {
+      "en": "groan",
+      "zh": "呻吟；叹息；吱嘎声"
+    },
+    {
+      "en": "grocer",
+      "zh": "杂货店；食品商"
+    },
+    {
+      "en": "grope",
+      "zh": "摸索；触摸"
+    },
+    {
+      "en": "ground",
+      "zh": "地面；土地；范围；战场;根据"
+    },
+    {
+      "en": "group",
+      "zh": "组；团体"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;

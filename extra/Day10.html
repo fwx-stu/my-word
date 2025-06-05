@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "electrician",
+      "zh": "电工；电气技师"
+    },
+    {
+      "en": "electron",
+      "zh": "电子"
+    },
+    {
+      "en": "element",
+      "zh": "元素；要素；原理；成分；自然环境"
+    },
+    {
+      "en": "elephant",
+      "zh": "象；大号图画纸"
+    },
+    {
+      "en": "elevate",
+      "zh": "提升；举起；振奋情绪等；提升…的职位"
+    },
+    {
+      "en": "elevator",
+      "zh": "电梯；升降机；升降舵；起卸机"
+    },
+    {
+      "en": "eleven",
+      "zh": "十一；十一个"
+    },
+    {
+      "en": "elicit",
+      "zh": "抽出，引出；引起"
+    },
+    {
+      "en": "eloquent",
+      "zh": "意味深长的；雄辩的，有口才的；有说服力的；动人的"
+    },
+    {
+      "en": "else",
+      "zh": "别的；其他的"
+    },
+    {
+      "en": "email",
+      "zh": "电子信函"
+    },
+    {
+      "en": "embark",
+      "zh": "从事，着手；上船或飞机"
+    },
+    {
+      "en": "embarrass",
+      "zh": "使局促不安；使困窘；阻碍"
+    },
+    {
+      "en": "embassy",
+      "zh": "大使馆；大使馆全体人员"
+    },
+    {
+      "en": "embed",
+      "zh": "栽种；使嵌入，使插入；使深留脑中"
+    },
+    {
+      "en": "eminent",
+      "zh": "杰出的；有名的；明显的"
+    },
+    {
+      "en": "emotion",
+      "zh": "情感；情绪"
+    },
+    {
+      "en": "empathy",
+      "zh": "神入；移情作用；执着"
+    },
+    {
+      "en": "emperor",
+      "zh": "皇帝，君主"
+    },
+    {
+      "en": "emphasise",
+      "zh": "（英）强调；加强…的语气"
+    }
+  ],
+  [
+    {
+      "en": "employ",
+      "zh": "使用；雇用"
+    },
+    {
+      "en": "employee",
+      "zh": "雇员；从业员工"
+    },
+    {
+      "en": "employer",
+      "zh": "雇主，老板"
+    },
+    {
+      "en": "enable",
+      "zh": "使能够，使成为可能；授予权利或方法"
+    },
+    {
+      "en": "enclose",
+      "zh": "围绕；装入；放入封套"
+    },
+    {
+      "en": "enclosure",
+      "zh": "附件；围墙；围场"
+    },
+    {
+      "en": "encourage",
+      "zh": "鼓励，怂恿；激励；支持"
+    },
+    {
+      "en": "encyclopaedia",
+      "zh": "百科全书"
+    },
+    {
+      "en": "encyclopedia",
+      "zh": "百科全书"
+    },
+    {
+      "en": "end",
+      "zh": "结束；目标；尽头；末端；死亡"
+    },
+    {
+      "en": "endeavor",
+      "zh": "努力；尽力"
+    },
+    {
+      "en": "ending",
+      "zh": "结局；结尾"
+    },
+    {
+      "en": "endorse",
+      "zh": "背书；认可；签署；赞同；在背面签名"
+    },
+    {
+      "en": "endow",
+      "zh": "赋予；捐赠；天生具有"
+    },
+    {
+      "en": "enemy",
+      "zh": "敌人，仇敌；敌军"
+    },
+    {
+      "en": "energy",
+      "zh": "能量；精力；活力；精神"
+    },
+    {
+      "en": "engine",
+      "zh": "引擎，发动机；机车，火车头；工具"
+    },
+    {
+      "en": "enjoy",
+      "zh": "欣赏，享受；喜爱；使过得快活"
+    },
+    {
+      "en": "enlighten",
+      "zh": "启发，启蒙；教导，开导；照耀"
+    },
+    {
+      "en": "enough",
+      "zh": "很多；充足"
+    }
+  ],
+  [
+    {
+      "en": "enquire",
+      "zh": "询问；调查；问候"
+    },
+    {
+      "en": "enroll",
+      "zh": "参加；登记；注册；记入名册"
+    },
+    {
+      "en": "enter",
+      "zh": "输入；回车"
+    },
+    {
+      "en": "entity",
+      "zh": "实体；存在；本质"
+    },
+    {
+      "en": "entry",
+      "zh": "进入；入口；条目；登记；报关手续；对土地的侵占"
+    },
+    {
+      "en": "envelope",
+      "zh": "信封，封皮；包膜； 包层；包迹"
+    },
+    {
+      "en": "environment",
+      "zh": "环境，外界"
+    },
+    {
+      "en": "envisage",
+      "zh": "正视，面对；想像"
+    },
+    {
+      "en": "envy",
+      "zh": "嫉妒，妒忌；羡慕"
+    },
+    {
+      "en": "equal",
+      "zh": "对手；匹敌；同辈；相等的事物"
+    },
+    {
+      "en": "equator",
+      "zh": "赤道"
+    },
+    {
+      "en": "equity",
+      "zh": "公平，公正；衡平法；普通股；抵押资产的净值"
+    },
+    {
+      "en": "era",
+      "zh": "时代；年代；纪元"
+    },
+    {
+      "en": "eradicate",
+      "zh": "根除，根绝；消灭"
+    },
+    {
+      "en": "erode",
+      "zh": "腐蚀，侵蚀"
+    },
+    {
+      "en": "erosion",
+      "zh": "侵蚀，腐蚀"
+    },
+    {
+      "en": "erroneous",
+      "zh": "错误的；不正确的"
+    },
+    {
+      "en": "error",
+      "zh": "误差；错误；过失"
+    },
+    {
+      "en": "escalate",
+      "zh": "使逐步上升"
+    },
+    {
+      "en": "escort",
+      "zh": "陪同；护航舰；护卫队；护送者"
+    }
+  ],
+  [
+    {
+      "en": "especially",
+      "zh": "特别；尤其；格外"
+    },
+    {
+      "en": "essay",
+      "zh": "散文；试图；随笔"
+    },
+    {
+      "en": "essential",
+      "zh": "本质；要素；要点；必需品"
+    },
+    {
+      "en": "esthetic",
+      "zh": "美学；审美家；唯美主义者"
+    },
+    {
+      "en": "eternal",
+      "zh": "永恒的；不朽的"
+    },
+    {
+      "en": "ethnic",
+      "zh": "种族的；人种的"
+    },
+    {
+      "en": "evacuate",
+      "zh": "疏散，撤退；排泄"
+    },
+    {
+      "en": "evaporate",
+      "zh": "使……蒸发；使……脱水；使……消失"
+    },
+    {
+      "en": "eve",
+      "zh": "前夕；傍晚；重大事件关头"
+    },
+    {
+      "en": "even",
+      "zh": "偶数的；平坦的；相等的"
+    },
+    {
+      "en": "evening",
+      "zh": "晚上；傍晚；（联欢性的）晚会；后期"
+    },
+    {
+      "en": "event",
+      "zh": "事件，大事；项目；结果"
+    },
+    {
+      "en": "eventually",
+      "zh": "最后，终于"
+    },
+    {
+      "en": "ever",
+      "zh": "永远；曾经；究竟"
+    },
+    {
+      "en": "every",
+      "zh": "每一的，每个的；每隔…的"
+    },
+    {
+      "en": "everybody",
+      "zh": "每个人；人人"
+    },
+    {
+      "en": "everyday",
+      "zh": "平时；寻常日子"
+    },
+    {
+      "en": "everyone",
+      "zh": "每个人"
+    },
+    {
+      "en": "everything",
+      "zh": "每件事物；最重要的东西；（有关的）一切；万事"
+    },
+    {
+      "en": "everywhere",
+      "zh": "每个地方"
+    }
+  ],
+  [
+    {
+      "en": "evil",
+      "zh": "罪恶，邪恶；不幸"
+    },
+    {
+      "en": "evoke",
+      "zh": "引起，唤起；博得"
+    },
+    {
+      "en": "exam",
+      "zh": "考试；测验"
+    },
+    {
+      "en": "example",
+      "zh": "例子；榜样"
+    },
+    {
+      "en": "exceedingly",
+      "zh": "非常；极其；极度地；极端"
+    },
+    {
+      "en": "except",
+      "zh": "除了；要不是"
+    },
+    {
+      "en": "excerpt",
+      "zh": "摘录，引用"
+    },
+    {
+      "en": "excite",
+      "zh": "激起；刺激…，使…兴奋"
+    },
+    {
+      "en": "exclaim",
+      "zh": "大声说出"
+    },
+    {
+      "en": "excursion",
+      "zh": "偏移；远足；短程旅行；离题；游览，游览团"
+    },
+    {
+      "en": "excuse",
+      "zh": "借口；理由"
+    },
+    {
+      "en": "execute",
+      "zh": "实行；执行；处死"
+    },
+    {
+      "en": "exercise",
+      "zh": "运动；练习；运用；操练；礼拜；典礼"
+    },
+    {
+      "en": "exile",
+      "zh": "流放，充军；放逐，被放逐者；流犯"
+    },
+    {
+      "en": "exotic",
+      "zh": "异国的；外来的；异国情调的"
+    },
+    {
+      "en": "expedition",
+      "zh": "远征；探险队；迅速"
+    },
+    {
+      "en": "expel",
+      "zh": "驱逐；开除"
+    },
+    {
+      "en": "expend",
+      "zh": "花费；消耗；用光；耗尽"
+    },
+    {
+      "en": "expensive",
+      "zh": "昂贵的；花钱的"
+    },
+    {
+      "en": "experience",
+      "zh": "经验；经历；体验"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;

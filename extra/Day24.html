@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "prisoner",
+      "zh": "囚犯，犯人；俘虏；刑事被告"
+    },
+    {
+      "en": "prize",
+      "zh": "奖品；奖赏；战利品"
+    },
+    {
+      "en": "probable",
+      "zh": "很可能的事；大有希望的候选者"
+    },
+    {
+      "en": "problem",
+      "zh": "难题；引起麻烦的人"
+    },
+    {
+      "en": "proceedings",
+      "zh": "诉讼；行动；会议记录；议程"
+    },
+    {
+      "en": "procession",
+      "zh": "队伍，行列；一列，一排；列队行进"
+    },
+    {
+      "en": "product",
+      "zh": "产品；结果； 乘积；作品"
+    },
+    {
+      "en": "professor",
+      "zh": "教授；教师；公开表示信仰的人"
+    },
+    {
+      "en": "profit",
+      "zh": "利润；利益"
+    },
+    {
+      "en": "program",
+      "zh": "程序；计划；大纲"
+    },
+    {
+      "en": "programme",
+      "zh": "计划，规划；节目；程序"
+    },
+    {
+      "en": "progress",
+      "zh": "进步，发展；前进"
+    },
+    {
+      "en": "project",
+      "zh": "工程；计划；事业"
+    },
+    {
+      "en": "projector",
+      "zh": "投影仪；放映机；探照灯；设计者"
+    },
+    {
+      "en": "promise",
+      "zh": "许诺，允诺；希望"
+    },
+    {
+      "en": "pronoun",
+      "zh": "代词"
+    },
+    {
+      "en": "pronounce",
+      "zh": "发音；宣判；断言"
+    },
+    {
+      "en": "pronunciation",
+      "zh": "发音；读法"
+    },
+    {
+      "en": "propaganda",
+      "zh": "宣传；传道总会"
+    },
+    {
+      "en": "propagate",
+      "zh": "传播；传送；繁殖；宣传"
+    }
+  ],
+  [
+    {
+      "en": "prophet",
+      "zh": "先知；预言者；提倡者"
+    },
+    {
+      "en": "prospective",
+      "zh": "预期；展望"
+    },
+    {
+      "en": "prosper",
+      "zh": "繁荣，昌盛；成功"
+    },
+    {
+      "en": "prosperous",
+      "zh": "繁荣的；兴旺的"
+    },
+    {
+      "en": "protect",
+      "zh": "保护，防卫；警戒"
+    },
+    {
+      "en": "protocol",
+      "zh": "协议；草案；礼仪"
+    },
+    {
+      "en": "prototype",
+      "zh": "原型；标准，模范"
+    },
+    {
+      "en": "prove",
+      "zh": "证明是"
+    },
+    {
+      "en": "provide",
+      "zh": "提供；规定；准备；装备"
+    },
+    {
+      "en": "province",
+      "zh": "省；领域；职权"
+    },
+    {
+      "en": "proximate",
+      "zh": "近似的；最近的"
+    },
+    {
+      "en": "psychiatry",
+      "zh": "精神病学；精神病治疗法"
+    },
+    {
+      "en": "pub",
+      "zh": "酒馆；客栈"
+    },
+    {
+      "en": "public",
+      "zh": "公众；社会；公共场所"
+    },
+    {
+      "en": "publicity",
+      "zh": "宣传，宣扬；公开；广告；注意"
+    },
+    {
+      "en": "publish",
+      "zh": "出版；发行；刊印"
+    },
+    {
+      "en": "puff",
+      "zh": "粉扑；泡芙；蓬松；肿块；吹嘘，宣传广告"
+    },
+    {
+      "en": "pull",
+      "zh": "拉，拉绳；拉力，牵引力；拖"
+    },
+    {
+      "en": "pulse",
+      "zh": "脉冲；脉搏"
+    },
+    {
+      "en": "pump",
+      "zh": "泵，抽水机；打气筒"
+    }
+  ],
+  [
+    {
+      "en": "punch",
+      "zh": "冲压机；打洞器；钻孔机"
+    },
+    {
+      "en": "punctual",
+      "zh": "准时的，守时的；精确的"
+    },
+    {
+      "en": "punish",
+      "zh": "惩罚；严厉对待；贪婪地吃喝"
+    },
+    {
+      "en": "pupil",
+      "zh": "学生； 瞳孔；未成年人"
+    },
+    {
+      "en": "puppet",
+      "zh": "木偶；傀儡；受他人操纵的人"
+    },
+    {
+      "en": "purple",
+      "zh": "紫色；紫袍"
+    },
+    {
+      "en": "purpose",
+      "zh": "目的；用途；意志"
+    },
+    {
+      "en": "purse",
+      "zh": "手提袋； 财力"
+    },
+    {
+      "en": "push",
+      "zh": "推，决心；大规模攻势；矢志的追求"
+    },
+    {
+      "en": "put",
+      "zh": "掷；笨蛋；投击；怪人"
+    },
+    {
+      "en": "qualitative",
+      "zh": "定性的；质的，性质上的"
+    },
+    {
+      "en": "quality",
+      "zh": "质量， 品质；特性；才能"
+    },
+    {
+      "en": "quantify",
+      "zh": "量化；为…定量；确定数量"
+    },
+    {
+      "en": "quarantine",
+      "zh": "检疫；隔离；检疫期；封锁"
+    },
+    {
+      "en": "quarrel",
+      "zh": "吵架；反目；怨言；争吵的原因；方头凿"
+    },
+    {
+      "en": "quart",
+      "zh": "夸脱（容量单位）；一夸脱的容器"
+    },
+    {
+      "en": "queen",
+      "zh": "女王，王后；（纸牌中的）皇后；（蜜蜂等的）蜂王"
+    },
+    {
+      "en": "queer",
+      "zh": "同性恋者；怪人；伪造的货币"
+    },
+    {
+      "en": "question",
+      "zh": "问题，疑问；询问；疑问句"
+    },
+    {
+      "en": "questionnaire",
+      "zh": "问卷；调查表"
+    }
+  ],
+  [
+    {
+      "en": "quick",
+      "zh": "核心；伤口的嫩肉"
+    },
+    {
+      "en": "quiet",
+      "zh": "安静；和平"
+    },
+    {
+      "en": "quilt",
+      "zh": "被子；棉被"
+    },
+    {
+      "en": "quite",
+      "zh": "很；相当；完全"
+    },
+    {
+      "en": "quiver",
+      "zh": "颤抖；箭袋；震动"
+    },
+    {
+      "en": "quiz",
+      "zh": "考查；恶作剧；课堂测验"
+    },
+    {
+      "en": "rabbit",
+      "zh": "兔子，野兔"
+    },
+    {
+      "en": "race",
+      "zh": "属，种；种族，人种；家庭，门第"
+    },
+    {
+      "en": "racial",
+      "zh": "种族的；人种的"
+    },
+    {
+      "en": "rack",
+      "zh": "齿条；架子；拷问台"
+    },
+    {
+      "en": "racket",
+      "zh": "球拍；吵闹，喧闹"
+    },
+    {
+      "en": "radiant",
+      "zh": "光点；发光的物体"
+    },
+    {
+      "en": "radiate",
+      "zh": "辐射状的，有射线的"
+    },
+    {
+      "en": "radio",
+      "zh": "收音机；无线电广播设备"
+    },
+    {
+      "en": "radioactive",
+      "zh": "放射性的；有辐射的"
+    },
+    {
+      "en": "rag",
+      "zh": "破布；碎屑"
+    },
+    {
+      "en": "raid",
+      "zh": "袭击；突袭；搜捕；抢劫"
+    },
+    {
+      "en": "rail",
+      "zh": "铁轨；扶手；横杆；围栏"
+    },
+    {
+      "en": "railroad",
+      "zh": "铁路；铁路公司"
+    },
+    {
+      "en": "railway",
+      "zh": "（英）铁路；轨道；铁道部门"
+    }
+  ],
+  [
+    {
+      "en": "rain",
+      "zh": "雨；下雨；雨天；雨季"
+    },
+    {
+      "en": "rainbow",
+      "zh": "彩虹；五彩缤纷的排列；幻想"
+    },
+    {
+      "en": "raise",
+      "zh": "高地；上升；加薪"
+    },
+    {
+      "en": "rake",
+      "zh": "耙子；斜度；钱耙；放荡的人，浪子"
+    },
+    {
+      "en": "rally",
+      "zh": "集会；回复；公路赛车会"
+    },
+    {
+      "en": "rap",
+      "zh": "轻敲"
+    },
+    {
+      "en": "rape",
+      "zh": "强奸，掠夺； 油菜；葡萄渣"
+    },
+    {
+      "en": "rapid",
+      "zh": "急流；高速交通工具，高速交通网"
+    },
+    {
+      "en": "rarely",
+      "zh": "很少地；难得；罕有地"
+    },
+    {
+      "en": "rash",
+      "zh": "皮疹；突然大量出现的事物"
+    },
+    {
+      "en": "rat",
+      "zh": "鼠；卑鄙小人，叛徒"
+    },
+    {
+      "en": "rate",
+      "zh": "比率，率；速度；价格；等级"
+    },
+    {
+      "en": "rather",
+      "zh": "宁可，宁愿；相当"
+    },
+    {
+      "en": "razor",
+      "zh": "剃刀"
+    },
+    {
+      "en": "reach",
+      "zh": "范围；延伸；河段；横风行驶"
+    },
+    {
+      "en": "read",
+      "zh": "阅读；读物"
+    },
+    {
+      "en": "reader",
+      "zh": "读者；阅读器；读物"
+    },
+    {
+      "en": "reading",
+      "zh": "阅读，朗读；读物；读数"
+    },
+    {
+      "en": "ready",
+      "zh": "现款；预备好的状态"
+    },
+    {
+      "en": "real",
+      "zh": "现实；实数"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;

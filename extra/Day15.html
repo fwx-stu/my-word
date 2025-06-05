@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "home",
+      "zh": "家，住宅；产地；家乡；避难所"
+    },
+    {
+      "en": "homework",
+      "zh": "家庭作业，课外作业"
+    },
+    {
+      "en": "homogeneous",
+      "zh": "均匀的； 齐次的；同种的；同类的，同质的"
+    },
+    {
+      "en": "honest",
+      "zh": "诚实的，实在的；可靠的；坦率的"
+    },
+    {
+      "en": "honey",
+      "zh": "蜂蜜；宝贝；甜蜜"
+    },
+    {
+      "en": "honor",
+      "zh": "荣誉；信用；头衔"
+    },
+    {
+      "en": "honorable",
+      "zh": "光荣的；可敬的；高贵的"
+    },
+    {
+      "en": "honour",
+      "zh": "荣誉；尊敬；勋章"
+    },
+    {
+      "en": "honourable",
+      "zh": "荣誉的；值得尊敬的；表示尊敬的；正直的"
+    },
+    {
+      "en": "hop",
+      "zh": "搭乘"
+    },
+    {
+      "en": "hope",
+      "zh": "希望；期望；信心"
+    },
+    {
+      "en": "hopeful",
+      "zh": "有希望成功的人"
+    },
+    {
+      "en": "horizontal",
+      "zh": "水平线，水平面；水平位置"
+    },
+    {
+      "en": "horn",
+      "zh": "喇叭，号角；角"
+    },
+    {
+      "en": "horrible",
+      "zh": "可怕的；极讨厌的"
+    },
+    {
+      "en": "horror",
+      "zh": "惊骇；惨状；极端厌恶；令人恐怖的事物"
+    },
+    {
+      "en": "horse",
+      "zh": "马；骑兵；脚架；海洛因"
+    },
+    {
+      "en": "horsepower",
+      "zh": "马力（功率单位）"
+    },
+    {
+      "en": "hose",
+      "zh": "软管；长筒袜；男性穿的紧身裤"
+    },
+    {
+      "en": "hospital",
+      "zh": "医院"
+    }
+  ],
+  [
+    {
+      "en": "host",
+      "zh": "主机；主人；主持人；许多"
+    },
+    {
+      "en": "hostage",
+      "zh": "人质；抵押品"
+    },
+    {
+      "en": "hostess",
+      "zh": "女主人，女老板；女服务员；舞女；女房东"
+    },
+    {
+      "en": "hot",
+      "zh": "热的；辣的；热情的；激动的；紧迫的"
+    },
+    {
+      "en": "hotel",
+      "zh": "旅馆，饭店；客栈"
+    },
+    {
+      "en": "hound",
+      "zh": "猎犬；卑劣的人"
+    },
+    {
+      "en": "hour",
+      "zh": "小时；钟头；课时；…点钟"
+    },
+    {
+      "en": "house",
+      "zh": "住宅；家庭；机构；议会；某种用途的建筑物"
+    },
+    {
+      "en": "housewife",
+      "zh": "家庭主妇"
+    },
+    {
+      "en": "hover",
+      "zh": "徘徊；盘旋；犹豫"
+    },
+    {
+      "en": "how",
+      "zh": "如何；多少；多么"
+    },
+    {
+      "en": "however",
+      "zh": "无论以何种方式; 不管怎样"
+    },
+    {
+      "en": "howl",
+      "zh": "嗥叫；怒号；嚎哭"
+    },
+    {
+      "en": "huddle",
+      "zh": "拥挤；混乱；杂乱一团"
+    },
+    {
+      "en": "hug",
+      "zh": "拥抱；紧抱；固执"
+    },
+    {
+      "en": "huge",
+      "zh": "巨大的；庞大的；无限的"
+    },
+    {
+      "en": "hum",
+      "zh": "嗡嗡声；哼声；杂声"
+    },
+    {
+      "en": "human",
+      "zh": "人；人类"
+    },
+    {
+      "en": "humid",
+      "zh": "潮湿的；湿润的；多湿气的"
+    },
+    {
+      "en": "humidity",
+      "zh": "湿度；湿气"
+    }
+  ],
+  [
+    {
+      "en": "humiliate",
+      "zh": "羞辱；使…丢脸；耻辱"
+    },
+    {
+      "en": "humor",
+      "zh": "幽默，诙谐；心情"
+    },
+    {
+      "en": "humour",
+      "zh": "幽默（等于humor）；诙谐"
+    },
+    {
+      "en": "hundred",
+      "zh": "百；百个"
+    },
+    {
+      "en": "hunger",
+      "zh": "饿，饥饿；渴望"
+    },
+    {
+      "en": "hungry",
+      "zh": "饥饿的；渴望的；荒年的；不毛的"
+    },
+    {
+      "en": "hunt",
+      "zh": "狩猎；搜寻"
+    },
+    {
+      "en": "hurl",
+      "zh": "用力的投掷"
+    },
+    {
+      "en": "hurricane",
+      "zh": "飓风，暴风"
+    },
+    {
+      "en": "hurry",
+      "zh": "匆忙，急忙"
+    },
+    {
+      "en": "hurt",
+      "zh": "痛苦；危害；痛苦的原因"
+    },
+    {
+      "en": "husband",
+      "zh": "丈夫"
+    },
+    {
+      "en": "hut",
+      "zh": "小屋；临时营房"
+    },
+    {
+      "en": "hybrid",
+      "zh": "杂种，混血儿；混合物"
+    },
+    {
+      "en": "hypocrisy",
+      "zh": "虚伪；伪善"
+    },
+    {
+      "en": "hypothesis",
+      "zh": "假设"
+    },
+    {
+      "en": "hysterical",
+      "zh": "歇斯底里的；异常兴奋的"
+    },
+    {
+      "en": "ice",
+      "zh": "冰；冰淇淋；矜持；（俚）钻石"
+    },
+    {
+      "en": "ice cream",
+      "zh": "冰淇淋"
+    },
+    {
+      "en": "icon",
+      "zh": "图标；偶像；肖像，画像；圣像"
+    }
+  ],
+  [
+    {
+      "en": "idea",
+      "zh": "想法；主意；概念"
+    },
+    {
+      "en": "identification",
+      "zh": "鉴定，识别；认同；身份证明"
+    },
+    {
+      "en": "idiom",
+      "zh": "成语，习语；土话"
+    },
+    {
+      "en": "idiot",
+      "zh": "笨蛋，傻瓜；白痴"
+    },
+    {
+      "en": "idle",
+      "zh": "闲置的；懒惰的；停顿的"
+    },
+    {
+      "en": "if",
+      "zh": "（表条件）如果；即使；是否；（表假设）假如"
+    },
+    {
+      "en": "ignite",
+      "zh": "点燃；使燃烧；使激动"
+    },
+    {
+      "en": "ignorance",
+      "zh": "无知，愚昧；不知，不懂"
+    },
+    {
+      "en": "ill",
+      "zh": "疾病；不幸"
+    },
+    {
+      "en": "illuminate",
+      "zh": "阐明，说明；照亮；使灿烂；用灯装饰"
+    },
+    {
+      "en": "illustration",
+      "zh": "说明；插图；例证；图解"
+    },
+    {
+      "en": "image",
+      "zh": "影像；想象；肖像；偶像"
+    },
+    {
+      "en": "imminent",
+      "zh": "即将来临的；迫近的"
+    },
+    {
+      "en": "impart",
+      "zh": "给予（尤指抽象事物），传授；告知，透露"
+    },
+    {
+      "en": "imperial",
+      "zh": "纸张尺寸；特等品"
+    },
+    {
+      "en": "impetus",
+      "zh": "动力；促进；冲力"
+    },
+    {
+      "en": "importance",
+      "zh": "价值；重要；重大；傲慢"
+    },
+    {
+      "en": "important",
+      "zh": "重要的，重大的；有地位的；有权力的"
+    },
+    {
+      "en": "impossible",
+      "zh": "不可能；不可能的事"
+    },
+    {
+      "en": "improve",
+      "zh": "改善，增进；提高…的价值"
+    }
+  ],
+  [
+    {
+      "en": "in",
+      "zh": "按照（表示方式）；从事于；在…之内"
+    },
+    {
+      "en": "inaugurate",
+      "zh": "创新；开辟；开创；举行开幕典礼；举行就职典礼"
+    },
+    {
+      "en": "inch",
+      "zh": "英寸；身高；少许"
+    },
+    {
+      "en": "incline",
+      "zh": "倾斜；斜面；斜坡"
+    },
+    {
+      "en": "include",
+      "zh": "包含，包括"
+    },
+    {
+      "en": "income",
+      "zh": "收入，收益；所得"
+    },
+    {
+      "en": "increase",
+      "zh": "增加，增长；提高"
+    },
+    {
+      "en": "indignant",
+      "zh": "愤愤不平的；义愤的"
+    },
+    {
+      "en": "indoor",
+      "zh": "室内的，户内的"
+    },
+    {
+      "en": "industrialise",
+      "zh": "使工业化"
+    },
+    {
+      "en": "industrialize",
+      "zh": "使工业化"
+    },
+    {
+      "en": "industry",
+      "zh": "产业；工业；勤勉"
+    },
+    {
+      "en": "infect",
+      "zh": "感染，传染"
+    },
+    {
+      "en": "infectious",
+      "zh": "传染的；传染性的；易传染的"
+    },
+    {
+      "en": "inflict",
+      "zh": "造成；使遭受（损伤、痛苦等）；给予（打击等）"
+    },
+    {
+      "en": "influence",
+      "zh": "影响；势力；感化；有影响的人或事"
+    },
+    {
+      "en": "influenza",
+      "zh": "流行性感冒；家畜流行性感冒"
+    },
+    {
+      "en": "information",
+      "zh": "信息，资料；知识；情报；通知"
+    },
+    {
+      "en": "infrared",
+      "zh": "红外线"
+    },
+    {
+      "en": "ingenious",
+      "zh": "有独创性的；机灵的，精制的；心灵手巧的"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;

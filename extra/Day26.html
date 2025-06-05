@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "ripe",
+      "zh": "熟的，成熟的；时机成熟的"
+    },
+    {
+      "en": "rise",
+      "zh": "上升；高地；增加；出现"
+    },
+    {
+      "en": "risk",
+      "zh": "风险；危险；冒险"
+    },
+    {
+      "en": "river",
+      "zh": "河，江"
+    },
+    {
+      "en": "road",
+      "zh": "公路，马路；道路；手段"
+    },
+    {
+      "en": "roar",
+      "zh": "咆哮；吼；轰鸣"
+    },
+    {
+      "en": "robe",
+      "zh": "长袍，礼服；制服"
+    },
+    {
+      "en": "robot",
+      "zh": "机器人；遥控设备，自动机械；机械般工作的人"
+    },
+    {
+      "en": "robust",
+      "zh": "强健的；健康的；粗野的；粗鲁的"
+    },
+    {
+      "en": "rock",
+      "zh": "岩石；摇滚乐；暗礁"
+    },
+    {
+      "en": "rod",
+      "zh": "棒；惩罚；枝条；权力"
+    },
+    {
+      "en": "role",
+      "zh": "角色；任务"
+    },
+    {
+      "en": "roll",
+      "zh": "卷，卷形物；名单；摇晃"
+    },
+    {
+      "en": "romance",
+      "zh": "传奇；浪漫史；风流韵事；冒险故事"
+    },
+    {
+      "en": "roof",
+      "zh": "屋顶；最高处，顶部；最高限度"
+    },
+    {
+      "en": "room",
+      "zh": "房间；空间；余地；机会；房间里所有的人"
+    },
+    {
+      "en": "root",
+      "zh": "根；根源；词根；祖先"
+    },
+    {
+      "en": "rope",
+      "zh": "绳，绳索"
+    },
+    {
+      "en": "rose",
+      "zh": "玫瑰；粉红色；蔷薇（花）；粉红色的葡萄酒"
+    },
+    {
+      "en": "rot",
+      "zh": "腐烂；腐败；腐坏"
+    }
+  ],
+  [
+    {
+      "en": "rotten",
+      "zh": "腐烂的；堕落的；恶臭的；虚弱的；极坏的"
+    },
+    {
+      "en": "round",
+      "zh": "圆；循环；一回合；圆形物"
+    },
+    {
+      "en": "rouse",
+      "zh": "觉醒；奋起"
+    },
+    {
+      "en": "route",
+      "zh": "路线；航线；通道"
+    },
+    {
+      "en": "row",
+      "zh": "行，排；划船；街道；吵闹"
+    },
+    {
+      "en": "royalty",
+      "zh": "皇室；版税；王权；专利税"
+    },
+    {
+      "en": "rub",
+      "zh": "摩擦；障碍；磨损处"
+    },
+    {
+      "en": "rubbish",
+      "zh": "垃圾，废物；废话"
+    },
+    {
+      "en": "rude",
+      "zh": "粗鲁的；无礼的；狂暴的；未开化的"
+    },
+    {
+      "en": "rug",
+      "zh": "小地毯；毛皮地毯；男子假发"
+    },
+    {
+      "en": "ruin",
+      "zh": "废墟；毁坏；灭亡"
+    },
+    {
+      "en": "rule",
+      "zh": "统治；规则"
+    },
+    {
+      "en": "ruler",
+      "zh": "尺；统治者； 划线板，划线的人"
+    },
+    {
+      "en": "rumor",
+      "zh": "谣言；传闻"
+    },
+    {
+      "en": "run",
+      "zh": "奔跑；赛跑；趋向；奔跑的路程"
+    },
+    {
+      "en": "rush",
+      "zh": "冲进；匆促；急流；灯心草"
+    },
+    {
+      "en": "rust",
+      "zh": "锈；生锈； 锈病"
+    },
+    {
+      "en": "ruthless",
+      "zh": "无情的，残忍的"
+    },
+    {
+      "en": "sack",
+      "zh": "麻布袋；洗劫"
+    },
+    {
+      "en": "sad",
+      "zh": "难过的；悲哀的，令人悲痛的；凄惨的，阴郁的（形容颜色）"
+    }
+  ],
+  [
+    {
+      "en": "saddle",
+      "zh": "鞍，鞍状物；车座；拖具"
+    },
+    {
+      "en": "safe",
+      "zh": "保险箱；冷藏室；纱橱"
+    },
+    {
+      "en": "safety",
+      "zh": "安全；保险；安全设备；保险装置；安打"
+    },
+    {
+      "en": "sail",
+      "zh": "帆，篷；航行"
+    },
+    {
+      "en": "sailor",
+      "zh": "水手，海员；乘船者"
+    },
+    {
+      "en": "sake",
+      "zh": "目的；利益；理由；日本米酒"
+    },
+    {
+      "en": "salad",
+      "zh": "色拉；尤指莴苣"
+    },
+    {
+      "en": "salary",
+      "zh": "薪水"
+    },
+    {
+      "en": "sale",
+      "zh": "销售；出售；拍卖；销售额；廉价出售"
+    },
+    {
+      "en": "salesman",
+      "zh": "推销员；售货员"
+    },
+    {
+      "en": "salesperson",
+      "zh": "售货员"
+    },
+    {
+      "en": "saleswoman",
+      "zh": "女售货员； 女店员"
+    },
+    {
+      "en": "salient",
+      "zh": "凸角；突出部分"
+    },
+    {
+      "en": "salt",
+      "zh": "盐；风趣，刺激性"
+    },
+    {
+      "en": "salute",
+      "zh": "致敬，欢迎；敬礼"
+    },
+    {
+      "en": "salvation",
+      "zh": "拯救；救助"
+    },
+    {
+      "en": "same",
+      "zh": "相同的；同一的；上述的（通常与the连用）；无变化的"
+    },
+    {
+      "en": "sand",
+      "zh": "沙；沙地；沙洲；沙滩；沙子"
+    },
+    {
+      "en": "sandwich",
+      "zh": "三明治；夹心面包"
+    },
+    {
+      "en": "sane",
+      "zh": "健全的；理智的； 神志正常的"
+    }
+  ],
+  [
+    {
+      "en": "sarcastic",
+      "zh": "挖苦的；尖刻的，辛辣的"
+    },
+    {
+      "en": "satire",
+      "zh": "讽刺；讽刺文学，讽刺作品"
+    },
+    {
+      "en": "saturate",
+      "zh": "浸透的，饱和的；深颜色的"
+    },
+    {
+      "en": "saturday",
+      "zh": "星期六"
+    },
+    {
+      "en": "sauce",
+      "zh": "酱油；沙司；调味汁"
+    },
+    {
+      "en": "saucer",
+      "zh": "茶托，浅碟；浅碟形物；眼睛"
+    },
+    {
+      "en": "sausage",
+      "zh": "香肠；腊肠；装香肠的碎肉"
+    },
+    {
+      "en": "saving",
+      "zh": "节约；挽救；存款"
+    },
+    {
+      "en": "saw",
+      "zh": "锯子；谚语"
+    },
+    {
+      "en": "say",
+      "zh": "讲；说明；例如；声称；假设；指明"
+    },
+    {
+      "en": "scan",
+      "zh": "扫描；浏览；审视；细看"
+    },
+    {
+      "en": "scandal",
+      "zh": "丑闻；流言蜚语；诽谤；公愤"
+    },
+    {
+      "en": "scar",
+      "zh": "创伤；伤痕"
+    },
+    {
+      "en": "scarce",
+      "zh": "缺乏的，不足的；稀有的"
+    },
+    {
+      "en": "scare",
+      "zh": "恐慌；惊吓；惊恐"
+    },
+    {
+      "en": "scarf",
+      "zh": "围巾；嵌接，嵌接处；头巾领巾"
+    },
+    {
+      "en": "scenario",
+      "zh": "方案；情节；剧本；设想"
+    },
+    {
+      "en": "scene",
+      "zh": "场面；情景；景象；事件"
+    },
+    {
+      "en": "scent",
+      "zh": "气味；嗅觉；痕迹；察觉能力"
+    },
+    {
+      "en": "scholarship",
+      "zh": "奖学金；学识，学问"
+    }
+  ],
+  [
+    {
+      "en": "school",
+      "zh": "学校；学院；学派；鱼群"
+    },
+    {
+      "en": "science",
+      "zh": "科学；技术；学科；理科"
+    },
+    {
+      "en": "scientific",
+      "zh": "科学的，系统的"
+    },
+    {
+      "en": "scientist",
+      "zh": "科学家"
+    },
+    {
+      "en": "scissors",
+      "zh": "剪刀；剪式跳法"
+    },
+    {
+      "en": "scold",
+      "zh": "责骂；爱责骂的人"
+    },
+    {
+      "en": "scout",
+      "zh": "搜索，侦察；侦察员；侦察机"
+    },
+    {
+      "en": "scramble",
+      "zh": "抢夺，争夺；混乱，混乱的一团；爬行，攀登"
+    },
+    {
+      "en": "scrap",
+      "zh": "碎片；残余物；打架；少量"
+    },
+    {
+      "en": "scrape",
+      "zh": "刮掉；擦痕；困境；刮擦声"
+    },
+    {
+      "en": "scratch",
+      "zh": "擦伤；抓痕；刮擦声；乱写"
+    },
+    {
+      "en": "screen",
+      "zh": "屏，幕；屏风"
+    },
+    {
+      "en": "screw",
+      "zh": "螺旋；螺丝钉；吝啬鬼"
+    },
+    {
+      "en": "script",
+      "zh": "脚本；手迹；书写用的字母"
+    },
+    {
+      "en": "sea",
+      "zh": "海；海洋；许多；大量"
+    },
+    {
+      "en": "seal",
+      "zh": "密封；印章；海豹；封条；标志"
+    },
+    {
+      "en": "seam",
+      "zh": "缝；接缝"
+    },
+    {
+      "en": "search",
+      "zh": "搜寻；探究，查究"
+    },
+    {
+      "en": "season",
+      "zh": "时期；季节；赛季"
+    },
+    {
+      "en": "seat",
+      "zh": "座位；所在地；职位"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;

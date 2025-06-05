@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "disrupt",
+      "zh": "破坏；使瓦解；使分裂；使中断；使陷于混乱"
+    },
+    {
+      "en": "dissipate",
+      "zh": "驱散；放荡"
+    },
+    {
+      "en": "distil",
+      "zh": "蒸馏；提取…的精华；使渗出"
+    },
+    {
+      "en": "distill",
+      "zh": "提取；蒸馏；使滴下"
+    },
+    {
+      "en": "distress",
+      "zh": "危难，不幸；贫困；悲痛"
+    },
+    {
+      "en": "disturbance",
+      "zh": "干扰；骚乱；忧虑"
+    },
+    {
+      "en": "dive",
+      "zh": "潜水；跳水；俯冲；扑"
+    },
+    {
+      "en": "divide",
+      "zh": "分水岭，分水线"
+    },
+    {
+      "en": "divine",
+      "zh": "牧师；神学家"
+    },
+    {
+      "en": "dizzy",
+      "zh": "晕眩的；使人头晕的；昏乱的；心不在焉的；愚蠢的"
+    },
+    {
+      "en": "do",
+      "zh": "行，足够；生长"
+    },
+    {
+      "en": "dock",
+      "zh": "码头；船坞；被告席；尾巴的骨肉部分"
+    },
+    {
+      "en": "doctor",
+      "zh": "修理；篡改，伪造；为…治病；授以博士学位"
+    },
+    {
+      "en": "documentary",
+      "zh": "纪录片"
+    },
+    {
+      "en": "dog",
+      "zh": "狗；丑女人；卑鄙的人；朋友"
+    },
+    {
+      "en": "doll",
+      "zh": "洋娃娃；玩偶；无头脑的美丽女人"
+    },
+    {
+      "en": "dollar",
+      "zh": "美元"
+    },
+    {
+      "en": "donkey",
+      "zh": "驴子；傻瓜；顽固的人"
+    },
+    {
+      "en": "door",
+      "zh": "门；家，户；门口；通道"
+    },
+    {
+      "en": "doorway",
+      "zh": "门口；途径"
+    }
+  ],
+  [
+    {
+      "en": "dorm",
+      "zh": "宿舍（等于dormitory）"
+    },
+    {
+      "en": "dormitory",
+      "zh": "宿舍，学生宿舍"
+    },
+    {
+      "en": "dot",
+      "zh": "点，圆点；嫁妆"
+    },
+    {
+      "en": "dove",
+      "zh": "鸽子；鸽派人士"
+    },
+    {
+      "en": "down",
+      "zh": "沿着，往下"
+    },
+    {
+      "en": "downstairs",
+      "zh": "楼下"
+    },
+    {
+      "en": "downtown",
+      "zh": "市中心区；三分线以外"
+    },
+    {
+      "en": "downward",
+      "zh": "向下的，下降的"
+    },
+    {
+      "en": "doze",
+      "zh": "瞌睡"
+    },
+    {
+      "en": "dragon",
+      "zh": "龙；凶暴的人，凶恶的人；严厉而有警觉性的女人"
+    },
+    {
+      "en": "draw",
+      "zh": "平局；抽签"
+    },
+    {
+      "en": "drawer",
+      "zh": "抽屉；开票人；出票人；起草者；酒馆侍"
+    },
+    {
+      "en": "drawing",
+      "zh": "图画；牵引；素描术"
+    },
+    {
+      "en": "dread",
+      "zh": "恐惧；可怕的人（或物）"
+    },
+    {
+      "en": "dream",
+      "zh": "梦想，愿望；梦"
+    },
+    {
+      "en": "dress",
+      "zh": "连衣裙；女装"
+    },
+    {
+      "en": "drill",
+      "zh": "训练；钻孔机；钻子；播种机"
+    },
+    {
+      "en": "drink",
+      "zh": "酒，饮料；喝酒"
+    },
+    {
+      "en": "drip",
+      "zh": "水滴，滴水声；静脉滴注；使人厌烦的人"
+    },
+    {
+      "en": "drive",
+      "zh": "驱动器；驾车； 内驱力，推进力；快车道"
+    }
+  ],
+  [
+    {
+      "en": "driver",
+      "zh": "驾驶员；驱动程序；起子；传动器"
+    },
+    {
+      "en": "drone",
+      "zh": "雄蜂；嗡嗡的声音；懒惰者"
+    },
+    {
+      "en": "drop",
+      "zh": "滴；落下；空投；微量；滴剂"
+    },
+    {
+      "en": "drown",
+      "zh": "淹没；把…淹死"
+    },
+    {
+      "en": "drug",
+      "zh": "药；毒品；麻醉药；滞销货"
+    },
+    {
+      "en": "drum",
+      "zh": "鼓；鼓声"
+    },
+    {
+      "en": "drunk",
+      "zh": "喝酒（drink的过去分词）"
+    },
+    {
+      "en": "dry",
+      "zh": "干涸"
+    },
+    {
+      "en": "dual",
+      "zh": "双数；双数词"
+    },
+    {
+      "en": "dubious",
+      "zh": "可疑的；暧昧的；无把握的；半信半疑的"
+    },
+    {
+      "en": "duck",
+      "zh": "鸭子；鸭肉；（英）宝贝儿；零分"
+    },
+    {
+      "en": "due",
+      "zh": "应付款；应得之物"
+    },
+    {
+      "en": "dull",
+      "zh": "钝的；迟钝的；无趣的；呆滞的；阴暗的"
+    },
+    {
+      "en": "dumb",
+      "zh": "哑的，无说话能力的；不说话的，无声音的"
+    },
+    {
+      "en": "dump",
+      "zh": "垃圾场；仓库；无秩序地累积"
+    },
+    {
+      "en": "during",
+      "zh": "在…的时候，在…的期间"
+    },
+    {
+      "en": "dusk",
+      "zh": "黄昏，薄暮；幽暗，昏暗"
+    },
+    {
+      "en": "dust",
+      "zh": "灰尘；尘埃；尘土"
+    },
+    {
+      "en": "duty",
+      "zh": "责任； 关税；职务"
+    },
+    {
+      "en": "dwarf",
+      "zh": "侏儒，矮子"
+    }
+  ],
+  [
+    {
+      "en": "dwell",
+      "zh": "居住；存在于；细想某事"
+    },
+    {
+      "en": "dye",
+      "zh": "染料；染色"
+    },
+    {
+      "en": "dynasty",
+      "zh": "王朝，朝代"
+    },
+    {
+      "en": "each",
+      "zh": "每；各自的"
+    },
+    {
+      "en": "eagle",
+      "zh": "鹰；鹰状标饰"
+    },
+    {
+      "en": "ear",
+      "zh": "耳朵；穗；听觉；倾听"
+    },
+    {
+      "en": "early",
+      "zh": "早期的；早熟的"
+    },
+    {
+      "en": "earth",
+      "zh": "地球；地表，陆地；土地，土壤；尘事，俗事；兽穴"
+    },
+    {
+      "en": "earthquake",
+      "zh": "地震；大动荡"
+    },
+    {
+      "en": "east",
+      "zh": "东方；东风；东方国家"
+    },
+    {
+      "en": "easter",
+      "zh": "复活节"
+    },
+    {
+      "en": "eastern",
+      "zh": "东方人；（美国）东部地区的人"
+    },
+    {
+      "en": "easy",
+      "zh": "容易的；舒适的"
+    },
+    {
+      "en": "eat",
+      "zh": "吃，喝；腐蚀；烦扰"
+    },
+    {
+      "en": "ebb",
+      "zh": "衰退；退潮；衰落"
+    },
+    {
+      "en": "eccentric",
+      "zh": "古怪的人"
+    },
+    {
+      "en": "echo",
+      "zh": "回音；效仿"
+    },
+    {
+      "en": "eclipse",
+      "zh": "日蚀，月蚀；黯然失色"
+    },
+    {
+      "en": "economic",
+      "zh": "经济的，经济上的；经济学的"
+    },
+    {
+      "en": "economical",
+      "zh": "经济的；节约的；合算的"
+    }
+  ],
+  [
+    {
+      "en": "economy",
+      "zh": "经济；节约；理财"
+    },
+    {
+      "en": "edible",
+      "zh": "食品；食物"
+    },
+    {
+      "en": "edit",
+      "zh": "编辑；校订"
+    },
+    {
+      "en": "editor",
+      "zh": "编者，编辑；社论撰写人；编辑装置"
+    },
+    {
+      "en": "educate",
+      "zh": "教育；培养；训练"
+    },
+    {
+      "en": "education",
+      "zh": "教育；培养；教育学"
+    },
+    {
+      "en": "effect",
+      "zh": "影响；效果；作用"
+    },
+    {
+      "en": "effort",
+      "zh": "努力；成就"
+    },
+    {
+      "en": "egg",
+      "zh": "蛋；卵子；家伙；鸡蛋"
+    },
+    {
+      "en": "ego",
+      "zh": "自我；自负；自我意识"
+    },
+    {
+      "en": "eight",
+      "zh": "八；八个；第八"
+    },
+    {
+      "en": "eighteen",
+      "zh": "十八，十八个"
+    },
+    {
+      "en": "eighty",
+      "zh": "八十"
+    },
+    {
+      "en": "either",
+      "zh": "也（用于否定句或否定词组后）；根本"
+    },
+    {
+      "en": "eject",
+      "zh": "喷射；驱逐，逐出"
+    },
+    {
+      "en": "elapse",
+      "zh": "流逝；时间的过去"
+    },
+    {
+      "en": "elastic",
+      "zh": "松紧带；橡皮圈"
+    },
+    {
+      "en": "elbow",
+      "zh": "肘部；弯头；扶手"
+    },
+    {
+      "en": "elder",
+      "zh": "老人；长辈；年长者；父辈"
+    },
+    {
+      "en": "elect",
+      "zh": "被选的人；特殊阶层；上帝的选民"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;

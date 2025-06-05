@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "pad",
+      "zh": "衬垫；护具；便笺簿；填补"
+    },
+    {
+      "en": "paddle",
+      "zh": "划桨；明轮翼"
+    },
+    {
+      "en": "page",
+      "zh": "页；记录；大事件，时期；男侍者"
+    },
+    {
+      "en": "pain",
+      "zh": "疼痛；努力"
+    },
+    {
+      "en": "painful",
+      "zh": "痛苦的；疼痛的；令人不快的"
+    },
+    {
+      "en": "painter",
+      "zh": "画家；油漆匠"
+    },
+    {
+      "en": "pair",
+      "zh": "一对，一双，一副"
+    },
+    {
+      "en": "pale",
+      "zh": "前哨；栅栏；范围"
+    },
+    {
+      "en": "palm",
+      "zh": "手掌；棕榈树；掌状物"
+    },
+    {
+      "en": "pamphlet",
+      "zh": "小册子"
+    },
+    {
+      "en": "pan",
+      "zh": "平底锅；盘状的器皿；淘盘子，金盘，秤盘"
+    },
+    {
+      "en": "panda",
+      "zh": "熊猫；猫熊"
+    },
+    {
+      "en": "panorama",
+      "zh": "全景，全貌；全景画；概论"
+    },
+    {
+      "en": "pant",
+      "zh": "气喘；喘息；喷气声"
+    },
+    {
+      "en": "pants",
+      "zh": "裤子"
+    },
+    {
+      "en": "paper",
+      "zh": "纸；论文；文件；报纸"
+    },
+    {
+      "en": "paperback",
+      "zh": "平装本；廉价本"
+    },
+    {
+      "en": "parade",
+      "zh": "游行；阅兵；炫耀；行进；阅兵场"
+    },
+    {
+      "en": "paradigm",
+      "zh": "范例；词形变化表"
+    },
+    {
+      "en": "paragraph",
+      "zh": "段落；短评；段落符号"
+    }
+  ],
+  [
+    {
+      "en": "paralyze",
+      "zh": "使麻痹；使瘫痪"
+    },
+    {
+      "en": "parameter",
+      "zh": "参数；系数；参量"
+    },
+    {
+      "en": "parasite",
+      "zh": "寄生虫；食客"
+    },
+    {
+      "en": "pardon",
+      "zh": "原谅；赦免；宽恕"
+    },
+    {
+      "en": "parent",
+      "zh": "父亲（或母亲）；父母亲；根源"
+    },
+    {
+      "en": "park",
+      "zh": "公园； 停车场"
+    },
+    {
+      "en": "part",
+      "zh": "部分；角色；零件；一些；片段"
+    },
+    {
+      "en": "partner",
+      "zh": "伙伴；合伙人；配偶"
+    },
+    {
+      "en": "party",
+      "zh": "政党，党派；聚会，派对；当事人"
+    },
+    {
+      "en": "pass",
+      "zh": "及格；经过；护照；途径；传球"
+    },
+    {
+      "en": "passage",
+      "zh": "一段（文章）；走廊；通路"
+    },
+    {
+      "en": "passenger",
+      "zh": "旅客；乘客；过路人；碍手碍脚的人"
+    },
+    {
+      "en": "passerby",
+      "zh": "行人，过路人"
+    },
+    {
+      "en": "passport",
+      "zh": "护照，通行证；手段"
+    },
+    {
+      "en": "past",
+      "zh": "过去；往事"
+    },
+    {
+      "en": "paste",
+      "zh": "面团，膏；糊状物， 浆糊"
+    },
+    {
+      "en": "pasture",
+      "zh": "草地；牧场；牧草"
+    },
+    {
+      "en": "pat",
+      "zh": "轻拍；小块；轻拍声"
+    },
+    {
+      "en": "patch",
+      "zh": "眼罩；斑点；碎片；小块土地"
+    },
+    {
+      "en": "path",
+      "zh": "道路；小路；轨道"
+    }
+  ],
+  [
+    {
+      "en": "pathetic",
+      "zh": "可怜的，悲哀的；感伤的；乏味的"
+    },
+    {
+      "en": "patriotic",
+      "zh": "爱国的"
+    },
+    {
+      "en": "patron",
+      "zh": "赞助人；保护人；主顾"
+    },
+    {
+      "en": "pattern",
+      "zh": "模式；图案；样品"
+    },
+    {
+      "en": "pavement",
+      "zh": "人行道"
+    },
+    {
+      "en": "paw",
+      "zh": "爪子；手"
+    },
+    {
+      "en": "pay",
+      "zh": "工资，薪水；付款；报答"
+    },
+    {
+      "en": "pea",
+      "zh": "豌豆"
+    },
+    {
+      "en": "peace",
+      "zh": "和平；平静；和睦；秩序"
+    },
+    {
+      "en": "peaceful",
+      "zh": "和平的，爱好和平的；平静的"
+    },
+    {
+      "en": "peach",
+      "zh": "桃子；桃树；桃红色；受人喜欢的人（或物）"
+    },
+    {
+      "en": "peanut",
+      "zh": "花生"
+    },
+    {
+      "en": "pear",
+      "zh": "梨树；梨子"
+    },
+    {
+      "en": "peasant",
+      "zh": "农民；乡下人"
+    },
+    {
+      "en": "pebble",
+      "zh": "卵石；水晶透镜"
+    },
+    {
+      "en": "pedal",
+      "zh": "踏板；脚蹬子"
+    },
+    {
+      "en": "pedestrian",
+      "zh": "行人；步行者"
+    },
+    {
+      "en": "peel",
+      "zh": "皮"
+    },
+    {
+      "en": "peep",
+      "zh": "偷看；隐约看见，瞥见"
+    },
+    {
+      "en": "pen",
+      "zh": "钢笔；作家；围栏"
+    }
+  ],
+  [
+    {
+      "en": "pencil",
+      "zh": "铅笔；笔状物"
+    },
+    {
+      "en": "pendulum",
+      "zh": "钟摆；摇锤；摇摆不定的事态"
+    },
+    {
+      "en": "penetrate",
+      "zh": "渗透；刺入；看透"
+    },
+    {
+      "en": "penny",
+      "zh": "（美）分；便士"
+    },
+    {
+      "en": "people",
+      "zh": "人；人类；民族；公民"
+    },
+    {
+      "en": "pepper",
+      "zh": "胡椒；辣椒；胡椒粉"
+    },
+    {
+      "en": "per",
+      "zh": "每；经；按照；每一"
+    },
+    {
+      "en": "per cent",
+      "zh": "每一百中"
+    },
+    {
+      "en": "percent",
+      "zh": "百分比，百分率；部分；百分数"
+    },
+    {
+      "en": "perfect",
+      "zh": "完成式"
+    },
+    {
+      "en": "perfume",
+      "zh": "香水；香味"
+    },
+    {
+      "en": "perhaps",
+      "zh": "假定；猜想；未定之事"
+    },
+    {
+      "en": "period",
+      "zh": "周期，期间；时期；月经；课时；（语法学）句点，句号"
+    },
+    {
+      "en": "periodical",
+      "zh": "期刊；杂志"
+    },
+    {
+      "en": "perish",
+      "zh": "死亡；毁灭；腐烂；枯萎"
+    },
+    {
+      "en": "permeate",
+      "zh": "渗透，透过；弥漫"
+    },
+    {
+      "en": "perplex",
+      "zh": "使困惑，使为难；使复杂化"
+    },
+    {
+      "en": "persecute",
+      "zh": "迫害；困扰；同…捣乱"
+    },
+    {
+      "en": "persevere",
+      "zh": "坚持；不屈不挠；固执己见（在辩论中）"
+    },
+    {
+      "en": "person",
+      "zh": "人；身体；容貌，外表；人称"
+    }
+  ],
+  [
+    {
+      "en": "personal",
+      "zh": "人事消息栏；人称代名词"
+    },
+    {
+      "en": "pest",
+      "zh": "害虫；有害之物；讨厌的人"
+    },
+    {
+      "en": "pet",
+      "zh": "宠物；生气；受宠爱的人"
+    },
+    {
+      "en": "petition",
+      "zh": "请愿；请愿书；祈求； 诉状"
+    },
+    {
+      "en": "petty",
+      "zh": "琐碎的；小气的；小规模的"
+    },
+    {
+      "en": "pharmacy",
+      "zh": "药房；配药学，药剂学；制药业；一批备用药品"
+    },
+    {
+      "en": "phone",
+      "zh": "电话；耳机，听筒"
+    },
+    {
+      "en": "photo",
+      "zh": "照片"
+    },
+    {
+      "en": "phrase",
+      "zh": "短语, 习语, 措辞, 乐句"
+    },
+    {
+      "en": "physiology",
+      "zh": "生理学；生理机能"
+    },
+    {
+      "en": "piano",
+      "zh": "钢琴"
+    },
+    {
+      "en": "pick",
+      "zh": "选择；鹤嘴锄；挖；掩护"
+    },
+    {
+      "en": "pickup",
+      "zh": "收集，整理；小卡车；拾起；搭车者；偶然结识者"
+    },
+    {
+      "en": "picnic",
+      "zh": "野餐"
+    },
+    {
+      "en": "picture",
+      "zh": "照片，图画；影片；景色；化身"
+    },
+    {
+      "en": "pie",
+      "zh": "馅饼；饼图；爱说话的人"
+    },
+    {
+      "en": "piece",
+      "zh": "块；件；篇；硬币"
+    },
+    {
+      "en": "pierce",
+      "zh": "刺穿；洞察；响彻；深深地打动"
+    },
+    {
+      "en": "pig",
+      "zh": "猪；猪肉"
+    },
+    {
+      "en": "pigeon",
+      "zh": "鸽子"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;

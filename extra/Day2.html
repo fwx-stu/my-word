@@ -90,13 +90,417 @@
 
 <script>
   const allWordPages = [
-    [{"en":"legacy","zh":"遗留问题，遗产"},{"en":"elegant","zh":"漂亮雅致的，巧妙的"},{"en":"dilemma","zh":"困境"},{"en":"lever","zh":"控制杆，撬动"},{"en":"liable","zh":"易于……的，可能的"},{"en":"reliance","zh":"依赖"},{"en":"alliance","zh":"结盟，联盟"},{"en":"liberate","zh":"使自由，解放"},{"en":"delicate","zh":"注意细节的，精致的，精美的"},{"en":"oblige","zh":"强迫，使感激"},{"en":"limitation","zh":"局限"},{"en":"literally","zh":"字面上，确实地"},{"en":"literacy","zh":"读写能力"},{"en":"location","zh":"地方，地点"},{"en":"apologize","zh":"道歉"},{"en":"catalogue","zh":"目录，编目录"},{"en":"prolong","zh":"延长，拖长"},{"en":"illusion","zh":"错觉"},{"en":"luxury","zh":"奢侈品，奢华"},{"en":"margin","zh":"边缘，利润，边缘部分"}],
-    [{"en":"mechanic","zh":"技工，机械修理工，机械学，方法"},{"en":"dimension","zh":"方面，维度，大小，尺寸"},{"en":"commerce","zh":"贸易，商务，商业"},{"en":"merit","zh":"价值，优点，值得，优异"},{"en":"prominent","zh":"杰出的，重要的"},{"en":"minimum","zh":"最低限度，最少量"},{"en":"minimize","zh":"把……减至最小量"},{"en":"misery","zh":"苦难"},{"en":"miserable","zh":"痛苦的，使难受的"},{"en":"promising","zh":"有希望的，有前途的"},{"en":"transmit","zh":"传送，传播"},{"en":"submit","zh":"提交，呈递"},{"en":"admission","zh":"准许加入，加入权"},{"en":"mixture","zh":"混合"},{"en":"moderate","zh":"适中的，温和的"},{"en":"modify","zh":"修改，调整"},{"en":"motive","zh":"原因，目的"},{"en":"remote","zh":"偏远的，微乎其微的，遥远的"},{"en":"mount","zh":"山，发动，增加"},{"en":"multitude","zh":"大量，群众，大批"}],
-    [{"en":"commute","zh":"上下班交通，通勤，上下班往返"},{"en":"mutual","zh":"相互的，共同的"},{"en":"mystery","zh":"神秘的事物，神秘的人，神秘"},{"en":"navy","zh":"海军"},{"en":"innocent","zh":"无罪的，清白的，无害的"},{"en":"numerical","zh":"数字的"},{"en":"nurture","zh":"抚养，养育"},{"en":"nutrition","zh":"营养，滋养"},{"en":"petrol","zh":"汽油"},{"en":"adolescent","zh":"青春期的，青少年"},{"en":"cooperate","zh":"合作"},{"en":"operator","zh":"经营者，操作员"},{"en":"opt","zh":"选择"},{"en":"orbit","zh":"轨道"},{"en":"orchestra","zh":"管弦乐队"},{"en":"organic","zh":"有机的，器官的"},{"en":"accompany","zh":"陪伴，伴随"},{"en":"companion","zh":"同伴，同行者"},{"en":"expansion","zh":"扩张，扩展"},{"en":"comparable","zh":"类比的"}],
-    [{"en":"comparative","zh":"比较的，比效高的"},{"en":"preparation","zh":"准备，预备"},{"en":"apartment","zh":"公寓套房"},{"en":"depart","zh":"离开，启程"},{"en":"partial","zh":"部分的，偏袒的"},{"en":"portion","zh":"部分，分担的责任"},{"en":"passive","zh":"被动的，消极的"},{"en":"sympathetic","zh":"同情的，招人喜欢的"},{"en":"compel","zh":"强迫"},{"en":"propel","zh":"推动，驱使"},{"en":"penalty","zh":"惩罚"},{"en":"compensate","zh":"弥补，赔偿"},{"en":"pension","zh":"养老金"},{"en":"suspend","zh":"暂停，延缓，拒退"},{"en":"personnel","zh":"全体人员"},{"en":"pessimistic","zh":"悲观的，悲观主义的"},{"en":"phase","zh":"阶段，时期"},{"en":"depict","zh":"描写，描绘"},{"en":"paint","zh":"油漆涂层，画"},{"en":"pile","zh":"堆，堆放"}],
-    [{"en":"simplify","zh":"使简化，使简易"},{"en":"implicit","zh":"含蓄的，内含的，绝对的"},{"en":"implement","zh":"实施"},{"en":"surplus","zh":"过剩，多余的"},{"en":"appointment","zh":"任命，职务"},{"en":"metropolitan","zh":"都市的，本土的"},{"en":"component","zh":"成分，零部件"},{"en":"compose","zh":"创作，作曲，创作"},{"en":"compound","zh":"混合物，使加重"},{"en":"predator","zh":"捕食性动物，捕食者"},{"en":"comprise","zh":"包含，包括"},{"en":"comprehend","zh":"理解"},{"en":"premier","zh":"总理，省总理，最佳的"},{"en":"principal","zh":"主要的，校长"},{"en":"prime","zh":"重要的，鼎盛时期，做好准备"},{"en":"primitive","zh":"原始的，发展水平低的"},{"en":"approve","zh":"批准，赞成"},{"en":"proof","zh":"证据，证明，验证"},{"en":"acquaintance","zh":"熟人，认识的人"},{"en":"qualify","zh":"使合格，取得资格"}],
-    [{"en":"quest","zh":"追求，探索"},{"en":"rage","zh":"盛怒"},{"en":"ray","zh":"光线，一丝"},{"en":"realistic","zh":"实际的，现实的，逼真的，现实主义的"},{"en":"thrive","zh":"蓬勃发展，茁壮成长"}]
-  ];
+  [
+    {
+      "en": "angel",
+      "zh": "天使；守护神；善人"
+    },
+    {
+      "en": "anger",
+      "zh": "怒，愤怒；忿怒"
+    },
+    {
+      "en": "angry",
+      "zh": "生气的；愤怒的；狂暴的；（伤口等）发炎的"
+    },
+    {
+      "en": "anguish",
+      "zh": "痛苦；苦恼"
+    },
+    {
+      "en": "animal",
+      "zh": "动物"
+    },
+    {
+      "en": "ankle",
+      "zh": "踝关节，踝"
+    },
+    {
+      "en": "anniversary",
+      "zh": "周年纪念日"
+    },
+    {
+      "en": "another",
+      "zh": "另一个；另一个人"
+    },
+    {
+      "en": "answer",
+      "zh": "回答；答案；答辩"
+    },
+    {
+      "en": "ant",
+      "zh": "蚂蚁"
+    },
+    {
+      "en": "antenna",
+      "zh": "天线； 触角， 触须"
+    },
+    {
+      "en": "antique",
+      "zh": "古董，古玩；古风，古希腊和古罗马艺术风格"
+    },
+    {
+      "en": "any",
+      "zh": "任何的；所有的；丝毫"
+    },
+    {
+      "en": "anybody",
+      "zh": "重要人物"
+    },
+    {
+      "en": "anyhow",
+      "zh": "总之；无论如何；不管怎样"
+    },
+    {
+      "en": "anyone",
+      "zh": "任何人；任何一个"
+    },
+    {
+      "en": "anything",
+      "zh": "任何事"
+    },
+    {
+      "en": "anyway",
+      "zh": "无论如何，不管怎样；总之"
+    },
+    {
+      "en": "anywhere",
+      "zh": "任何地方"
+    },
+    {
+      "en": "apart",
+      "zh": "分离的；与众不同的"
+    }
+  ],
+  [
+    {
+      "en": "ape",
+      "zh": "猿；傻瓜；模仿者"
+    },
+    {
+      "en": "apologise",
+      "zh": "道歉（等于apologize）"
+    },
+    {
+      "en": "appal",
+      "zh": "使惊骇；惊吓"
+    },
+    {
+      "en": "appall",
+      "zh": "使胆寒；使惊骇"
+    },
+    {
+      "en": "appear",
+      "zh": "出现；显得；似乎；出庭；登场"
+    },
+    {
+      "en": "applaud",
+      "zh": "赞同；称赞；向…喝彩"
+    },
+    {
+      "en": "applause",
+      "zh": "欢呼，喝采；鼓掌欢迎"
+    },
+    {
+      "en": "apple",
+      "zh": "苹果，苹果树，苹果似的东西"
+    },
+    {
+      "en": "applicable",
+      "zh": "可适用的；可应用的；合适的"
+    },
+    {
+      "en": "appraisal",
+      "zh": "评价；估价（尤指估价财产，以便征税）；估计"
+    },
+    {
+      "en": "approximate",
+      "zh": "近似的；大概的"
+    },
+    {
+      "en": "april",
+      "zh": "四月"
+    },
+    {
+      "en": "apt",
+      "zh": "恰当的；有…倾向的；灵敏的"
+    },
+    {
+      "en": "arch",
+      "zh": "弓形，拱形；拱门"
+    },
+    {
+      "en": "archaeology",
+      "zh": "考古学"
+    },
+    {
+      "en": "archeology",
+      "zh": "考古学（等于archaeology）"
+    },
+    {
+      "en": "archive",
+      "zh": "档案馆；档案文件"
+    },
+    {
+      "en": "area",
+      "zh": "区域，地区；面积；范围"
+    },
+    {
+      "en": "arena",
+      "zh": "舞台；竞技场"
+    },
+    {
+      "en": "argue",
+      "zh": "争论，辩论；提出理由"
+    }
+  ],
+  [
+    {
+      "en": "arithmetic",
+      "zh": "算术，算法"
+    },
+    {
+      "en": "arm",
+      "zh": "手臂；武器；袖子；装备；部门"
+    },
+    {
+      "en": "army",
+      "zh": "陆军，军队"
+    },
+    {
+      "en": "around",
+      "zh": "四处；在…周围"
+    },
+    {
+      "en": "arrival",
+      "zh": "到来；到达；到达者"
+    },
+    {
+      "en": "arrive",
+      "zh": "到达；成功；达成；出生"
+    },
+    {
+      "en": "arrogant",
+      "zh": "自大的，傲慢的"
+    },
+    {
+      "en": "arrow",
+      "zh": "箭，箭头；箭状物；箭头记号"
+    },
+    {
+      "en": "art",
+      "zh": "艺术；美术；艺术品"
+    },
+    {
+      "en": "artery",
+      "zh": "动脉；干道；主流"
+    },
+    {
+      "en": "article",
+      "zh": "文章；物品；条款； 冠词"
+    },
+    {
+      "en": "articulate",
+      "zh": "发音清晰的；口才好的；有关节的"
+    },
+    {
+      "en": "artifact",
+      "zh": "人工制品；手工艺品"
+    },
+    {
+      "en": "artist",
+      "zh": "艺术家；美术家（尤指画家）；大师"
+    },
+    {
+      "en": "as",
+      "zh": "因为；随着；虽然；依照；当…时"
+    },
+    {
+      "en": "ascend",
+      "zh": "上升；登高；追溯"
+    },
+    {
+      "en": "ascertain",
+      "zh": "确定；查明；探知"
+    },
+    {
+      "en": "ascribe",
+      "zh": "归因于；归咎于"
+    },
+    {
+      "en": "ash",
+      "zh": "灰；灰烬"
+    },
+    {
+      "en": "ashamed",
+      "zh": "惭愧的，感到难为情的；耻于……的"
+    }
+  ],
+  [
+    {
+      "en": "ashore",
+      "zh": "在岸上的；在陆上的"
+    },
+    {
+      "en": "ask",
+      "zh": "问，询问；要求；需要；邀请；讨价"
+    },
+    {
+      "en": "asleep",
+      "zh": "睡着的；麻木的；长眠的"
+    },
+    {
+      "en": "aspire",
+      "zh": "渴望；立志；追求"
+    },
+    {
+      "en": "assassinate",
+      "zh": "暗杀；行刺"
+    },
+    {
+      "en": "assurance",
+      "zh": "保证，担保；（人寿）保险；确信；断言；厚脸皮，无耻"
+    },
+    {
+      "en": "astonish",
+      "zh": "使惊讶"
+    },
+    {
+      "en": "astronaut",
+      "zh": "宇航员，航天员；太空旅行者"
+    },
+    {
+      "en": "at",
+      "zh": "在"
+    },
+    {
+      "en": "athlete",
+      "zh": "运动员，体育家；身强力壮的人"
+    },
+    {
+      "en": "atom",
+      "zh": "原子"
+    },
+    {
+      "en": "attendant",
+      "zh": "服务员，侍者；随员，陪从"
+    },
+    {
+      "en": "attention",
+      "zh": "注意力；关心；立正！（口令）"
+    },
+    {
+      "en": "attitude",
+      "zh": "态度；看法；意见；姿势"
+    },
+    {
+      "en": "attract",
+      "zh": "吸引；引起"
+    },
+    {
+      "en": "audience",
+      "zh": "观众；听众；读者；接见"
+    },
+    {
+      "en": "audio",
+      "zh": "声音的； 音频的， 声频的"
+    },
+    {
+      "en": "audit",
+      "zh": "审计； 查账"
+    },
+    {
+      "en": "auditorium",
+      "zh": "礼堂，会堂；观众席"
+    },
+    {
+      "en": "aunt",
+      "zh": "阿姨；姑妈；伯母；舅妈"
+    }
+  ],
+  [
+    {
+      "en": "aural",
+      "zh": "听觉的；耳的；气味的；先兆的"
+    },
+    {
+      "en": "author",
+      "zh": "作者；作家；创始人"
+    },
+    {
+      "en": "auto",
+      "zh": "汽车（等于automobile）；自动"
+    },
+    {
+      "en": "autonomy",
+      "zh": "自治，自治权"
+    },
+    {
+      "en": "autumn",
+      "zh": "秋天；成熟期；渐衰期，凋落期"
+    },
+    {
+      "en": "auxiliary",
+      "zh": "助动词；辅助者，辅助物；附属机构"
+    },
+    {
+      "en": "avail",
+      "zh": "有益于，有益于；使对某人有利。"
+    },
+    {
+      "en": "average",
+      "zh": "平均；平均数；海损"
+    },
+    {
+      "en": "avert",
+      "zh": "避免，防止；转移"
+    },
+    {
+      "en": "aviation",
+      "zh": "航空；飞行术；飞机制造业"
+    },
+    {
+      "en": "avoid",
+      "zh": "避免；避开，躲避；消除"
+    },
+    {
+      "en": "awake",
+      "zh": "醒着的"
+    },
+    {
+      "en": "away",
+      "zh": "离去，离开；在远处"
+    },
+    {
+      "en": "awe",
+      "zh": "敬畏"
+    },
+    {
+      "en": "awful",
+      "zh": "可怕的；极坏的；使人敬畏的"
+    },
+    {
+      "en": "ax",
+      "zh": "斧头"
+    },
+    {
+      "en": "axe",
+      "zh": "斧"
+    },
+    {
+      "en": "axis",
+      "zh": "轴；轴线；轴心国"
+    },
+    {
+      "en": "baby",
+      "zh": "婴儿，婴孩；孩子气的人"
+    },
+    {
+      "en": "back",
+      "zh": "后面；背部；靠背；足球等的后卫"
+    }
+  ]
+];
 
   let currentPage = 0;
   let firstSelected = null;
