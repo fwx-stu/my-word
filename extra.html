@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>补充单词</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #ffffff;
+      padding: 30px;
+    }
+    h2 {
+      color: #ffc107;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 6px 0;
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+      font-size: 16px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📒 补充单词 Day1 - Day34</h2>
+  <ul id="extraList"></ul>
+
+<!-- 下载 TXT 区域 -->
+<div style="margin-top: 20px;">
+  <a href="downloads/补充单词.txt" download style="font-size: 16px; color: #007bff; text-decoration: none;">
+    📄 下载补充单词 TXT文本
+  </a>
+</div>
+
+  <script>
+    const list = document.getElementById("extraList");
+    for (let i = 1; i <= 34; i++) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = `extra/Day${i}.html`;
+      a.textContent = `补充 Day${i}`;
+      li.appendChild(a);
+      list.appendChild(li);
+    }
+    const reviewLi = document.createElement("li");
+    const reviewA = document.createElement("a");
+    reviewA.href = "extra/补充单词随机抽查.html";
+    reviewA.textContent = "补充单词复习";
+    reviewLi.appendChild(reviewA);
+    list.appendChild(reviewLi);
+  </script>
+
+</body>
+</html>
