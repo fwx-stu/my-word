@@ -6,47 +6,223 @@
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
-      background-color: #ffffff;
+      background-image: url('images/bnu-campus.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       padding: 30px;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
+
     h2 {
       color: #007bff;
       margin-bottom: 20px;
+      font-size: 32px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
     }
-    ul {
-      list-style: none;
-      padding-left: 0;
+
+    h2 img {
+      height: 40px;
+      vertical-align: middle;
     }
-    li {
-      margin: 6px 0;
+
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
     }
+
     a {
+      display: inline-block;
       text-decoration: none;
-      color: #007bff;
-      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-size: 20px;
+      transition: 0.3s;
     }
+
     a:hover {
-      text-decoration: underline;
+      background-color: #0056b3;
+    }
+
+    .extras {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* 鼓励语样式 */
+    .cheer-text {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: #e63946;
+      margin-top: 30px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.85; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* SVG decorations */
+    .cloud, .flower, .grass {
+      position: absolute;
+    }
+
+    .cloud {
+      width: 100px;
+      height: 60px;
+      animation: floatCloud 30s linear infinite;
+    }
+
+    .flower {
+      width: 40px;
+      height: 40px;
+      animation: swayFlower 3s ease-in-out infinite alternate;
+    }
+
+    .grass {
+      width: 50px;
+      height: 50px;
+      animation: swayGrass 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatCloud {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(100vw); }
+    }
+
+    @keyframes swayFlower {
+      0% { transform: rotate(-5deg); }
+      100% { transform: rotate(5deg); }
+    }
+
+    @keyframes swayGrass {
+      0% { transform: rotate(-3deg); }
+      100% { transform: rotate(3deg); }
     }
   </style>
 </head>
 <body>
 
-  <h2>📘 高频单词 Day1 - Day10</h2>
-  <ul>
-    <li><a href="high/Day1.html">高频 Day1</a></li>
-    <li><a href="high/Day2.html">高频 Day2</a></li>
-    <li><a href="high/Day3.html">高频 Day3</a></li>
-    <li><a href="high/Day4.html">高频 Day4</a></li>
-    <li><a href="high/Day5.html">高频 Day5</a></li>
-    <li><a href="high/Day6.html">高频 Day6</a></li>
-    <li><a href="high/Day7.html">高频 Day7</a></li>
-    <li><a href="high/Day8.html">高频 Day8</a></li>
-    <li><a href="high/Day9.html">高频 Day9</a></li>
-    <li><a href="high/Day10.html">高频 Day10</a></li>
-    <li><a href="high/高频复习.html">随机抽查</a></li>
-    <li><a href="downloads/高频单词.pdf" download>📄 下载高频单词 PDF</a></li>
-  </ul>
+  <h2>
+    <img src="images/bnu-logo-icon.png" alt="北师大 Logo">
+    📘 高频单词 Day1 - Day10
+  </h2>
+
+  <div class="button-container">
+    <a href="high/Day1.html" id="day1">高频 Day1</a>
+    <a href="high/Day2.html" id="day2">高频 Day2</a>
+    <a href="high/Day3.html" id="day3">高频 Day3</a>
+    <a href="high/Day4.html" id="day4">高频 Day4</a>
+    <a href="high/Day5.html" id="day5">高频 Day5</a>
+    <a href="high/Day6.html" id="day6">高频 Day6</a>
+    <a href="high/Day7.html" id="day7">高频 Day7</a>
+    <a href="high/Day8.html" id="day8">高频 Day8</a>
+    <a href="high/Day9.html" id="day9">高频 Day9</a>
+    <a href="high/Day10.html" id="day10">高频 Day10</a>
+  </div>
+
+  <div class="extras">
+    <a href="high/高频复习.html">🎯 随机抽查</a>
+    <br><br>
+    <a href="downloads/高频单词.pdf" download>📄 下载高频单词 PDF</a>
+
+    <!-- 鼓励语句区 -->
+    <div class="cheer-text" id="cheerText">🎓 考研加油！！！</div>
+  </div>
+
+  <!-- 白云 -->
+  <svg class="cloud" style="top: 30px; left: 5%;" viewBox="0 0 100 60">
+    <circle cx="30" cy="30" r="20" fill="#fff"/>
+    <circle cx="50" cy="25" r="25" fill="#fff"/>
+    <circle cx="70" cy="30" r="20" fill="#fff"/>
+  </svg>
+  <svg class="cloud" style="top: 70px; left: 40%;" viewBox="0 0 100 60">
+    <circle cx="30" cy="30" r="20" fill="#fff"/>
+    <circle cx="50" cy="25" r="25" fill="#fff"/>
+    <circle cx="70" cy="30" r="20" fill="#fff"/>
+  </svg>
+
+  <!-- 小花 -->
+  <svg class="flower" style="bottom: 50px; left: 20%;" viewBox="0 0 100 100">
+    <path d="M50,50 Q40,10 30,50 Q40,90 50,50" fill="pink"/>
+    <path d="M50,50 Q60,10 70,50 Q60,90 50,50" fill="pink"/>
+    <path d="M50,50 Q10,40 50,30 Q90,40 50,50" fill="pink"/>
+    <circle cx="50" cy="50" r="10" fill="yellow"/>
+  </svg>
+
+  <!-- 小草 -->
+  <svg class="grass" style="bottom: 10px; left: 10%;" viewBox="0 0 100 100">
+    <path d="M50,100 C40,70 30,40 50,10 C70,40 60,70 50,100 Z" fill="green"/>
+  </svg>
+
+  <!-- JS 逻辑 -->
+  <script>
+    // 记忆功能
+    const totalDays = 10;
+    let currentDay = localStorage.getItem('currentDay') || 1;
+
+    function updateButtonStates() {
+      for (let i = 1; i <= totalDays; i++) {
+        const btn = document.getElementById(`day${i}`);
+        if (!btn) continue;
+
+        if (i < currentDay) {
+          btn.style.backgroundColor = '#6c757d';
+        } else if (i == currentDay) {
+          btn.style.boxShadow = '0 0 15px yellow';
+        }
+      }
+    }
+
+    document.querySelectorAll('a[id^="day"]').forEach(a => {
+      a.addEventListener('click', () => {
+        const clickedDay = parseInt(a.id.replace('day', ''));
+        if (clickedDay === parseInt(currentDay)) {
+          let nextDay = clickedDay + 1;
+          if (nextDay <= totalDays) {
+            localStorage.setItem('currentDay', nextDay);
+          }
+          setTimeout(() => {
+            updateButtonStates();
+            if (nextDay > totalDays) {
+              alert("🎉 恭喜你完成所有单词，可以开始复习了！");
+            }
+          }, 500);
+        }
+      });
+    });
+
+    updateButtonStates();
+
+    // 随机励志语
+    const cheers = [
+      "🎓 考研加油！！！",
+      "💪 你是最棒的！",
+      "🚀 每天进步一点点！",
+      "🌈 不负韶华，不负自己！",
+      "🧠 背完这一页，我能赢！",
+      "🔥 拼一载春秋，搏一生无悔！",
+      "🌟 不怕慢，就怕停！"
+    ];
+
+    const cheerText = document.getElementById("cheerText");
+    const randomIndex = Math.floor(Math.random() * cheers.length);
+    cheerText.textContent = cheers[randomIndex];
+  </script>
 
 </body>
 </html>

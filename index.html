@@ -2,56 +2,131 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>词汇学习入口</title>
+  <title>词汇学习总入口</title>
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
-      background-color: #f0f4f8;
-      padding: 40px;
+      background-image: url('images/bnu-campus.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 60px 20px;
       color: #333;
+      min-height: 100vh;
       text-align: center;
     }
+
     h1 {
-      margin-bottom: 40px;
+      font-size: 48px;
+      color: #007bff;
+      margin-bottom: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
     }
+
+    h1 img {
+      height: 60px;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto 50px;
+    }
+
     .category-button {
-      display: inline-block;
-      margin: 10px;
-      padding: 14px 24px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      cursor: pointer;
+      padding: 24px 32px;
+      font-size: 24px;
+      border-radius: 12px;
       text-decoration: none;
+      color: white;
       transition: background-color 0.3s;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
     }
-    .category-button:hover {
-      background-color: #0056b3;
+
+    .high { background-color: #007bff; }
+    .high:hover { background-color: #0056b3; }
+
+    .mid { background-color: #28a745; }
+    .mid:hover { background-color: #1e7e34; }
+
+    .low { background-color: #fd7e14; }
+    .low:hover { background-color: #e8590c; }
+
+    .extra { background-color: #ffc107; color: #333; }
+    .extra:hover { background-color: #e0a800; }
+
+    .download-btn {
+      display: inline-block;
+      background-color: #17a2b8;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 20px;
+      margin-top: 30px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    }
+
+    .download-btn:hover {
+      background-color: #138496;
+    }
+
+    .cheer-text {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: #e63946;
+      margin-top: 60px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.85; }
+      100% { transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <h1>词汇学习入口</h1>
+  <h1>
+    <img src="images/bnu-logo-icon.png" alt="北师大 Logo">
+    词汇学习总入口
+  </h1>
 
-  <a class="category-button" href="high.html">📘 高频单词</a>
-  <a class="category-button" href="mid.html">📗 中频单词</a>
-  <a class="category-button" href="low.html">📙 低频单词</a>
-  <a class="category-button" href="extra.html">📒 补充单词</a>
-  <a href="downloads/大纲词汇5500.csv" download style="
-  display: inline-block;
-  background-color: #17a2b8;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  margin-top: 20px;
-  font-size: 16px;
-">
-📄 下载大纲词汇5500 CSV
-</a>
+  <div class="button-grid">
+    <a class="category-button high" href="high.html">📘 高频单词</a>
+    <a class="category-button mid" href="mid.html">📗 中频单词</a>
+    <a class="category-button low" href="low.html">📙 低频单词</a>
+    <a class="category-button extra" href="extra.html">📒 补充单词</a>
+  </div>
+
+  <a class="download-btn" href="downloads/大纲词汇5500.csv" download>
+    📄 下载大纲词汇5500 CSV
+  </a>
+
+  <div class="cheer-text" id="cheerText">🌟 加油！梦想不止步！</div>
+
+  <script>
+    const cheers = [
+      "🎓 启程于今日，成就在来年！",
+      "📚 单词是砖，一块一块砌梦想！",
+      "🚪 打开词汇之门，迈向高分未来！",
+      "🌟 一步一印，终将光芒万丈！",
+      "🧭 今天的坚持，是明天的方向！",
+      "💼 学海无涯，考研有路！",
+      "✊ 坚持一页，成就一生！"
+    ];
+
+    const cheerText = document.getElementById("cheerText");
+    const randomIndex = Math.floor(Math.random() * cheers.length);
+    cheerText.textContent = cheers[randomIndex];
+  </script>
 
 </body>
 </html>
