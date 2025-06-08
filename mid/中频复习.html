@@ -52,6 +52,12 @@
       text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     }
     
+    .subtitle {
+      color: #888;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+    
     .stats {
       display: flex;
       justify-content: center;
@@ -629,7 +635,7 @@
     let currentPage = 0;
     let firstSelected = null;
     let secondSelected = null;
-    let hintCount = 3;
+    let hintCount = 3; // 所有页面共享的提示次数
     let isChecking = false;
     let timer = null;
     let startTime = null;
@@ -641,8 +647,6 @@
     let pageTimes = [];
     // 存储每页的完成状态
     let pageCompleted = [];
-    // 存储每页的提示使用次数
-    let pageHintsUsed = [];
     
     // 存储已消除的单词
     let completedPairs = {};
@@ -651,18 +655,15 @@
     function initGameState() {
       pageTimes = [];
       pageCompleted = [];
-      pageHintsUsed = [];
       completedPairs = {};
       
       for (let i = 0; i < 5; i++) { // 5页
         pageTimes[i] = 0;
         pageCompleted[i] = false;
-        pageHintsUsed[i] = 0;
         completedPairs[i] = [];
       }
       
       matchedPairs = 0;
-      hintCount = 3;
       currentPage = 0;
     }
     
@@ -784,7 +785,6 @@
       hintCards = [];
       
       // 更新提示次数
-      hintCount = 3 - pageHintsUsed[currentPage];
       updateHintButton();
 
       cards.forEach(item => {
@@ -906,7 +906,6 @@
             hintCards.push(cards[i], cards[j]);
             
             hintCount--;
-            pageHintsUsed[currentPage]++;
             updateHintButton();
             return;
           }
@@ -927,7 +926,7 @@
           
           // 更新模态框信息
           document.getElementById('finalTime').textContent = formatTime(pageTimes[currentPage]);
-          document.getElementById('hintsUsed').textContent = pageHintsUsed[currentPage];
+          document.getElementById('hintsUsed').textContent = 3 - hintCount;
           document.getElementById('totalWords').textContent = pairsPerPage;
           
           document.getElementById('successModal').style.display = 'flex';
@@ -951,15 +950,9 @@
         totalSeconds += time;
       });
       
-      // 计算总提示使用
-      let totalHints = 0;
-      pageHintsUsed.forEach(hints => {
-        totalHints += hints;
-      });
-      
       // 更新最终统计
       document.getElementById('totalTime').textContent = formatTime(totalSeconds);
-      document.getElementById('totalHintsUsed').textContent = totalHints;
+      document.getElementById('totalHintsUsed').textContent = 3 - hintCount;
       
       // 显示弹窗
       document.getElementById('finalModal').style.display = 'flex';
@@ -988,6 +981,7 @@
     // 重新抽取单词
     function reshufflePairs() {
       selectedPairs = pickRandomPairs(100);
+      hintCount = 3; // 重置提示次数
       initGameState();
       createGame();
     }
@@ -1030,7 +1024,6 @@
     });
     
     document.getElementById("exitBtn").addEventListener("click", () => {
-      // 这里可以添加退出逻辑，但关闭页面需要用户自己操作
       alert("感谢使用单词复习检验！您可以关闭此页面退出。");
     });
 
