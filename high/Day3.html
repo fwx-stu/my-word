@@ -48,7 +48,7 @@
     h1 {
       color: var(--primary);
       font-size: 1.7rem;
-      margin-bottom: 5px;
+      margin-bottom: 15px;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     }
     
@@ -337,7 +337,8 @@
       #game { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
       .card { min-height: 75px; font-size: 0.85rem; padding: 12px 8px; }
       .control-btn { flex: 1 0 40%; max-width: 45%; padding: 8px 12px; }
-      /* .control-btn span { display: none; } */
+      /* 保留按钮文字在移动设备上显示 */
+      /* .control-btn span { display: inline; } */
       #hintCounter { padding: 10px 15px; font-size: 0.9rem; }
     }
     
@@ -600,7 +601,7 @@
     let currentPage = 0;
     let firstSelected = null;
     let secondSelected = null;
-    let hintCount = 3;
+    let hintCount = 3; // 全局共享的提示次数
     let isChecking = false;
     let timer = null;
     let startTime = null;
@@ -612,8 +613,6 @@
     let pageTimes = [];
     // 存储每页的完成状态
     let pageCompleted = [];
-    // 存储每页的提示使用次数
-    let pageHintsUsed = [];
     
     // 存储已消除的单词
     let completedPairs = {};
@@ -622,15 +621,17 @@
     function initGameState() {
       pageTimes = [];
       pageCompleted = [];
-      pageHintsUsed = [];
       completedPairs = {};
       
       for (let i = 0; i < allWordPages.length; i++) {
         pageTimes[i] = 0;
         pageCompleted[i] = false;
-        pageHintsUsed[i] = 0;
         completedPairs[i] = [];
       }
+      
+      matchedPairs = 0;
+      hintCount = 3; // 重置提示次数
+      currentPage = 0;
     }
     
     // 检查单词是否已被消除
@@ -700,8 +701,8 @@
       }
     }
 
-    // 重置当前页计时器
-    function resetCurrentTimer() {
+    // 重置计时器
+    function resetTimer() {
       stopTimer();
       elapsedTime = 0;
       document.getElementById('timeDisplay').textContent = formatTime(elapsedTime);
@@ -740,8 +741,7 @@
       // 重置提示高亮
       hintCards = [];
       
-      // 更新提示次数
-      hintCount = 3 - pageHintsUsed[currentPage];
+      // 更新提示按钮
       updateHintButton();
 
       cards.forEach(item => {
@@ -863,7 +863,6 @@
             hintCards.push(cards[i], cards[j]);
             
             hintCount--;
-            pageHintsUsed[currentPage]++;
             updateHintButton();
             return;
           }
@@ -884,7 +883,7 @@
           
           // 更新模态框信息
           document.getElementById('finalTime').textContent = formatTime(pageTimes[currentPage]);
-          document.getElementById('hintsUsed').textContent = pageHintsUsed[currentPage];
+          document.getElementById('hintsUsed').textContent = 3 - hintCount;
           document.getElementById('totalWords').textContent = allWordPages[currentPage].length;
           
           document.getElementById('successModal').style.display = 'flex';
@@ -908,21 +907,15 @@
         totalSeconds += time;
       });
       
-      // 计算总提示使用
-      let totalHints = 0;
-      pageHintsUsed.forEach(hints => {
-        totalHints += hints;
-      });
+      // 更新最终统计
+      document.getElementById('totalTime').textContent = formatTime(totalSeconds);
+      document.getElementById('totalHintsUsed').textContent = 3 - hintCount;
       
       // 计算总单词数
       let totalWords = 0;
       allWordPages.forEach(page => {
         totalWords += page.length;
       });
-      
-      // 更新最终统计
-      document.getElementById('totalTime').textContent = formatTime(totalSeconds);
-      document.getElementById('totalHintsUsed').textContent = totalHints;
       document.getElementById('totalWordsCount').textContent = totalWords;
       
       // 显示弹窗
@@ -951,11 +944,8 @@
 
     // 初始化游戏
     document.getElementById("restart").addEventListener("click", () => {
-      // 重置所有状态
       initGameState();
-      hintCount = 3;
-      currentPage = 0;
-      resetCurrentTimer();
+      resetTimer();
       createGame();
       updateHintButton();
     });
@@ -992,17 +982,12 @@
     
     document.getElementById("restartFinalBtn").addEventListener("click", () => {
       document.getElementById('finalModal').style.display = 'none';
-      // 重置所有状态
       initGameState();
-      hintCount = 3;
-      currentPage = 0;
-      resetCurrentTimer();
+      resetTimer();
       createGame();
-      updateHintButton();
     });
     
     document.getElementById("exitBtn").addEventListener("click", () => {
-      // 这里可以添加退出逻辑，但关闭页面需要用户自己操作
       alert("感谢游玩！您可以关闭此页面退出游戏。");
     });
 
