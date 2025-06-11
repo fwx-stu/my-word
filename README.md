@@ -141,28 +141,21 @@ background-music.mp3：背景音乐文件。
 
 开始学习
 
-1.
-打开 index.html 进入主页面。
+1.打开 index.html 进入主页面。
 
-2.
-选择您想学习的词汇分类（高频、中频、低频、补充）。
+2.选择您想学习的词汇分类（高频、中频、低频、补充）。
 
-3.
-按照每日计划完成学习任务，系统将自动记录您的进度。
+3.按照每日计划完成学习任务，系统将自动记录您的进度。
 
 单词配对游戏
 
-1.
-打开 matching-game.html。
+1.打开 matching-game.html。
 
-2.
-点击英文单词和对应的中文释义进行配对。
+2.点击英文单词和对应的中文释义进行配对。
 
-3.
-可使用提示功能（每天3次）。
+3.可使用提示功能（每天3次）。
 
-4.
-完成所有配对即可进入下一关。
+4.完成所有配对即可进入下一关。
 
 功能操作
 
@@ -180,33 +173,25 @@ background-music.mp3：背景音乐文件。
 
 部署说明
 
-1.
-克隆仓库：
+1.克隆仓库：
 
-2.
-本地运行：直接在浏览器中打开 index.html 即可运行。
+2.本地运行：直接在浏览器中打开 index.html 即可运行。
 
-3.
-服务器部署：将所有文件上传到您的Web服务器目录即可。
+3.服务器部署：将所有文件上传到您的Web服务器目录即可。
 
 贡献指南
 
 欢迎对本项目进行贡献！请遵循以下步骤：
 
-1.
-Fork 项目仓库。
+1.Fork 项目仓库。
 
-2.
-创建新分支 (git checkout -b feature/your-feature)。
+2.创建新分支 (git checkout -b feature/your-feature)。
 
-3.
-提交更改 (git commit -m 'Add some feature')。
+3.提交更改 (git commit -m 'Add some feature')。
 
-4.
-推送到分支 (git push origin feature/your-feature)。
+4.推送到分支 (git push origin feature/your-feature)。
 
-5.
-创建 Pull Request。
+5.创建 Pull Request。
 
 许可证
 
